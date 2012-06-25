@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: math | My Octopress Blog]]></title>
+  <title><![CDATA[Category: math | 小助助的精神實驗室]]></title>
   <link href="http://Ichi1234567.github.com/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://Ichi1234567.github.com/"/>
-  <updated>2012-06-25T10:32:24+08:00</updated>
+  <updated>2012-06-25T14:46:11+08:00</updated>
   <id>http://Ichi1234567.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[小助助]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
