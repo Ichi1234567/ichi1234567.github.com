@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: canvas | My Octopress Blog]]></title>
+  <link href="http://Ichi1234567.github.com/blog/categories/canvas/atom.xml" rel="self"/>
+  <link href="http://Ichi1234567.github.com/"/>
+  <updated>2012-06-25T10:32:24+08:00</updated>
+  <id>http://Ichi1234567.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[canvas]上的事件 --- (2)]]></title>
+    <link href="http://Ichi1234567.github.com/blog/2012/06/07/new-post/"/>
+    <updated>2012-06-07T00:00:00+08:00</updated>
+    <id>http://Ichi1234567.github.com/blog/2012/06/07/new-post</id>
+    <content type="html"><![CDATA[<p>Included file 'JB/setup' not found in _includes directory</p>
+
+<!-- excerpt start -->
+
+
+<p>今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ > 3&lt; 既然有進度、那就接著延續昨天的話題、canvas
+事件吧~！！好~記得昨天辛酸史講到了<strong>isPointInPath</strong>、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w</p>
+
+<!-- excerpt end -->
+
+
+<p>因為isPointInPath有一些使用上的麻煩、所以…(如果沒記錯的話~w)就有了以下的幾種方法：</p>
+
+<ul>
+<li><p>使用<strong>svg</strong>：<br>
+就是因為這樣…所以~用了svg，其實就可以不用canvas了~XDD 是說、值得一提的是，有不少讓原本不能用canvas的瀏覽器支援
+的方法、都不約而同的利用svg。像是…<a href="http://excanvas.sourceforge.net/">excanvas</a> 記得大部分的版本都是使用svg喇~
+可是、我把名字忘光光了~囧</p></li>
+<li><p>使用<strong>flash</strong>：<br>
+這個方法比較不常見耶~說真的、而且run起來聽說也比較慢。可是咧~印象中我挖到的這個
+<a href="http://burzak.com/proj/fxcanvas/">fxCanvas</a>在實做canvas的功能上、的確有比較完整呢~不知道是好還是壞~ XDD
+可是、我私心的並不喜歡flash~ Q ^Q</p></li>
+<li><p>使用<strong>透明image圖層</strong>：<br>
+這個方法、其實就是使用了<a href="http://www.w3schools.com/tags/tag_area.asp">area</a>這個html的tag，在圖形上、利用area
+紀錄好shape、在去監聽事件。是不錯用、對於polygon、circle這類的都不錯，就是polyline稍嫌麻煩些。</p></li>
+<li><p>使用<strong>DIV</strong>：<br>
+而上述的那些方法的確都可以監聽個別圖形的事件、可是~有時候並不需要那摸精細、畢竟…上述的方法都不是canvas的原生
+方法，算起來就…肯定比較花時間啦~那…使用div的方法、就是說…只要大概的抓到它需要觸發事件的範圍就行了。其使用
+的範疇大概就是…唔~最常見的大概就是…在…<a href="http://www.google.com/doodles/finder/2012/All%20doodles">google doodle</a>
+裡、大家可以發現不少互動式的案例。它們都有一個共通點、就是…需要觸發事件的地方不多、而且單純，也許就是mouseover
+某個物體的時候、發生了某某事情。或者是click的時候、做了balabala動作。</p>
+
+<p>其實、並不是每一種效果都需要非常精細的事件監聽和觸發~所以、我個人還蠻喜歡這種方法的啦~ XDDD
+很方便偷懶阿~只要在產生圖形的時候，在需要的時候，順便產生對應大小的div，還有設定好anchor position，
+接下來在圖形畫上去的順手append上去，接下來就可以邪惡的監聽事件了，在圖形有所變化的時候、也只需要修正大小
+或位置…就完成了。說起來真的是非常的方便呢~ 這個部份、可以參考
+google doodle的<a href="http://www.google.com/logos/lem/">機器人</a>的
+<a href="https://code.google.com/p/stanislaw-lem-google-doodle/">source code</a> 真的很讚呢~裡面可以看到很多邪惡的小
+細節、太邪惡、太邪惡、真的是太邪惡了啦~ XDDD 即使看過再看、都還是能帶給我驚喜哩~</p>
+
+<p>我喜歡有驚喜的code~太感謝製作團隊無私的分享了。希望我哪天也可以邪惡一把。(&lt;--- 又在做白日夢了~|||)</p></li>
+</ul>
+
+
+<p>雖然、還有一個**超<del><del>~級邪惡**的方法，不過、今天就到這邊吧</del> 接下的那個方法、雖然概念很簡單、不過，實做上需要
+一點點小技巧~ XDD 而且、其實我還在實驗啦~我想要弄一個自己順手的版本…不過，有人就是使用我下次要講的技巧歐~
+就是這個<a href="http://www.createjs.com/#!/EaselJS">easelJs</a> 好</del>那就這樣吧~ 收工~ w</p>
+
+<p><strong>To Be Continued......</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[canvas]上的事件 --- (1)]]></title>
+    <link href="http://Ichi1234567.github.com/blog/2012/06/06/new-post/"/>
+    <updated>2012-06-06T00:00:00+08:00</updated>
+    <id>http://Ichi1234567.github.com/blog/2012/06/06/new-post</id>
+    <content type="html"><![CDATA[<p>Included file 'JB/setup' not found in _includes directory</p>
+
+<!-- excerpt start -->
+
+
+<p>canvas的事件相關的部份、一直以來都是我心中永遠的痛~ (←明明就還很嫩、還在永遠些啥~ XDDD) 我不太喜歡目前自己
+用來監聽canvas上、觸發圖形事件的方法。就<del>~其實很好用啦</del>可是、就彆扭咩~(扭扭扭)</p>
+
+<p>其實…這個部份~某部份還在實驗~(大卡關阿~ Q ^Q) 然後、這個想法，在還沒有看到別人實做出來的時候，一直有個疑問，
+不知道這樣的想法、會不會很耗資源，可是、又很懶的弄~然後、在這遊戲引擎如雨後春筍般冒出來的情況下~挖了一些出來
+研究了一下。<a href="http://enchantjs.com/en/?s=en">enchant</a>、<a href="http://entityjs.com/">entityjs</a>、
+<a href="http://www.createjs.com/#!/EaselJS">easelJs</a>、還有最近好像還蠻多人提起的
+<a href="https://github.com/mrdoob/three.js/">three.js</a> (←目前腦海有印象的就這幾個啦~很像還有不少捏)也去挖到了之前
+google doodle的<a href="http://www.google.com/logos/lem/">機器人</a>的
+<a href="https://code.google.com/p/stanislaw-lem-google-doodle/">source code</a></p>
+
+<p>很認真的翻了很久~眼睛都看花了~ Q ^Q 在好心的<a href="http://blog.blackbing.net/">Bingo</a>的指引下、發現了EaselJS、其實
+不是我迷有看過它~ XDDD 是…我那時候翻了太多、把它忘記了~ XDDD</p>
+
+<p>就這樣…我就邁入了~不歸路… Q 口Q 真的~我覺得我現在好糟糕…一定有XX強迫症了~沒救了~哭…。這個系列、將介紹我在canvas
+上的心路歷程.... Q ^Q 之一。</p>
+
+<!-- excerpt end -->
+
+
+<p>好~趕快進入正題…XDDDDD 前言真的太長了呢~</p>
+
+<p>雖然、canvas是個html的tag、也可以觸發事件，不過…它就跟一般的html元素一樣，並沒有辦法去觸發畫在canvas上面的
+特定內容，嗯嗯嗯…就canvas這個字面上的意思來看，就是『畫布』咩~畫布…當然是屬於靜態的…畫上去就結束了~。</p>
+
+<p>所以、為了達成大家的願望…其實canvas有個method就是
+<a href="http://www.html5.jp/canvas/ref/method/isPointInPath.html">isPointInPath</a> 其實…可以拿來用啦~雖然它有幾個
+堪稱致命的小瑕疵：</p>
+
+<ul>
+<li><p>最致命的當然就是…為了兼容不支援canvas各家瀏覽器(其實就是那一個~ Q ^Q)、不得不使用像是
+<a href="http://excanvas.sourceforge.net/">excanvas</a>、<a href="http://burzak.com/proj/fxcanvas/">fxCanvas</a>這類的~很像還有幾個
+可是我也忘記名字了…想不起來~ XDD 可是、不管這些製作的多摸的優良~總是會有一些功能還沒有被實做出來…
+很光榮的<strong>isPointInPath</strong>名列其中~ Q 口Q isPointInPath掰掰~(揮揮手)</p></li>
+<li><p>接下來另一個致命的就是…請注意它的名字<strong>isPointInPath</strong>，我知道…大家一定都迷有注意到~ 唔、好吧~大多數的人類
+應該是迷有注意到這件事isPoint<strong>InPath</strong>。是的，這個方法是去判斷一個點有沒有 <strong>in</strong> Path。那…然後呢~ Q 口Q 讓
+人傷心的事情就是在這裡發生了。在canvas裡面，嗯 我想也許可以這摸說啦~也許…這部份是屬於我個人的理解歐~我沒有
+仔細的去看相關的內容，有問題就…(搔搔臉) 就是那樣~(好~~~~~~~回正題)</p>
+
+<ul>
+<li>code A
+  <pre><code>ctx.beginPath();
+
+<pre><code>  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.lineTo(x3, y3);
+</code></pre>
+
+<p>  ctx.closePath();
+  ctx.fill();
+</code></pre></p></li>
+<li>code B
+  <pre><code>ctx.beginPath();
+
+<pre><code>  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.lineTo(x3, y3);
+</code></pre>
+
+<p>  ctx.stroke();
+</code></pre></p></li>
+</ul>
+
+
+<p>上面那兩段就差在<strong>closePath</strong>，然後、有close的那個…會成為一個封閉圖形…阿~迷有錯…所以、<strong>isPointInPath</strong>在
+第一個會有作用、第二個就一點用都沒有了~它用在polyline上、就算你on在線上…也都會給你回傳false的…也<del>~~就是說
+isPointInPath只能用在封閉圖形，其</del>實也不是不能用在polyline上啦~只是、很麻煩捏~ = """= 我不想把自己搞得很
+頭大，excanvas那類的…又不支援~ XDDDD 就算算囉~</p></li>
+</ul>
+
+
+<p>基於以上兩種理由…canvas原生的method<strong>isPointInPath</strong>掰~！！</p>
+
+<p>好~因為…我累了~ = . .= 所以，這篇就先到這裡~ XDDDD <strong>isPointInPath</strong> 到此告一段落。</p>
+
+<p><strong>To Be Continued......</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[canvas] transform、setTransform]]></title>
+    <link href="http://Ichi1234567.github.com/blog/2012/05/04/canvas-transform-settransform/"/>
+    <updated>2012-05-04T00:00:00+08:00</updated>
+    <id>http://Ichi1234567.github.com/blog/2012/05/04/canvas-transform-settransform</id>
+    <content type="html"><![CDATA[<p>Included file 'JB/setup' not found in _includes directory</p>
+
+<!-- excerpt start -->
+
+
+<p>canvas有2個長得很像的method，分別是transform和setTransform，他們的parameter都一樣，可是、他們的功能又有些微的差異，對此做了小小的紀錄。</p>
+
+<p>同：</p>
+
+<pre><code>皆是對"canvas"做transform的動作。
+參數相同。
+</code></pre>
+
+<p>異：</p>
+
+<pre><code>transform會持續的累積所有對canvas的操作、包含了scale，rotate， translate，當然…還有transform。
+但是、setTransform並不會累積操作。也就是說…使用了setTransform的意思是說，先將canvas做reset，回到最初的狀態，接著再做transform。
+</code></pre>
+
+<!-- excerpt end -->
+
+
+<p>tips：
+利用setTransform會將canvas做reset的特性、我覺得在下面的情況下可以有很好的使用。</p>
+
+<pre><code>拿來做lookAt。
+lookAt是要將視線焦點移到某座標的方法，也就是說，當我們要lookAt某位置的時候、整體的操作將會重頭開始。當然、transform也是可以達到相同的效果。只是、我的習慣是傾向於lookAt後、整體會重新開始、而不受之前的影響。
+clearRect的前置動作。
+一般來說，清除畫布，都會使用clearRect(x, y, w, h)，x, y 為清除的起始位置，w, h分別是width和height，可是，當整個繪圖的過程充斥著對canvas的操作時，會因為很難確定x, y而可能導致進行清除的動作有困難或清除位置有錯。因此、在使用clearRect前，可以先setTransform。
+
+&gt;   ctx.setTransform(1, 0, 0, 1, 0, 0);
+&gt;   ctx.clearRect(0, 0, w, h);
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

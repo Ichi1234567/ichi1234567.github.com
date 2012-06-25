@@ -1,0 +1,178 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>weight ----- (1) - My Octopress Blog</title>
+	<meta name="author" content="Your Name">
+
+	
+	<meta name="description" content="">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:Ichi1234567.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:Ichi1234567.github.com">
+	</form>
+</nav>
+
+</header>
+	
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Weight ----- (1)</h1>
+	<div class="entry-content"><p>Included file 'JB/setup' not found in _includes directory</p>
+
+<!-- excerpt start -->
+
+
+<p>weight是個很常見、卻還蠻容易被忽略的一個小地方，因為…太容易、也太好使用了，可是、用來用去又那摸幾招、有時候還是覺得不太夠用。是個用的好就覺得上了天堂、用爛了、就…會有想要撞豆腐的心情~</p>
+
+<pre><code>最常被拿來使用的、一定是 ----------&gt; 平均
+
+    (1/n)*A1 + (1/n)*A2 + …… + (1/n)*A3
+</code></pre>
+
+<!-- excerpt end -->
+
+
+<pre><code>    把1.延伸一下，不難理解、這種方法拿來做soomth真的是簡單又方便，又很好理解、也算是蠻合理的
+    很懶的想的時候、通常…平均是最常被拿來用的、誰讓他太順手了。
+
+另一個也很常被拿來使用的、其實也非~~~常的常見、就是 ----------&gt; 佔有率(%)
+這種的、可分成兩類，以最常見的，就是距離或範圍相關問題來說明。
+[註] 在不慎重考慮、還有其他精細的條件下。
+
+A. 勢力大 ----------&gt; 比例高 (eq. 圓餅圖、真的是夠夠常見了?~)
+比如範圍越大、所需人力越多，現在共有A、B、C、D 四區，N個人、如何劃分人數較為合理
+很明顯的 ： 
+
+            total(簡稱T)： A + B + C + D
+            A區 ： (A / T) * N
+            B區 ： (B / T) * N
+            C區 ： (C / T) * N
+            D區 ： (D / T) * N
+
+
+B. 勢力大 ----------&gt; 比例小 ()
+比如距離越遠、耗費時間越多，共有A、B、C、D 四條路，候補路線的順序如何決定
+這個也非常的明顯 ：
+
+    A ： (1 / A)
+    B ： (1 / B)
+    C ： (1 / C)
+    D ： (1 / D)
+    依照大小排好、由大至小…就是候補順序由高至低的順序
+
+    這種的、根據算法可以有非~~~常多的變形和利用… = =+ (←以後勤勞狀況再慢慢補~ w)
+    以上述A例來說，以面積算、面積算法有很多、所以就可以套用在各種不同的場合。
+    以上述B例來說，以長度算、最常見的延伸例子就是linear interpolation、以linear延伸、就可以套用各種不同的ease function 或者任何想得到的、簡單的、符合情況的算法做變化。
+    這些東西的作用域、當然也可以不限定在座標系或長度這類的空間上、而是可以適用在任何在合理情況下轉換到類似系統的、都是可行的。(←這樣、可以使用的範圍就更廣了?~ = =+)
+</code></pre>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-08T00:00:00+08:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/math/'>math</a>
+
+
+</div>
+	
+</div></article>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Your Name
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>
