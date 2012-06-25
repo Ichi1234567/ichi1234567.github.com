@@ -6,20 +6,20 @@ description: ""
 category: canvas
 tags: [js, canvas]
 ---
-{% include JB/setup %}
-<!-- excerpt start -->
+
+
 canvas有2個長得很像的method，分別是transform和setTransform，他們的parameter都一樣，可是、他們的功能又有些微的差異，對此做了小小的紀錄。
 
 同：
 
-    皆是對"canvas"做transform的動作。
-    參數相同。
+  皆是對"canvas"做transform的動作。
+  參數相同。
 
 異：
 
-    transform會持續的累積所有對canvas的操作、包含了scale，rotate， translate，當然…還有transform。
-    但是、setTransform並不會累積操作。也就是說…使用了setTransform的意思是說，先將canvas做reset，回到最初的狀態，接著再做transform。
-<!-- excerpt end -->
+  transform會持續的累積所有對canvas的操作、包含了scale，rotate， translate，當然…還有transform。
+  但是、setTransform並不會累積操作。也就是說…使用了setTransform的意思是說，先將canvas做reset，回到最初的狀態，接著再做transform。
+<!-- more -->
 tips：
 利用setTransform會將canvas做reset的特性、我覺得在下面的情況下可以有很好的使用。
 
