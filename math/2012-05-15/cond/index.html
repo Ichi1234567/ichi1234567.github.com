@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>weight ----- (1) - 小助助的精神實驗室</title>
+  <title>運算判斷 - 小助助的精神實驗室</title>
   <meta name="author" content="小助助">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://Ichi1234567.github.com/math/2012/05/08/weight1/">
+  <link rel="canonical" href="http://Ichi1234567.github.com/math/2012-05-15/cond/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Weight ----- (1)</h1>
+      <h1 class="entry-title">運算判斷</h1>
     
     
       <p class="meta">
@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2012-05-08T00:00:00+08:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
+<time datetime="2012-05-15T00:00:00+08:00" pubdate data-updated="true">May 15<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -104,44 +104,47 @@
   </header>
 
 
-<div class="entry-content"><p>weight是個很常見、卻還蠻容易被忽略的一個小地方，因為…太容易、也太好使用了，可是、用來用去又那摸幾招、有時候還是覺得不太夠用。是個用的好就覺得上了天堂、用爛了、就…會有想要撞豆腐的心情~</p>
+<div class="entry-content"><p>一些看不起眼的小東西、很有可能是個十分好用的小東西~ = =++ (←就會賣弄小聰明~XDD)</p>
 
-<pre><code>最常被拿來使用的、一定是 ----------&gt; 平均
-
-    (1/n)*A1 + (1/n)*A2 + …… + (1/n)*A3</code></pre>
+<p>一直以來、我都不喜歡if else，總覺得…很煩、可是，又很像非用不可…。寫到後來…總是會不知道寫到了什摸地方去了、 然後…其實又有很多一樣的東西一直在重複、就只是差在、所謂的…方向略有不同。然後、code的內容邁入無窮迴圈、不 停的copy、不停的paste、不停的、不停的、就忘了自己在幹麻…。我記性不好、腦袋不好~所以常常忘了重要的東西。</p>
 <!-- more -->
-<pre><code>    把1.延伸一下，不難理解、這種方法拿來做soomth真的是簡單又方便，又很好理解、也算是蠻合理的
-    很懶的想的時候、通常…平均是最常被拿來用的、誰讓他太順手了。
+<p>所以，這時候、就一定要用一下<strong>邪惡</strong>的方法、讓這些判斷俐落一點，不是完全不用判斷了歐、只是…讓它俐落一點而 已。雖然、這樣的寫法，不熟的人類一開始可能會有點點難理解…可是，我還真的離不開這樣的寫法了捏~ w 光是、只要 在適當的地方用一下、code可以從少一半起跳…我就被誘惑了~ XDDD</p>
 
-另一個也很常被拿來使用的、其實也非~~~常的常見、就是 ----------&gt; 佔有率(%)
-這種的、可分成兩類，以最常見的，就是距離或範圍相關問題來說明。
-[註] 在不慎重考慮、還有其他精細的條件下。
+<p>廢話不多說、來個簡單的例子…</p>
 
-A. 勢力大 ----------&gt; 比例高 (eq. 圓餅圖、真的是夠夠常見了?~)
-比如範圍越大、所需人力越多，現在共有A、B、C、D 四區，N個人、如何劃分人數較為合理
-很明顯的 ： 
+<p>比如、在溫度&gt;27度的時候、空調會降低溫度，反之…升溫好了…(←例子嘛，爛就算了~ w) 這時候、我大概就會用類似這樣的的寫法…。</p>
 
-            total(簡稱T)： A + B + C + D
-            A區 ： (A / T) * N
-            B區 ： (B / T) * N
-            C區 ： (C / T) * N
-            D區 ： (D / T) * N
+<pre><code>sgn = (temperature - 27 &gt; 0) ? (1) : (-1)
+setTemperature(sgn * delta)</code></pre>
 
+<p>也許、這個還看不太出效果來、還是有很多人會用這種寫法的咩…所以、再來一個</p>
 
-B. 勢力大 ----------&gt; 比例小 ()
-比如距離越遠、耗費時間越多，共有A、B、C、D 四條路，候補路線的順序如何決定
-這個也非常的明顯 ：
+<p>假如、下述的關係 a &lt; x &lt; b ， 符合則將 p[ ] 加入container，反之&#8230;從container中移除</p>
 
-    A ： (1 / A)
-    B ： (1 / B)
-    C ： (1 / C)
-    D ： (1 / D)
-    依照大小排好、由大至小…就是候補順序由高至低的順序
+<p>傳統作法大概是這樣</p>
 
-    這種的、根據算法可以有非~~~常多的變形和利用… = =+ (←以後勤勞狀況再慢慢補~ w)
-    以上述A例來說，以面積算、面積算法有很多、所以就可以套用在各種不同的場合。
-    以上述B例來說，以長度算、最常見的延伸例子就是linear interpolation、以linear延伸、就可以套用各種不同的ease function 或者任何想得到的、簡單的、符合情況的算法做變化。
-    這些東西的作用域、當然也可以不限定在座標系或長度這類的空間上、而是可以適用在任何在合理情況下轉換到類似系統的、都是可行的。(←這樣、可以使用的範圍就更廣了?~ = =+)</code></pre></div>
+<pre><code>if (x &gt; a &amp;&amp; x &lt; b)
+    for (i=0; p[i]; i++)
+	    container.insert(p[i])
+else
+    for (i = 0; p[i]; i++)
+	    container.remove(p[i])</code></pre>
+
+<p>當然、上述作法想把判斷包在loop裡面也是可行的歐~也沒啥標準作法喇~只是一般人類應該會採用上述類似的作法。</p>
+
+<p>是說…我大概就會這樣寫… (←硬生生的少了一半) 以這種作法寫、包過2層、可以硬生生的、只剩下一半的一半、1\/4的code~ XDD 一整個、爽阿~ 哈哈哈 看code可以不用翻頁、是一件多摸幸福的事情。</p>
+
+<pre><code>method = ((x - a)*(x - b) &lt; 0) ? (&quot;insert&quot;) : (&quot;remove&quot;)
+for (i = 0; p[i]; i++)
+	container[method](p[i])</code></pre>
+
+<p>好~結束、其實是一些雕蟲小技喇~ 只是讓code看的順眼一些而已、也不見得效能比較好…而且、硬是要把這樣的東西套進去、有時候也很煩，說不定、有些人還會看的雲裡霧裡…||| 是說、因為我很懶咩~連複製也不想了、更不想看到一堆東西、看到眼花。(年紀大了、眼神就慢慢的不好了~)</p>
+
+<p>[註]</p>
+
+<p>雖然、這個還有進階版、不過~就大型了一點、迷有那摸小巧歐~就先擺著不說了，而且、也不是適合在每種語言喇~有點小挑…。 上面的code裡面、還埋藏著<strong>邪惡</strong>的寫法、科科科科科 (掩嘴) 相信眼神十分銳利的大家一定會花現的~咯咯咯咯~</p>
+
+<p>下次不知道講什摸好捏~一定要是那種小小的、沒幾句可以結束又可以發洩一下的好~ w 上次那篇、真的是…累阿~(揮汗)</p></div>
 
 
   <footer>
@@ -163,7 +166,7 @@ B. 勢力大 ----------&gt; 比例小 ()
   
 
 
-<time datetime="2012-05-08T00:00:00+08:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
+<time datetime="2012-05-15T00:00:00+08:00" pubdate data-updated="true">May 15<span>th</span>, 2012</time>
       
 
 <span class="categories">
@@ -177,7 +180,7 @@ B. 勢力大 ----------&gt; 比例小 ()
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ichi1234567.github.com/math/2012/05/08/weight1/" data-via="" data-counturl="http://Ichi1234567.github.com/math/2012/05/08/weight1/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ichi1234567.github.com/math/2012-05-15/cond/" data-via="" data-counturl="http://Ichi1234567.github.com/math/2012-05-15/cond/" >Tweet</a>
   
   
   
@@ -186,10 +189,10 @@ B. 勢力大 ----------&gt; 比例小 ()
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/canvas/2012/05/04/canvas-transform-settransform/" title="Previous Post: [canvas] transform、setTransform">&laquo; [canvas] transform、setTransform</a>
+        <a class="basic-alignment left" href="/graphics/2012-05-12/world/" title="Previous Post: [圖學] 世界的組成">&laquo; [圖學] 世界的組成</a>
       
       
-        <a class="basic-alignment right" href="/others/2012/05/09/dsapce/" title="Next Post: 如果世界是個離散空間">如果世界是個離散空間 &raquo;</a>
+        <a class="basic-alignment right" href="/others/2012-06-05/new-post/" title="Next Post: 雜談 - 選擇jekyll Bootstrap的理由">雜談 - 選擇jekyll Bootstrap的理由 &raquo;</a>
       
     </p>
   </footer>
@@ -204,23 +207,23 @@ B. 勢力大 ----------&gt; 比例小 ()
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/others/2012/06/09/new-post/">我生命中的JS和OO</a>
+        <a href="/others/2012-06-09/new-post/">我生命中的JS和OO</a>
       </li>
     
       <li class="post">
-        <a href="/canvas/2012/06/07/new-post/">[canvas]上的事件 --- (2)</a>
+        <a href="/canvas/2012-06-07/new-post/">[canvas]上的事件 --- (2)</a>
       </li>
     
       <li class="post">
-        <a href="/canvas/2012/06/06/new-post/">[canvas]上的事件 --- (1)</a>
+        <a href="/canvas/2012-06-06/new-post/">[canvas]上的事件 --- (1)</a>
       </li>
     
       <li class="post">
-        <a href="/others/2012/06/05/new-post/">雜談 - 選擇jekyll Bootstrap的理由</a>
+        <a href="/others/2012-06-05/new-post/">雜談 - 選擇jekyll Bootstrap的理由</a>
       </li>
     
       <li class="post">
-        <a href="/math/2012/05/15/cond/">運算判斷</a>
+        <a href="/math/2012-05-15/cond/">運算判斷</a>
       </li>
     
   </ul>

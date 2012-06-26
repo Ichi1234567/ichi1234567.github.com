@@ -4,7 +4,7 @@
   <title><![CDATA[小助助的精神實驗室]]></title>
   <link href="http://Ichi1234567.github.com/atom.xml" rel="self"/>
   <link href="http://Ichi1234567.github.com/"/>
-  <updated>2012-06-26T11:09:42+08:00</updated>
+  <updated>2012-06-26T11:19:34+08:00</updated>
   <id>http://Ichi1234567.github.com/</id>
   <author>
     <name><![CDATA[小助助]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[我生命中的JS和OO]]></title>
-    <link href="http://Ichi1234567.github.com/others/2012/06/09/new-post/"/>
+    <link href="http://Ichi1234567.github.com/others/2012-06-09/new-post/"/>
     <updated>2012-06-09T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/others/2012/06/09/new-post</id>
+    <id>http://Ichi1234567.github.com/others/2012-06-09/new-post</id>
     <content type="html"><![CDATA[<p>ㄜ~其實…原本打算接著上次的話題，繼續寫一下canvas系列的（詳見 <a href='http://ichi1234567.github.com/blog/2012/06/07/new-post/'>[canvas]上的事件 &#8212; (1)</a>、 <a href='http://ichi1234567.github.com/blog/2012/06/06/new-post/'>[canvas]上的事件 &#8212; (2)</a>） 可是，接下來這個，可能會講的落落長耶~ &gt; 3&lt; 有點點懶~so~~~~~~ XDDDD 剛好對JS和OO突然有fu，所以、決定來紀錄一下 這個突如其來的感想吧~</p>
 
 <p>對、我很任性~ XDDD 想到、不做會很彆扭歐~ (扭扭) 所以、我一定要認真的紀錄一下。</p>
@@ -84,9 +84,9 @@
   
   <entry>
     <title type="html"><![CDATA[[canvas]上的事件 --- (2)]]></title>
-    <link href="http://Ichi1234567.github.com/canvas/2012/06/07/new-post/"/>
+    <link href="http://Ichi1234567.github.com/canvas/2012-06-07/new-post/"/>
     <updated>2012-06-07T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/canvas/2012/06/07/new-post</id>
+    <id>http://Ichi1234567.github.com/canvas/2012-06-07/new-post</id>
     <content type="html"><![CDATA[<p>今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ &gt; 3&lt; 既然有進度、那就接著延續昨天的話題、canvas 事件吧~！！好~記得昨天辛酸史講到了<strong>isPointInPath</strong>、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w</p>
 <!-- more -->
 <p>因為isPointInPath有一些使用上的麻煩、所以…(如果沒記錯的話~w)就有了以下的幾種方法：</p>
@@ -120,9 +120,9 @@
   
   <entry>
     <title type="html"><![CDATA[[canvas]上的事件 --- (1)]]></title>
-    <link href="http://Ichi1234567.github.com/canvas/2012/06/06/new-post/"/>
+    <link href="http://Ichi1234567.github.com/canvas/2012-06-06/new-post/"/>
     <updated>2012-06-06T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/canvas/2012/06/06/new-post</id>
+    <id>http://Ichi1234567.github.com/canvas/2012-06-06/new-post</id>
     <content type="html"><![CDATA[<p>canvas的事件相關的部份、一直以來都是我心中永遠的痛~ (←明明就還很嫩、還在永遠些啥~ XDDD) 我不太喜歡目前自己 用來監聽canvas上、觸發圖形事件的方法。就~~其實很好用啦~可是、就彆扭咩~(扭扭扭)</p>
 
 <p>其實…這個部份~某部份還在實驗~(大卡關阿~ Q ^Q) 然後、這個想法，在還沒有看到別人實做出來的時候，一直有個疑問， 不知道這樣的想法、會不會很耗資源，可是、又很懶的弄~然後、在這遊戲引擎如雨後春筍般冒出來的情況下~挖了一些出來 研究了一下。<a href='http://enchantjs.com/en/?s=en'>enchant</a>、<a href='http://entityjs.com/'>entityjs</a>、 <!-- more --></p>
@@ -177,9 +177,9 @@ ctx.stroke();
   
   <entry>
     <title type="html"><![CDATA[雜談 - 選擇jekyll Bootstrap的理由]]></title>
-    <link href="http://Ichi1234567.github.com/others/2012/06/05/new-post/"/>
+    <link href="http://Ichi1234567.github.com/others/2012-06-05/new-post/"/>
     <updated>2012-06-05T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/others/2012/06/05/new-post</id>
+    <id>http://Ichi1234567.github.com/others/2012-06-05/new-post</id>
     <content type="html"><![CDATA[<p>阿~這篇真的是個雜談~。</p>
 
 <p>跟什摸都沒關西、是個一點點都不正經的文章~ w (雖然、標題看起來很像還蠻正經的、可是內容不太正經捏。)</p>
@@ -219,9 +219,9 @@ ctx.stroke();
   
   <entry>
     <title type="html"><![CDATA[運算判斷]]></title>
-    <link href="http://Ichi1234567.github.com/math/2012/05/15/cond/"/>
+    <link href="http://Ichi1234567.github.com/math/2012-05-15/cond/"/>
     <updated>2012-05-15T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/math/2012/05/15/cond</id>
+    <id>http://Ichi1234567.github.com/math/2012-05-15/cond</id>
     <content type="html"><![CDATA[<p>一些看不起眼的小東西、很有可能是個十分好用的小東西~ = =++ (←就會賣弄小聰明~XDD)</p>
 
 <p>一直以來、我都不喜歡if else，總覺得…很煩、可是，又很像非用不可…。寫到後來…總是會不知道寫到了什摸地方去了、 然後…其實又有很多一樣的東西一直在重複、就只是差在、所謂的…方向略有不同。然後、code的內容邁入無窮迴圈、不 停的copy、不停的paste、不停的、不停的、就忘了自己在幹麻…。我記性不好、腦袋不好~所以常常忘了重要的東西。</p>
@@ -267,9 +267,9 @@ for (i = 0; p[i]; i++)
   
   <entry>
     <title type="html"><![CDATA[[圖學] 世界的組成]]></title>
-    <link href="http://Ichi1234567.github.com/graphics/2012/05/12/world/"/>
+    <link href="http://Ichi1234567.github.com/graphics/2012-05-12/world/"/>
     <updated>2012-05-12T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/graphics/2012/05/12/world</id>
+    <id>http://Ichi1234567.github.com/graphics/2012-05-12/world</id>
     <content type="html"><![CDATA[<p>只要牽涉到任何跟幾何有關的、不把圖像畫出來，有時候真的很難發揮想像力了解細節。在3D場景中、其實…更增加了難度， 因為我們『看』到的是2D、無論是眼睛看到的、呈現到畫面的…我認為嚴~~~格的說起來、都算是2D，在這樣的情況下、 一般人類要撰寫相關的程式、真的是困難重重。特別是對於某些底子不那摸熟悉的人類來說、光是要了解如何呈現在畫面上 和一堆名詞就已經頭昏了、更不會去弄清楚它們最基礎的概念。而且我覺得、圖學其實是個非常綜合的一個領域。</p>
 <!-- more -->
 <p>對於已經很厲害的人類來說、那些對他們而言、已經成為身體的一部分了。所以~就來隨便講講、稍微提一下這些其實不是 那摸難懂得東西吧~ w</p>
@@ -357,9 +357,9 @@ ctx.restore();</code></pre>
   
   <entry>
     <title type="html"><![CDATA[如果世界是個離散空間]]></title>
-    <link href="http://Ichi1234567.github.com/others/2012/05/09/dsapce/"/>
+    <link href="http://Ichi1234567.github.com/others/2012-05-09/dsapce/"/>
     <updated>2012-05-09T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/others/2012/05/09/dsapce</id>
+    <id>http://Ichi1234567.github.com/others/2012-05-09/dsapce</id>
     <content type="html"><![CDATA[<p>這是好前一陣子偷喵了超弦理論後、醞釀了好一陣子，好像有把零零散散的想法集合的跡象，然後、就來亂『掰』一通吧~ w</p>
 
 <p>嗯、其實，我對超弦理論，還是不太了解~ w 可是、在找文章的時候、看到了以下的幾個東西，很有趣~ (不一定是跟超弦有關的啦~)</p>
@@ -406,9 +406,9 @@ ctx.restore();</code></pre>
   
   <entry>
     <title type="html"><![CDATA[weight ----- (1)]]></title>
-    <link href="http://Ichi1234567.github.com/math/2012/05/08/weight1/"/>
+    <link href="http://Ichi1234567.github.com/math/2012-05-08/weight1/"/>
     <updated>2012-05-08T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/math/2012/05/08/weight1</id>
+    <id>http://Ichi1234567.github.com/math/2012-05-08/weight1</id>
     <content type="html"><![CDATA[<p>weight是個很常見、卻還蠻容易被忽略的一個小地方，因為…太容易、也太好使用了，可是、用來用去又那摸幾招、有時候還是覺得不太夠用。是個用的好就覺得上了天堂、用爛了、就…會有想要撞豆腐的心情~</p>
 
 <pre><code>最常被拿來使用的、一定是 ----------&gt; 平均
@@ -451,9 +451,9 @@ B. 勢力大 ----------&gt; 比例小 ()
   
   <entry>
     <title type="html"><![CDATA[[canvas] transform、setTransform]]></title>
-    <link href="http://Ichi1234567.github.com/canvas/2012/05/04/canvas-transform-settransform/"/>
+    <link href="http://Ichi1234567.github.com/canvas/2012-05-04/canvas-transform-settransform/"/>
     <updated>2012-05-04T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/canvas/2012/05/04/canvas-transform-settransform</id>
+    <id>http://Ichi1234567.github.com/canvas/2012-05-04/canvas-transform-settransform</id>
     <content type="html"><![CDATA[<p>canvas有2個長得很像的method，分別是transform和setTransform，他們的parameter都一樣，可是、他們的功能又有些微的差異，對此做了小小的紀錄。</p>
 
 <p>同：</p>

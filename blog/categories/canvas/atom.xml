@@ -4,7 +4,7 @@
   <title><![CDATA[Category: canvas | 小助助的精神實驗室]]></title>
   <link href="http://Ichi1234567.github.com/blog/categories/canvas/atom.xml" rel="self"/>
   <link href="http://Ichi1234567.github.com/"/>
-  <updated>2012-06-26T11:09:42+08:00</updated>
+  <updated>2012-06-26T11:19:34+08:00</updated>
   <id>http://Ichi1234567.github.com/</id>
   <author>
     <name><![CDATA[小助助]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[canvas]上的事件 --- (2)]]></title>
-    <link href="http://Ichi1234567.github.com/canvas/2012/06/07/new-post/"/>
+    <link href="http://Ichi1234567.github.com/canvas/2012-06-07/new-post/"/>
     <updated>2012-06-07T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/canvas/2012/06/07/new-post</id>
+    <id>http://Ichi1234567.github.com/canvas/2012-06-07/new-post</id>
     <content type="html"><![CDATA[<p>今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ &gt; 3&lt; 既然有進度、那就接著延續昨天的話題、canvas 事件吧~！！好~記得昨天辛酸史講到了<strong>isPointInPath</strong>、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w</p>
 <!-- more -->
 <p>因為isPointInPath有一些使用上的麻煩、所以…(如果沒記錯的話~w)就有了以下的幾種方法：</p>
@@ -51,9 +51,9 @@
   
   <entry>
     <title type="html"><![CDATA[[canvas]上的事件 --- (1)]]></title>
-    <link href="http://Ichi1234567.github.com/canvas/2012/06/06/new-post/"/>
+    <link href="http://Ichi1234567.github.com/canvas/2012-06-06/new-post/"/>
     <updated>2012-06-06T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/canvas/2012/06/06/new-post</id>
+    <id>http://Ichi1234567.github.com/canvas/2012-06-06/new-post</id>
     <content type="html"><![CDATA[<p>canvas的事件相關的部份、一直以來都是我心中永遠的痛~ (←明明就還很嫩、還在永遠些啥~ XDDD) 我不太喜歡目前自己 用來監聽canvas上、觸發圖形事件的方法。就~~其實很好用啦~可是、就彆扭咩~(扭扭扭)</p>
 
 <p>其實…這個部份~某部份還在實驗~(大卡關阿~ Q ^Q) 然後、這個想法，在還沒有看到別人實做出來的時候，一直有個疑問， 不知道這樣的想法、會不會很耗資源，可是、又很懶的弄~然後、在這遊戲引擎如雨後春筍般冒出來的情況下~挖了一些出來 研究了一下。<a href='http://enchantjs.com/en/?s=en'>enchant</a>、<a href='http://entityjs.com/'>entityjs</a>、 <!-- more --></p>
@@ -108,9 +108,9 @@ ctx.stroke();
   
   <entry>
     <title type="html"><![CDATA[[canvas] transform、setTransform]]></title>
-    <link href="http://Ichi1234567.github.com/canvas/2012/05/04/canvas-transform-settransform/"/>
+    <link href="http://Ichi1234567.github.com/canvas/2012-05-04/canvas-transform-settransform/"/>
     <updated>2012-05-04T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/canvas/2012/05/04/canvas-transform-settransform</id>
+    <id>http://Ichi1234567.github.com/canvas/2012-05-04/canvas-transform-settransform</id>
     <content type="html"><![CDATA[<p>canvas有2個長得很像的method，分別是transform和setTransform，他們的parameter都一樣，可是、他們的功能又有些微的差異，對此做了小小的紀錄。</p>
 
 <p>同：</p>

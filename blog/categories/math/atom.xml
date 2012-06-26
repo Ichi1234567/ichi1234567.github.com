@@ -4,7 +4,7 @@
   <title><![CDATA[Category: math | 小助助的精神實驗室]]></title>
   <link href="http://Ichi1234567.github.com/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://Ichi1234567.github.com/"/>
-  <updated>2012-06-26T11:09:42+08:00</updated>
+  <updated>2012-06-26T11:19:34+08:00</updated>
   <id>http://Ichi1234567.github.com/</id>
   <author>
     <name><![CDATA[小助助]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[運算判斷]]></title>
-    <link href="http://Ichi1234567.github.com/math/2012/05/15/cond/"/>
+    <link href="http://Ichi1234567.github.com/math/2012-05-15/cond/"/>
     <updated>2012-05-15T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/math/2012/05/15/cond</id>
+    <id>http://Ichi1234567.github.com/math/2012-05-15/cond</id>
     <content type="html"><![CDATA[<p>一些看不起眼的小東西、很有可能是個十分好用的小東西~ = =++ (←就會賣弄小聰明~XDD)</p>
 
 <p>一直以來、我都不喜歡if else，總覺得…很煩、可是，又很像非用不可…。寫到後來…總是會不知道寫到了什摸地方去了、 然後…其實又有很多一樣的東西一直在重複、就只是差在、所謂的…方向略有不同。然後、code的內容邁入無窮迴圈、不 停的copy、不停的paste、不停的、不停的、就忘了自己在幹麻…。我記性不好、腦袋不好~所以常常忘了重要的東西。</p>
@@ -63,9 +63,9 @@ for (i = 0; p[i]; i++)
   
   <entry>
     <title type="html"><![CDATA[weight ----- (1)]]></title>
-    <link href="http://Ichi1234567.github.com/math/2012/05/08/weight1/"/>
+    <link href="http://Ichi1234567.github.com/math/2012-05-08/weight1/"/>
     <updated>2012-05-08T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/math/2012/05/08/weight1</id>
+    <id>http://Ichi1234567.github.com/math/2012-05-08/weight1</id>
     <content type="html"><![CDATA[<p>weight是個很常見、卻還蠻容易被忽略的一個小地方，因為…太容易、也太好使用了，可是、用來用去又那摸幾招、有時候還是覺得不太夠用。是個用的好就覺得上了天堂、用爛了、就…會有想要撞豆腐的心情~</p>
 
 <pre><code>最常被拿來使用的、一定是 ----------&gt; 平均
