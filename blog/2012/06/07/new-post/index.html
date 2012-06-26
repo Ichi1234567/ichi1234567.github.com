@@ -24,7 +24,7 @@
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="小助助的精神實驗室" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/ichi1234567" rel="alternate" title="小助助的精神實驗室" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -55,7 +55,7 @@
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li><a href="http://feeds.feedburner.com/ichi1234567" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
 </ul>
   
@@ -104,56 +104,35 @@
   </header>
 
 
-<div class="entry-content"><p>Included file 'JB/setup' not found in _includes directory</p>
-
-<!-- excerpt start -->
-
-
-<p>今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ > 3&lt; 既然有進度、那就接著延續昨天的話題、canvas
-事件吧~！！好~記得昨天辛酸史講到了<strong>isPointInPath</strong>、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w</p>
-
-<!-- excerpt end -->
-
-
+<div class="entry-content"><p>今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ &gt; 3&lt; 既然有進度、那就接著延續昨天的話題、canvas 事件吧~！！好~記得昨天辛酸史講到了<strong>isPointInPath</strong>、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w</p>
+<!-- more -->
 <p>因為isPointInPath有一些使用上的麻煩、所以…(如果沒記錯的話~w)就有了以下的幾種方法：</p>
 
 <ul>
-<li><p>使用<strong>svg</strong>：<br>
-就是因為這樣…所以~用了svg，其實就可以不用canvas了~XDD 是說、值得一提的是，有不少讓原本不能用canvas的瀏覽器支援
-的方法、都不約而同的利用svg。像是…<a href="http://excanvas.sourceforge.net/">excanvas</a> 記得大部分的版本都是使用svg喇~
-可是、我把名字忘光光了~囧</p></li>
-<li><p>使用<strong>flash</strong>：<br>
-這個方法比較不常見耶~說真的、而且run起來聽說也比較慢。可是咧~印象中我挖到的這個
-<a href="http://burzak.com/proj/fxcanvas/">fxCanvas</a>在實做canvas的功能上、的確有比較完整呢~不知道是好還是壞~ XDD
-可是、我私心的並不喜歡flash~ Q ^Q</p></li>
-<li><p>使用<strong>透明image圖層</strong>：<br>
-這個方法、其實就是使用了<a href="http://www.w3schools.com/tags/tag_area.asp">area</a>這個html的tag，在圖形上、利用area
-紀錄好shape、在去監聽事件。是不錯用、對於polygon、circle這類的都不錯，就是polyline稍嫌麻煩些。</p></li>
-<li><p>使用<strong>DIV</strong>：<br>
-而上述的那些方法的確都可以監聽個別圖形的事件、可是~有時候並不需要那摸精細、畢竟…上述的方法都不是canvas的原生
-方法，算起來就…肯定比較花時間啦~那…使用div的方法、就是說…只要大概的抓到它需要觸發事件的範圍就行了。其使用
-的範疇大概就是…唔~最常見的大概就是…在…<a href="http://www.google.com/doodles/finder/2012/All%20doodles">google doodle</a>
-裡、大家可以發現不少互動式的案例。它們都有一個共通點、就是…需要觸發事件的地方不多、而且單純，也許就是mouseover
-某個物體的時候、發生了某某事情。或者是click的時候、做了balabala動作。</p>
+<li>
+<p>使用<strong>svg</strong>：<br /> 就是因為這樣…所以~用了svg，其實就可以不用canvas了~XDD 是說、值得一提的是，有不少讓原本不能用canvas的瀏覽器支援 的方法、都不約而同的利用svg。像是…<a href='http://excanvas.sourceforge.net/'>excanvas</a> 記得大部分的版本都是使用svg喇~ 可是、我把名字忘光光了~囧</p>
+</li>
 
-<p>其實、並不是每一種效果都需要非常精細的事件監聽和觸發~所以、我個人還蠻喜歡這種方法的啦~ XDDD
-很方便偷懶阿~只要在產生圖形的時候，在需要的時候，順便產生對應大小的div，還有設定好anchor position，
-接下來在圖形畫上去的順手append上去，接下來就可以邪惡的監聽事件了，在圖形有所變化的時候、也只需要修正大小
-或位置…就完成了。說起來真的是非常的方便呢~ 這個部份、可以參考
-google doodle的<a href="http://www.google.com/logos/lem/">機器人</a>的
-<a href="https://code.google.com/p/stanislaw-lem-google-doodle/">source code</a> 真的很讚呢~裡面可以看到很多邪惡的小
-細節、太邪惡、太邪惡、真的是太邪惡了啦~ XDDD 即使看過再看、都還是能帶給我驚喜哩~</p>
+<li>
+<p>使用<strong>flash</strong>：<br /> 這個方法比較不常見耶~說真的、而且run起來聽說也比較慢。可是咧~印象中我挖到的這個 <a href='http://burzak.com/proj/fxcanvas/'>fxCanvas</a>在實做canvas的功能上、的確有比較完整呢~不知道是好還是壞~ XDD 可是、我私心的並不喜歡flash~ Q ^Q</p>
+</li>
 
-<p>我喜歡有驚喜的code~太感謝製作團隊無私的分享了。希望我哪天也可以邪惡一把。(&lt;--- 又在做白日夢了~|||)</p></li>
+<li>
+<p>使用<strong>透明image圖層</strong>：<br /> 這個方法、其實就是使用了<a href='http://www.w3schools.com/tags/tag_area.asp'>area</a>這個html的tag，在圖形上、利用area 紀錄好shape、在去監聽事件。是不錯用、對於polygon、circle這類的都不錯，就是polyline稍嫌麻煩些。</p>
+</li>
+
+<li>
+<p>使用<strong>DIV</strong>：<br /> 而上述的那些方法的確都可以監聽個別圖形的事件、可是~有時候並不需要那摸精細、畢竟…上述的方法都不是canvas的原生 方法，算起來就…肯定比較花時間啦~那…使用div的方法、就是說…只要大概的抓到它需要觸發事件的範圍就行了。其使用 的範疇大概就是…唔~最常見的大概就是…在…<a href='http://www.google.com/doodles/finder/2012/All%20doodles'>google doodle</a> 裡、大家可以發現不少互動式的案例。它們都有一個共通點、就是…需要觸發事件的地方不多、而且單純，也許就是mouseover 某個物體的時候、發生了某某事情。或者是click的時候、做了balabala動作。</p>
+
+<p>其實、並不是每一種效果都需要非常精細的事件監聽和觸發~所以、我個人還蠻喜歡這種方法的啦~ XDDD 很方便偷懶阿~只要在產生圖形的時候，在需要的時候，順便產生對應大小的div，還有設定好anchor position， 接下來在圖形畫上去的順手append上去，接下來就可以邪惡的監聽事件了，在圖形有所變化的時候、也只需要修正大小 或位置…就完成了。說起來真的是非常的方便呢~ 這個部份、可以參考 google doodle的<a href='http://www.google.com/logos/lem/'>機器人</a>的 <a href='https://code.google.com/p/stanislaw-lem-google-doodle/'>source code</a> 真的很讚呢~裡面可以看到很多邪惡的小 細節、太邪惡、太邪惡、真的是太邪惡了啦~ XDDD 即使看過再看、都還是能帶給我驚喜哩~</p>
+
+<p>我喜歡有驚喜的code~太感謝製作團隊無私的分享了。希望我哪天也可以邪惡一把。(&lt;&#8212; 又在做白日夢了~|||)</p>
+</li>
 </ul>
 
+<p>雖然、還有一個<strong>超~~~~級邪惡</strong>的方法，不過、今天就到這邊吧~ 接下的那個方法、雖然概念很簡單、不過，實做上需要 一點點小技巧~ XDD 而且、其實我還在實驗啦~我想要弄一個自己順手的版本…不過，有人就是使用我下次要講的技巧歐~ 就是這個<a href='http://www.createjs.com/#!/EaselJS'>easelJs</a> 好~~那就這樣吧~ 收工~ w</p>
 
-<p>雖然、還有一個**超<del><del>~級邪惡**的方法，不過、今天就到這邊吧</del> 接下的那個方法、雖然概念很簡單、不過，實做上需要
-一點點小技巧~ XDD 而且、其實我還在實驗啦~我想要弄一個自己順手的版本…不過，有人就是使用我下次要講的技巧歐~
-就是這個<a href="http://www.createjs.com/#!/EaselJS">easelJs</a> 好</del>那就這樣吧~ 收工~ w</p>
-
-<p><strong>To Be Continued......</strong></p>
-</div>
+<p><strong>To Be Continued&#8230;&#8230;</strong></p></div>
 
 
   <footer>
