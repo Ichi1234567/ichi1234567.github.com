@@ -1,0 +1,54 @@
+---
+layout: post
+title: "latex & code-highlight...測試"
+date: 2012-06-27 11:38
+comments: true
+categories: others
+---
+
+哈~如題…就是個自爽的測試~ Q 口Q 偶終於可以有美美的算式了~(握拳) 太令人感動喇~
+
+
+<!-- more -->
+
+{% codeblock 多行latex %}
+$$
+\begin{align*}
+  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
+  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
+  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
+      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
+      \vdots & \ddots & \vdots \\
+      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
+    \end{array} \right)
+  \left( \begin{array}{c}
+      y_1 \\
+      \vdots \\
+      y_n
+    \end{array} \right)
+\end{align*}
+$$
+{% endcodeblock %}
+
+$$
+\begin{align*}
+  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
+  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
+  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
+      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
+      \vdots & \ddots & \vdots \\
+      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
+    \end{array} \right)
+  \left( \begin{array}{c}
+      y_1 \\
+      \vdots \\
+      y_n
+    \end{array} \right)
+\end{align*}
+$$
+
+{% codeblock 單行插入latex %}
+單行插入$\LaTeX{}$：$\exp(-\frac{x^2}{2})$
+{% endcodeblock %}
+
+單行插入$\LaTeX{}$：$\exp(-\frac{x^2}{2})$
