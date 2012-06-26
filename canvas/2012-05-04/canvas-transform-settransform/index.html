@@ -5,14 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - 小助助的精神實驗室</title>
+  <title>[canvas] transform、setTransform - 小助助的精神實驗室</title>
   <meta name="author" content="小助助">
 
   
-  <meta name="description" content="Blog Archive 2012 我生命中的JS和OO
-Jun 09 2012 posted in others [canvas]上的事件 &#8212; (2)
-Jun 07 2012 posted in canvas [canvas]上的事件 &#8212; (1)
-Jun 06 2012 &hellip;">
+  <meta name="description" content="">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +18,7 @@ Jun 06 2012 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://Ichi1234567.github.com/blog/archives/">
+  <link rel="canonical" href="http://Ichi1234567.github.com/canvas/2012-05-04/canvas-transform-settransform/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -78,147 +75,101 @@ Jun 06 2012 &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">[Canvas] transform、setTransform</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-04T00:00:00+08:00" pubdate data-updated="true">May 4<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
+
+
+<div class="entry-content"><p>canvas有2個長得很像的method，分別是transform和setTransform，他們的parameter都一樣，可是、他們的功能又有些微的差異，對此做了小小的紀錄。</p>
+
+<p>同：</p>
+
+<p>皆是對&#8221;canvas&#8221;做transform的動作。 參數相同。</p>
+
+<p>異：</p>
+
+<p>transform會持續的累積所有對canvas的操作、包含了scale，rotate， translate，當然…還有transform。 但是、setTransform並不會累積操作。也就是說…使用了setTransform的意思是說，先將canvas做reset，回到最初的狀態，接著再做transform。 <!-- more --> tips： 利用setTransform會將canvas做reset的特性、我覺得在下面的情況下可以有很好的使用。</p>
+
+<pre><code>拿來做lookAt。
+lookAt是要將視線焦點移到某座標的方法，也就是說，當我們要lookAt某位置的時候、整體的操作將會重頭開始。當然、transform也是可以達到相同的效果。只是、我的習慣是傾向於lookAt後、整體會重新開始、而不受之前的影響。
+clearRect的前置動作。
+一般來說，清除畫布，都會使用clearRect(x, y, w, h)，x, y 為清除的起始位置，w, h分別是width和height，可是，當整個繪圖的過程充斥著對canvas的操作時，會因為很難確定x, y而可能導致進行清除的動作有困難或清除位置有錯。因此、在使用clearRect前，可以先setTransform。
+
+&gt;   ctx.setTransform(1, 0, 0, 1, 0, 0);
+&gt;   ctx.clearRect(0, 0, w, h);</code></pre></div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <div id="blog-archives">
+
+<span class="byline author vcard">Posted by <span class="fn">小助助</span></span>
+
+      
+
+
+
+
+
 
 
 
   
-  <h2>2012</h2>
 
-<article>
+
+<time datetime="2012-05-04T00:00:00+08:00" pubdate data-updated="true">May 4<span>th</span>, 2012</time>
+      
+
+<span class="categories">
   
-<h1><a href="/others/2012-06-09/new-post/">我生命中的JS和OO</a></h1>
-<time datetime="2012-06-09T00:00:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>09</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/others/'>others</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
+    <a class='category' href='/blog/categories/canvas/'>canvas</a>
   
-<h1><a href="/canvas/2012-06-07/new-post/">[canvas]上的事件 &#8212; (2)</a></h1>
-<time datetime="2012-06-07T00:00:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>07</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/canvas/'>canvas</a></span>
-</footer>
+</span>
 
 
-</article>
-
-
-
-<article>
+    </p>
+    
+      <div class="sharing">
   
-<h1><a href="/canvas/2012-06-06/new-post/">[canvas]上的事件 &#8212; (1)</a></h1>
-<time datetime="2012-06-06T00:00:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>06</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/canvas/'>canvas</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ichi1234567.github.com/canvas/2012-05-04/canvas-transform-settransform/" data-via="" data-counturl="http://Ichi1234567.github.com/canvas/2012-05-04/canvas-transform-settransform/" >Tweet</a>
   
-<h1><a href="/others/2012-06-05/new-post/">雜談 - 選擇jekyll Bootstrap的理由</a></h1>
-<time datetime="2012-06-05T00:00:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>05</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/others/'>others</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
   
-<h1><a href="/math/2012-05-15/cond/">運算判斷</a></h1>
-<time datetime="2012-05-15T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>15</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/math/'>math</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
   
-<h1><a href="/graphics/2012-05-12/world/">[圖學] 世界的組成</a></h1>
-<time datetime="2012-05-12T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>12</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/graphics/'>graphics</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/others/2012-05-09/dsapce/">如果世界是個離散空間</a></h1>
-<time datetime="2012-05-09T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>09</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/others/'>others</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/math/2012-05-08/weight1/">weight &#8212;&#8211; (1)</a></h1>
-<time datetime="2012-05-08T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>08</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/math/'>math</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/canvas/2012-05-04/canvas-transform-settransform/">[canvas] transform、setTransform</a></h1>
-<time datetime="2012-05-04T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>04</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/canvas/'>canvas</a></span>
-</footer>
-
-
-</article>
-
 </div>
 
-  
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/math/2012-05-08/weight1/" title="Next Post: weight ----- (1)">weight ----- (1) &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>
