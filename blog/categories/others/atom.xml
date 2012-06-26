@@ -4,7 +4,7 @@
   <title><![CDATA[Category: others | 小助助的精神實驗室]]></title>
   <link href="http://Ichi1234567.github.com/blog/categories/others/atom.xml" rel="self"/>
   <link href="http://Ichi1234567.github.com/"/>
-  <updated>2012-06-26T09:59:40+08:00</updated>
+  <updated>2012-06-26T11:09:42+08:00</updated>
   <id>http://Ichi1234567.github.com/</id>
   <author>
     <name><![CDATA[小助助]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[我生命中的JS和OO]]></title>
-    <link href="http://Ichi1234567.github.com/blog/2012/06/09/new-post/"/>
+    <link href="http://Ichi1234567.github.com/others/2012/06/09/new-post/"/>
     <updated>2012-06-09T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/blog/2012/06/09/new-post</id>
+    <id>http://Ichi1234567.github.com/others/2012/06/09/new-post</id>
     <content type="html"><![CDATA[<p>ㄜ~其實…原本打算接著上次的話題，繼續寫一下canvas系列的（詳見 <a href='http://ichi1234567.github.com/blog/2012/06/07/new-post/'>[canvas]上的事件 &#8212; (1)</a>、 <a href='http://ichi1234567.github.com/blog/2012/06/06/new-post/'>[canvas]上的事件 &#8212; (2)</a>） 可是，接下來這個，可能會講的落落長耶~ &gt; 3&lt; 有點點懶~so~~~~~~ XDDDD 剛好對JS和OO突然有fu，所以、決定來紀錄一下 這個突如其來的感想吧~</p>
 
 <p>對、我很任性~ XDDD 想到、不做會很彆扭歐~ (扭扭) 所以、我一定要認真的紀錄一下。</p>
@@ -84,9 +84,9 @@
   
   <entry>
     <title type="html"><![CDATA[雜談 - 選擇jekyll Bootstrap的理由]]></title>
-    <link href="http://Ichi1234567.github.com/blog/2012/06/05/new-post/"/>
+    <link href="http://Ichi1234567.github.com/others/2012/06/05/new-post/"/>
     <updated>2012-06-05T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/blog/2012/06/05/new-post</id>
+    <id>http://Ichi1234567.github.com/others/2012/06/05/new-post</id>
     <content type="html"><![CDATA[<p>阿~這篇真的是個雜談~。</p>
 
 <p>跟什摸都沒關西、是個一點點都不正經的文章~ w (雖然、標題看起來很像還蠻正經的、可是內容不太正經捏。)</p>
@@ -126,9 +126,9 @@
   
   <entry>
     <title type="html"><![CDATA[如果世界是個離散空間]]></title>
-    <link href="http://Ichi1234567.github.com/blog/2012/05/09/dsapce/"/>
+    <link href="http://Ichi1234567.github.com/others/2012/05/09/dsapce/"/>
     <updated>2012-05-09T00:00:00+08:00</updated>
-    <id>http://Ichi1234567.github.com/blog/2012/05/09/dsapce</id>
+    <id>http://Ichi1234567.github.com/others/2012/05/09/dsapce</id>
     <content type="html"><![CDATA[<p>這是好前一陣子偷喵了超弦理論後、醞釀了好一陣子，好像有把零零散散的想法集合的跡象，然後、就來亂『掰』一通吧~ w</p>
 
 <p>嗯、其實，我對超弦理論，還是不太了解~ w 可是、在找文章的時候、看到了以下的幾個東西，很有趣~ (不一定是跟超弦有關的啦~)</p>

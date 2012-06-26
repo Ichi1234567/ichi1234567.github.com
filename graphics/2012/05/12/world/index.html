@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[圖學] 世界的組成 - 小助助的精神實驗室</title>
+  <meta name="author" content="小助助">
+
+  
+  <meta name="description" content="">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Ichi1234567.github.com/graphics/2012/05/12/world/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/ichi1234567" rel="alternate" title="小助助的精神實驗室" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32906104-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">小助助的精神實驗室</a></h1>
+  
+    <h2>簡短的雜七雜八</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/ichi1234567" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Ichi1234567.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[圖學] 世界的組成</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-12T00:00:00+08:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>只要牽涉到任何跟幾何有關的、不把圖像畫出來，有時候真的很難發揮想像力了解細節。在3D場景中、其實…更增加了難度， 因為我們『看』到的是2D、無論是眼睛看到的、呈現到畫面的…我認為嚴~~~格的說起來、都算是2D，在這樣的情況下、 一般人類要撰寫相關的程式、真的是困難重重。特別是對於某些底子不那摸熟悉的人類來說、光是要了解如何呈現在畫面上 和一堆名詞就已經頭昏了、更不會去弄清楚它們最基礎的概念。而且我覺得、圖學其實是個非常綜合的一個領域。</p>
+<!-- more -->
+<p>對於已經很厲害的人類來說、那些對他們而言、已經成為身體的一部分了。所以~就來隨便講講、稍微提一下這些其實不是 那摸難懂得東西吧~ w</p>
+
+<pre><code>viewport；
+
+   (x, y)
+      ┌────────────────────────────────────┐─
+      |                                    |↑
+      |                                    |
+      |                                    |
+      |                畫面                 |h
+      |                                    |
+      |                                    |
+      |                                    |↓
+      └────────────────────────────────────┘─
+      |←                 w                →|</code></pre>
+
+<p>上面，其實就是所謂的viewport的重要組成。這個…其實一般人類大概都很容易就可以了解~所謂的 viewport就是可視範圍，(x, y)並不一定要使用原點。 在openGL中、可以使用glViewport來設定(不知道有沒有記錯…有點遙遠的記憶了、可是又很懶的去找…|||)</p>
+
+<p>在canvas中、可以使用setTransform和設定width還有height來決定viewport。</p>
+<ol>
+<li> <strong>座標系：</strong>不管是在2D或3D、其實…很多時候都是繞著座標轉換的結果、所以、認清楚當前作用的座標系、是很重要的。
+   唔~以下講的、雖然有的書會有、可是…其實我不太記得正確的名稱了耶~ XDDD 又是個太遙遠的記憶、就~多多包含囉~ w
+   在開始之前，請大家有一個觀念，我認為這個觀念非常的重要、那就是『自定義』和『相對』，所有的座標系、其實都是
+   自定義的、他們之間的轉換都是相對的。(←可能有點抽象吼…|||) 可以回去翻翻、印象中大概是在高中時期，有的也許
+   國中就會提過的、物理或數學…應該都有教過大家『相對位置』、『相對速度』…這類概念。在圖學裡面、這個概念我認為
+   是非常重要的。它可以在你非常混亂的時候、幫助我們釐清這些該死的轉換。</li>
+   
+<li> <strong>世界座標系：</strong>這個座標系、其實非~~~常的好懂，當然、世界、也是自定義的~ XDDD 比如、要呈現一個房間的場景、
+  當然…也就可以定義『這個房間』是一個『世界』。所以、我們也可以定義『一棟大樓』是個世界、完全就是根據需要的
+  場合定義。也就是說、這個『世界』、並不是大家認為的狹義的世界、而是更廣泛的一個定義、可以說是『這一整個場景
+  』，the whole scene。</li>
+
+<li> <strong>物體座標系：</strong>應該說、對於世界來說、世界包含的<strong>物體</strong>，都有它自己的座標系，而這個就被我稱為物體座標系，
+   我想、這樣應該比較好懂。嗯嗯、物體座標系也就是說，我們可以將任何獨立存在的、你想讓它獨立的物件，都可以有自
+   己的座標系。比如：一個人、一隻小狗、一個盒子、一隻手錶、甚至是一個房間…等等，一般來說，我們會讓可以重複使用
+   的物體是一個獨立的存在，這樣、在建立場景的時候，就可以很方便的clone它們到世界場景中。</li>
+
+<li> <strong>相對系統：</strong>這個就有點像是、『由我看世界』、和『由他看世界』、看起來不一樣的意思，在這邊…要掌握好它、請
+   務必…好好的、認真的、複習一下『相對位置』、這也是、大家在操作過程中最容易混亂的地方之一。</li>
+</ol>
+<p>我相信、就算講了這些、大家應該還是很混亂~ XDDD 啥阿、世界、物體、相對的…講了一堆、我還是不知道那是在幹麻~簡單 的講個過程：</p>
+
+<p><strong>首先從一般操作繪圖軟體那樣的感覺著手：</strong><br /> 我們可能準備了很多很多的素材、這些素材、對於它自己來說、它就是一個世界、在它還沒有備放入任何場景裡面、 它就是一個世界。場景要建立了、有一個空白的畫布(世界產生)，把素材放入畫布、並修改它的大小、縮放…等等、 (這個地方…通常也是最容易讓大家感到困惑的地方)在openGL和canvas上得操作、大概會是長這樣的…。</p>
+
+<ol>
+<li>
+<p><strong>openGL</strong></p>
+
+<pre><code>// 儲存當前的資訊、進入到一個獨立繪圖作用域
+GL.pushMatrix()
+//開始local繪圖、也可以對它做transform，scale…等等操作、而不影響外部的樣貌
+GL.Begin(GL_LINES)
+	GL.Vertex3(0, 0, 0)
+	GL.Vertex3(100, 100, 100)
+GL.End()
+//返回之前的領域、load之前push的資料
+GL.popMatrix()</code></pre>
+</li>
+
+<li>
+<p><strong>canvas</strong></p>
+
+<pre><code>// 相當於pushMatrix
+ctx.save();
+// 繪圖
+ctx.transform(scaleX, 0 , 0, scaleY, dx, dy);
+ctx.beginPath();
+	ctx.arc(x, y, r, 0, 2π, false);
+	ctx.closePath();
+// 相當於popMatrix
+ctx.restore();</code></pre>
+</li>
+</ol>
+
+<p>當在做視角切換的時候、那些的座標變換…是在上述繪圖的外層、在openGL上、有lookAt那類的可以使用、所以、並不會 顯得混亂，只需在自己並不混亂、那問題都不大。在canvas上、就比較麻煩了，因為它沒有像lookAt一樣的東西、一切 都是由transform、translate、scale和rotate所組成、所以、一不小心就會容易混亂，所以必須在本人非常清楚的知道 自己在幹麻、才不容易出錯。</p>
+
+<p>接下來、一定會有人很好奇…阿~講了那摸久、一開始的viewport咧~一點用都沒用阿…它一點點都沒用到。對~它其實只在 設定我們看得到位置範圍、也就是說…在畫面都決定好了之後、要讓畫面呈現那一塊區域、就是使用viewport~當然、是在 世界座標系的基礎下，也就是說…假如~~我們在viewport裡面看不到東西、請仔細的觀察一下…世界座標系是在什摸樣的基礎 下。總不能、設定viewport(x, y, w, h)設定在(0, 0, 100, 100)、可是場景的內容都在範圍外，那樣當然是什摸都看不 到的歐~</p>
+
+<p><strong>[註]</strong><br /> 也許、在使用viewport的時候、大家可能會不小心的陷入混亂，而且、邏輯上可能會有點難轉過去。在這邊…有個小小的 邪惡小技巧。viewport定好了之後、就不要在動它。而是使用translate，把場景移動到viewport範圍內、正所謂山不轉 路轉、路不轉人轉的咩~ w</p>
+
+<p>這所有的前提、都建立在當事人不混亂歐~ 所以、當混亂了、請從頭run一遍、哪個東西在哪裡、就一目了然了歐~雖然 對於Lv. max強者來說是有點笨，對於Lv. min的初學者來說又有點麻煩，可是、我覺得無比的有用歐~ w</p></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">小助助</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-12T00:00:00+08:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/graphics/'>graphics</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ichi1234567.github.com/graphics/2012/05/12/world/" data-via="" data-counturl="http://Ichi1234567.github.com/graphics/2012/05/12/world/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/others/2012/05/09/dsapce/" title="Previous Post: 如果世界是個離散空間">&laquo; 如果世界是個離散空間</a>
+      
+      
+        <a class="basic-alignment right" href="/math/2012/05/15/cond/" title="Next Post: 運算判斷">運算判斷 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/others/2012/06/09/new-post/">我生命中的JS和OO</a>
+      </li>
+    
+      <li class="post">
+        <a href="/canvas/2012/06/07/new-post/">[canvas]上的事件 --- (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/canvas/2012/06/06/new-post/">[canvas]上的事件 --- (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/others/2012/06/05/new-post/">雜談 - 選擇jekyll Bootstrap的理由</a>
+      </li>
+    
+      <li class="post">
+        <a href="/math/2012/05/15/cond/">運算判斷</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - 小助助 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ichi1234567';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
