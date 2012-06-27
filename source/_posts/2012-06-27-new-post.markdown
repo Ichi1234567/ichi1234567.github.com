@@ -1,60 +1,112 @@
 ---
 layout: post
-title: "latex & code-highlight...測試"
-date: 2012-06-27 11:38
+title: "range"
+date: 2012-06-27 22:37
 comments: true
-categories: others
+categories: math
 ---
 
-哈~如題…就是個自爽的測試~ Q 口Q 偶終於可以有美美的算式了~(握拳) 太令人感動喇~
-
+阿阿~其實...原本不是要寫這個的耶~ XDD 可是、想不出來該怎摸寫我想寫的、再慢慢醞釀一下好了，就讓好東西醞釀的再久
+一點好了 哈~來出個好久不見的小品文就好。不然~人家好想趕快認真的試試看剛學的$\LaTeX{}$ (←硬是要用一下就是了~ 
+XDD) 好~馬上進入正題...。
 
 <!-- more -->
 
-{% codeblock 多行latex %}
-$$
-\begin{align*}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{align*}
-$$
-{% endcodeblock %}
+還記得、n久以前的某篇嗎~[運算判斷](http://ichi1234567.github.com/math/2012-05-15/cond/)，裡面有一個小部份是
+大家非常常用的小東西，就是判斷範圍...。判斷範圍、是個不論在哪個領域、就連生活中都常常使用到的...表示判定的
+一種說法。
 
+- 如果落在範圍\[x, y\] (當然，(x, y)、(x, y\]或\[x, y)這些用法都很常見)。
+- 假如範圍上述的範圍外。
+- 或者是、interpolation也會用到。
+- 甚至有、超過2個基準數的範圍。
+
+以大家在程式裡面，最常見的寫法大概就是像下面這樣：
 $$
-\begin{align*}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{align*}
+\begin{equation}
+  \text{Let}~x\in\mathbb{R},
+  n1 \le x \wedge x \le n2
+  \label{eq:fn1}
+\end{equation}
 $$
 
-{% codeblock 單行插入latex %}
-單行插入$\LaTeX{}$：$\exp(-\frac{x^2}{2})$
-{% endcodeblock %}
+而我自己目前的偏好大概是像下面這樣：
+$$
+\begin{equation}
+\text{Let}~x\in\mathbb{R},
+\\ (x - n1) \times (x - n2) \le 0
+\label{eq:fn2}
+\end{equation}
+$$
 
-單行插入$\LaTeX{}$：$\exp(-\frac{x^2}{2})$
+不知道大家有沒有發現兩種的差別了呢~雖然、我有時候也會用$\eqref{eq:fn1}$、不過並沒有很常，原因如下：<br>
+
+- 我每次都需要很認真的看是 $\&\&$ 或者是 $\parallel\parallel$，如果範圍弄錯了、又要重新很認真的確認一次是
+  $\&\&$ 或者是 $\parallel\parallel$。很煩、不喜歡。
+
+- 特別像我、因為工作內容很容易的就偏向數學~ XDD 所以、常常會有一堆像這樣的判斷，有問題、一次改下來非~~常的驚
+  人阿，眼睛都花了。
+
+- 扣除那以外、唔~ 我個人啦~ 比較不愛用邏輯判斷，用一堆$\&\&$ 或者是 $\parallel\parallel$來串起判斷式、也是
+  我不太喜歡的。
+
+也~~許、大家就會好奇啦~ = . .= 那、我不要在範圍內、我要在範圍外...你~~那種寫法是要怎摸改阿~$\eqref{eq:fn1}$
+我會改、可是$\eqref{eq:fn2}$我不會改。其~~實，非常的簡單~只要把$\eqref{eq:fn2}$的$\leq$換成$\geq$就好啦~XDD
+改過之後會變成下面那樣：<br>
+$$
+\text{Let}~x\in\mathbb{R}, \\
+(x - n1) \times (x - n2) \ge 0
+$$
+有沒有~有沒有~有沒有這~~~~~摸快阿~ XDD 用vi、只要刷刷~~就改好了歐~指標只要移動到一個地方就可以改好了捏~ XDD
+
+接下來是...吹毛求疵時間：<br>
+
+1. Q：我不要等於可以嗎~？<br>
+   A：可~~以，你就拿掉等於吧~
+
+2. Q：我可以一邊等於一邊不要等於嗎~？<br>
+   A：可~~以，當然、這會需要一點小技巧...因為本人很熟，所以、不在意這種小麻煩，因為它可以帶來一點點額外的好
+      處。聽我慢慢道來。以希望 $n1 \le x < n2$來說，寫法將被替換成：<br>
+	  $$
+	  \text{Let}~x,\phi\in\mathbb{R},~\phi\text{ is tatal error} \\
+	  (x - n1) \times (x - (n2 - \phi)) \le 0
+	  $$
+	  不知道大家看出來了沒，這種寫法帶來的額外好處是...彈性變得非常大~ XDD 比如、大家很愛**模糊**，那都
+	  **模糊**了、範圍會變得有點動態耶~那…怎摸算阿~我要用switch-case寫下長長一段case嗎~(哭) 如果、結果不如
+	  預期..後果真的是不堪想像阿~這種寫法的好處就是...，你只要定義好$\phi$要如何給定他的規則，就爽爽的寫啦~
+	  兩邊都要、也迷有問題的呢~多~~~美好的寫法阿、甚至、給定$\phi$的計算根據情況給定不同的算式、都沒有關係
+	  的歐、真的是太美好了呢~你還可以把這個抽出來，變成一個區域內公用的function call，哈~if的判斷就會變得超
+	  好寫、也超好懂的了歐~
+
+3. Q：那...不是說有多段寫法嗎？多段咧~<br>
+   A：阿~的確是有多段啦~不過、多段就真的要借用switch-case了，這樣比較好寫啦~我也是很懶惰的呢~套用上面判斷
+      range的寫法，結合switch-case，我們可以寫出類似下面的寫法：
+	  {% codeblock 多段range lang:js %}
+	  switch(true){
+	case ((x - n1) * (x - n2) < 0):
+	  // balabala1
+	  break;
+	case ((x - n3) >= 0):
+	  // balabala2
+	  break;
+	case ((x - n1) * (x - n4 - phi) >= 0):
+	  // balabala3
+	  break;
+	default:
+	  // balabala default
+	  break;
+	}
+	  {% endcodeblock %}
+	  
+   好~~像上面那樣寫、阿就會多段啦~同樣的、可以善用phi、就可以超~~彈性的、微調那該死的區間啦~
 
 
-最後，還會有一個right-click頁面就會全部變白的問題~ 附上解決參考
-感謝[這篇文章](http://chen.yanping.me/cn/blog/2012/03/10/octopress-with-latex/)
-還有[這一篇](http://steshaw.org/blog/2012/02/09/hello-mathjax/)
+其實、這種寫法還有很多好處啦~ XDD 像是、你寫完就會發現…阿~某區間可以合併、又少一個判斷了、甚至突然想改變一下
+哈 都很方便捏~ 對於想要嘴巴開開瞳孔放大就想要完成這些麻煩判斷的，真的是好好用噢~ 我用這種寫法、不知道修正了
+多少bug耶~如果、再套用上之前講的那篇、就是..一開始提到的
+[那篇](http://ichi1234567.github.com/math/2012-05-15/cond/)噢噢噢、我的天~ XDD 你可以想像的出來、這樣簡單的
+寫法可以讓你的程式充滿多大的彈性、變化和樂趣嗎~ XDDDD 更不用說、其實它還有眾多的變化型啦~ = . .= 可是、變化
+型就不是那摸容易識別了~所以就...算啦~ 不多談了。
 
+
+好~~~ 以上。爽爽的用完$\LaTeX{}$和codeblock了~歐歐耶~ ╮(///▽//)╭♥♥♥
