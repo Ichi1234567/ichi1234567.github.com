@@ -1,0 +1,84 @@
+---
+layout: post
+title: "test"
+date: 2012-06-27 15:03
+comments: true
+categories: 
+---
+
+$$
+\int_\infty^\infty~dxe^-\frac{x^2}{2} = \sqrt{2\pi}
+$$
+
+$$
+U(R): = \frac{1}{2\pi}\int_{x^2+y^2\leq R^2}^{}~dxdye^{-\frac{x^2+y^2}{2}}
+$$
+
+$$
+x = \begin{cases}
+\sqrt{-2\log{(s)}}\cos{2\pi t} \\
+\sqrt{-2\log{(s)}}\sin{2\pi t}
+\end{cases}
+$$
+
+$$
+U(R) = p ~ \Rightarrow ~ R = \sqrt{-2\log{(1-p)}}
+$$
+
+
+$$
+\begin{equation}
+\begin{matrix}
+a & b \\c & d
+\end{matrix}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{pmatrix}
+a & b \\c & d
+\end{pmatrix}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\left( \begin{array}{cc}
+a & b \\c & d
+\end{array}\right)
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{bmatrix}
+a & b \\c & d
+\end{bmatrix}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{Bmatrix}
+a & b \\c & d
+\end{Bmatrix}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{vmatrix}
+a & b \\c & d
+\end{vmatrix}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{Vmatrix}
+a & b \\c & d
+\end{Vmatrix}
+\end{equation}
+$$
+
