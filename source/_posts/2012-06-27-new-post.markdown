@@ -53,10 +53,15 @@ $$
 也~~許、大家就會好奇啦~ = . .= 那、我不要在範圍內、我要在範圍外...你~~那種寫法是要怎摸改阿~$\eqref{eq:fn1}$
 我會改、可是$\eqref{eq:fn2}$我不會改。其~~實，非常的簡單~只要把$\eqref{eq:fn2}$的$\leq$換成$\geq$就好啦~XDD
 改過之後會變成下面那樣：<br>
+
 $$
-\text{Let}~x\in\mathbb{R}, \\
+\begin{equation}
+\text{Let $x, n1, n2 \in\mathbb{R}$, $\\\\$ }
 (x - n1) \times (x - n2) \ge 0
+\label{eq:fn3}
+\end{equation}
 $$
+
 有沒有~有沒有~有沒有這~~~~~摸快阿~ XDD 用vi、只要刷刷~~就改好了歐~指標只要移動到一個地方就可以改好了捏~ XDD
 
 接下來是...吹毛求疵時間：<br>
@@ -67,10 +72,15 @@ $$
 2. Q：我可以一邊等於一邊不要等於嗎~？<br>
    A：可~~以，當然、這會需要一點小技巧...因為本人很熟，所以、不在意這種小麻煩，因為它可以帶來一點點額外的好
       處。聽我慢慢道來。以希望 $n1 \le x < n2$來說，寫法將被替換成：<br>
-	  $$
-	  \text{Let}~x,\phi\in\mathbb{R},~\phi\text{ is tatal error} \\
-	  (x - n1) \times (x - (n2 - \phi)) \le 0
-	  $$
+
+      $$
+      \begin{equation}
+      \text{Let $x$, $\phi\in\mathbb{R}$, $\phi$ is tatal error $\\\\$ }
+      (x - n1) \times (x - (n2 - \phi)) \le 0
+      \label{eq:fn4}
+      \end{equation}
+      $$
+
 	  不知道大家看出來了沒，這種寫法帶來的額外好處是...彈性變得非常大~ XDD 比如、大家很愛**模糊**，那都
 	  **模糊**了、範圍會變得有點動態耶~那…怎摸算阿~我要用switch-case寫下長長一段case嗎~(哭) 如果、結果不如
 	  預期..後果真的是不堪想像阿~這種寫法的好處就是...，你只要定義好$\phi$要如何給定他的規則，就爽爽的寫啦~
@@ -83,19 +93,19 @@ $$
       range的寫法，結合switch-case，我們可以寫出類似下面的寫法：
 	  {% codeblock 多段range lang:js %}
 	  switch(true){
-	case ((x - n1) * (x - n2) < 0):
-	  // balabala1
-	  break;
-	case ((x - n3) >= 0):
-	  // balabala2
-	  break;
-	case ((x - n1) * (x - n4 - phi) >= 0):
-	  // balabala3
-	  break;
-	default:
-	  // balabala default
-	  break;
-	}
+	    case ((x - n1) * (x - n2) < 0):
+	      // balabala1
+	      break;
+	    case ((x - n3) >= 0):
+	      // balabala2
+	      break;
+	    case ((x - n1) * (x - n4 - phi) >= 0):
+	      // balabala3
+	      break;
+	    default:
+	      // balabala default
+	      break;
+	  }
 	  {% endcodeblock %}
 	  
    好~~像上面那樣寫、阿就會多段啦~同樣的、可以善用phi、就可以超~~彈性的、微調那該死的區間啦~
