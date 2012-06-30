@@ -3,7 +3,9 @@ layout: post
 title: "range"
 date: 2012-06-27 22:37
 comments: true
-categories: math code
+categories: 
+ - math{math}
+ - code{code}
 ---
 
 阿阿~其實...原本不是要寫這個的耶~ XDD 可是、想不出來該怎摸寫我想寫的、再慢慢醞釀一下好了，就讓好東西醞釀的再久

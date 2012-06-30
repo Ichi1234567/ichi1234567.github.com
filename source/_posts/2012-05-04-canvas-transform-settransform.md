@@ -3,7 +3,7 @@ layout: post
 title: "[canvas] transform、setTransform"
 tagline: ""
 description: ""
-category: canvas
+categories: canvas{canvas}
 tags: [js, canvas]
 ---
 

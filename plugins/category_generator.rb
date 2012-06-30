@@ -1,5 +1,24 @@
 # encoding: utf-8
 #
+# Modified by KenJ(@denjones) 2012-3-20
+# Add Unicode support to the generator
+# Use case:
+# When marking category to the achieve, change the style from
+# "category" to "category_name{category_dir}" like this:
+#
+# # One category
+# categories: Sass{sass}
+#
+# # Multiple categories example
+# categories:
+# - CSS3{css3}
+# - Sass{sass}
+# - Media Queries{media_queries}
+#
+# Notice that category_dir must be valid chars in ascii. And the mutiple form "categories:[,]"
+# is no longer supported.
+#
+# Original source from:
 # Jekyll category page generator.
 # http://recursive-design.com/projects/jekyll-plugins/
 #
@@ -11,13 +30,13 @@
 # A generator that creates category pages for jekyll sites.
 #
 # Included filters :
-# - category_links:      Outputs the list of categories as comma-separated <a> links.
+# - category_links: Outputs the list of categories as comma-separated <a> links.
 # - date_to_html_string: Outputs the post.date as formatted html, with hooks for CSS styling.
 #
 # Available _config.yml settings :
-# - category_dir:          The subfolder to build category pages in (default is 'categories').
+# - category_dir: The subfolder to build category pages in (default is 'categories').
 # - category_title_prefix: The string used before the category name in the page title (default is
-#                          'Category: ').
+# 'Category: ').
 
 module Jekyll
 
@@ -26,24 +45,24 @@ module Jekyll
 
     # Initializes a new CategoryIndex.
     #
-    #  +base+         is the String path to the <source>.
-    #  +category_dir+ is the String path between <source> and the category folder.
-    #  +category+     is the category currently being processed.
+    # +base+ is the String path to the <source>.
+    # +category_dir+ is the String path between <source> and the category folder.
+    # +category+ is the category currently being processed.
     def initialize(site, base, category_dir, category)
       @site = site
       @base = base
-      @dir  = category_dir
+      @dir = category_dir
       @name = 'index.html'
       self.process(@name)
       # Read the YAML data from the layout page.
       self.read_yaml(File.join(base, '_layouts'), 'category_index.html')
-      self.data['category']    = category
+      self.data['category'] = category
       # Set the title for this page.
-      title_prefix             = site.config['category_title_prefix'] || 'Category: '
-      self.data['title']       = "#{title_prefix}#{category}"
+      title_prefix = site.config['category_title_prefix'] || 'Category: '
+      self.data['title'] = "#{title_prefix}#{category[/[^{]*/]}"
       # Set the meta-description for this page.
-      meta_description_prefix  = site.config['category_meta_description_prefix'] || 'Category: '
-      self.data['description'] = "#{meta_description_prefix}#{category}"
+      meta_description_prefix = site.config['category_meta_description_prefix'] || 'Category: '
+      self.data['description'] = "#{meta_description_prefix}#{category[/[^{]*/]}"
     end
 
   end
@@ -53,24 +72,24 @@ module Jekyll
 
     # Initializes a new CategoryFeed.
     #
-    #  +base+         is the String path to the <source>.
-    #  +category_dir+ is the String path between <source> and the category folder.
-    #  +category+     is the category currently being processed.
+    # +base+ is the String path to the <source>.
+    # +category_dir+ is the String path between <source> and the category folder.
+    # +category+ is the category currently being processed.
     def initialize(site, base, category_dir, category)
       @site = site
       @base = base
-      @dir  = category_dir
+      @dir = category_dir
       @name = 'atom.xml'
       self.process(@name)
       # Read the YAML data from the layout page.
       self.read_yaml(File.join(base, '_includes/custom'), 'category_feed.xml')
-      self.data['category']    = category
+      self.data['category'] = category
       # Set the title for this page.
-      title_prefix             = site.config['category_title_prefix'] || 'Category: '
-      self.data['title']       = "#{title_prefix}#{category}"
+      title_prefix = site.config['category_title_prefix'] || 'Category: '
+      self.data['title'] = "#{title_prefix}#{category[/[^{]*/]}"
       # Set the meta-description for this page.
-      meta_description_prefix  = site.config['category_meta_description_prefix'] || 'Category: '
-      self.data['description'] = "#{meta_description_prefix}#{category}"
+      meta_description_prefix = site.config['category_meta_description_prefix'] || 'Category: '
+      self.data['description'] = "#{meta_description_prefix}#{category[/[^{]*/]}"
 
       # Set the correct feed URL.
       self.data['feed_url'] = "#{category_dir}/#{name}"
@@ -84,8 +103,8 @@ module Jekyll
     # Creates an instance of CategoryIndex for each category page, renders it, and
     # writes the output to a file.
     #
-    #  +category_dir+ is the String path to the category folder.
-    #  +category+     is the category currently being processed.
+    # +category_dir+ is the String path to the category folder.
+    # +category+ is the category currently being processed.
     def write_category_index(category_dir, category)
       index = CategoryIndex.new(self, self.source, category_dir, category)
       index.render(self.layouts, site_payload)
@@ -103,31 +122,16 @@ module Jekyll
 
     # Loops through the list of category pages and processes each one.
     def write_category_indexes
-      #if self.layouts.key? 'category_index'
-      #  dir = self.config['category_dir'] || 'categories'
-      #  self.categories.keys.each do |category|
-      #    self.write_category_index(File.join(dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase), category)
-      #  end
+      if self.layouts.key? 'category_index'
+dir = self.config['category_dir'] || 'categories'
+self.categories.keys.each do |category|
+self.write_category_index(File.join(self.config['category_dir'], category[/(?<={)[^}]*/]), category)
+end
 
       # Throw an exception if the layout couldn't be found.
-      #else
-      #  throw "No 'category_index' layout found."
-      #end
-	  if self.layouts.key? 'category_index'
-        dir = self.config['category_dir'] || 'categories'
-        self.categories.keys.each do |category|
-          cate_dir =  category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
-          cate_dir = URI::escape(cate_dir)
-          cate_dir = URI::parse(cate_dir)
-          cate_dir = cate_dir.to_s
-          self.write_category_index(File.join(dir, cate_dir), category)
-        end
-
-        # Throw an exception if the layout couldn't be found.
-      else
+      else	
         throw "No 'category_index' layout found."
       end
-
     end
 
   end
@@ -151,15 +155,15 @@ module Jekyll
     # Outputs a list of categories as comma-separated <a> links. This is used
     # to output the category list for each post on a category page.
     #
-    #  +categories+ is the list of categories to format.
+    # +categories+ is the list of categories to format.
     #
     # Returns string
     #
     def category_links(categories)
       dir = @context.registers[:site].config['category_dir']
-      categories = categories.sort!.map do |item|
-        "<a class='category' href='/#{dir}/#{item.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase}/'>#{item}</a>"
-      end
+       categories = categories.sort!.map do |item|
+"<a class='category' href='/#{dir}/#{item[/(?<={)[^}]*/]}/'>#{item[/[^{]*/]}</a>"
+       end
 
       case categories.length
       when 0
@@ -173,7 +177,7 @@ module Jekyll
 
     # Outputs the post.date as formatted html, with hooks for CSS styling.
     #
-    #  +date+ is the date object to format as HTML.
+    # +date+ is the date object to format as HTML.
     #
     # Returns string
     def date_to_html_string(date)
@@ -186,4 +190,3 @@ module Jekyll
   end
 
 end
-
