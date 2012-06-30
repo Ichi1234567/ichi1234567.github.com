@@ -11,7 +11,7 @@ categories: others
 
 <!-- more -->
 
-{% codeblock 多行latex %}
+{% codeblock 多行latex lang:tex %}
 $$
 \begin{align*}
   & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
@@ -47,7 +47,7 @@ $$
 \end{align*}
 $$
 
-{% codeblock 單行插入latex %}
+{% codeblock 單行插入latex lang:tex %}
 單行插入$\LaTeX{}$：$\exp(-\frac{x^2}{2})$
 {% endcodeblock %}
 
