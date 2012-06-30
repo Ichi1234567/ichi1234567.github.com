@@ -3,7 +3,7 @@ layout: post
 title: "latex & code-highlight...測試"
 date: 2012-06-26 23:38
 comments: true
-categories: others
+categories: 其他
 ---
 
 哈~如題…就是個自爽的測試~ Q 口Q 偶終於可以有美美的算式了~(握拳) 太令人感動喇~
