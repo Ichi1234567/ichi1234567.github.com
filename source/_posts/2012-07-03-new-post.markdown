@@ -33,7 +33,7 @@ body {
 
 </style>
 
-<script src="/javascripts/libs/d3/d3.v2.js"></script>
+<script src="http://d3js.org/d3.v2.js"></script>
 <script>
 
 //var data = d3.range(40).map(function(i) {
