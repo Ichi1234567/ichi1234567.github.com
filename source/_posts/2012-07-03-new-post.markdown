@@ -17,5 +17,7 @@ categories: 其他{others}
 <!-- more -->
 
 {% include _4posts/2012-07-03-new-post.html %}
-<div id="test"></div>
+<div class="d3"></div>
+<div class="d3"></div>
+<div class="d3"></div>
 

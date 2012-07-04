@@ -10,8 +10,8 @@
         d3.range(41).map(function(i) {
             return {x: 5 * Math.cos((i % 40) * Math.PI * 2 / 40), y: 5 * Math.sin((i % 40) * Math.PI * 2 / 40)};
         }),
-        d3.range(40).map(function(i) {
-            return {x: (i - 20) / 5, y: (Math.pow(Math.E, -Math.pow(((i - 20) / 5), 2) / 2)) / (1 * Math.sqrt(2 * Math.PI))};
+        d3.range(50).map(function(i) {
+            return {x: (i - 25) / 5, y: (Math.pow(Math.E, -Math.pow(((i - 25) / 5), 2) / 2)) / (1 * Math.sqrt(2 * Math.PI))};
         })
     ];
     
@@ -19,99 +19,126 @@
         width = 400 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
+    var x = [
+        [0, 1], [-5, 5], [-5, 5]
+    ];
+    var y = [
+        [0, 1], [-5, 5], [0, 0.7]
+    ];
+    var line = d3.svg.line()
+        .interpolate("basis")
+        .x(function(d) { return ex(d.x); })
+        .y(function(d) { return ey(d.y); });
+
     
     $("body").ready(function() {
-        var x = [
-            d3.scale.linear()
-                .domain([0, 1])
-                .range([0, width]),
-            d3.scale.linear()
-                .domain([-5, 5])
-                .range([0, width]),
-            d3.scale.linear()
-                .domain([-5, 5])
-                .range([0, width])
-        ];
-        
-        var y = [
-            d3.scale.linear()
-                .domain([0, 1])
-                .range([height, 0]),
-            d3.scale.linear()
-                .domain([-5, 5])
-                .range([height, 0]),
-            d3.scale.linear()
-                .domain([0, 0.7])
-                .range([height, 0])
-        ];
-        
-        var xAxis = x.map(function(x_i) {
-            return d3.svg.axis()
-                .scale(x_i)
-                .orient("bottom")
-        });
-        
-        var yAxis = y.map(function(y_i) {
-            return d3.svg.axis()
-                .scale(y_i)
-                .orient("left")
-        });
-        
-        var svg = data.map(function(data_i, idx) {
-            var line = d3.svg.line()
-                .x(function(d) { return x[idx](d.x); })
-                .y(function(d) { return y[idx](d.y); });
-            var svg_i = d3.select("#test").append("svg")
-                .datum(data_i)
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        d3.selectAll(".d3").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .append("g").append("path")
+            .attr("class", "line");
+        d3.selectAll(".line")
+            .data(data)
+            .map(function(data_i, idx) {
+                var dx = d3.scale.linear()
+                        .domain(x[idx])
+                        .range([0, width]);
+                var dy = d3.scale.linear()
+                        .domain(y[idx])
+                        .range([height, 0]);
+                var line = d3.svg.line()
+                    .interpolate("basis")
+                    .x(function(d) { return dx(d.x); })
+                    .y(function(d) { return dy(d.y); });
+                d3.select(this)
+                    .datum(data_i)
+                    .attr("d", line);
+                //console.log(d3.select(this)[0][0].parentNode);
 
-            svg_i.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis[idx]);
-            
-            svg_i.append("g")
-                .attr("class", "y axis")
-                .call(yAxis[idx]);
-            
-            svg_i.append("path")
-                .attr("class", "line")
-                .attr("d", line);
-            
-            svg_i.selectAll(".dot")
-                .data(data_i)
-                .enter().append("circle")
-                .attr("class", "dot")
-                .attr("cx", line.x())
-                .attr("cy", line.y())
-                .attr("r", 3.5);
+                var xAxis = d3.svg.axis()
+                    .scale(d3.scale.linear()
+                            .domain(x[idx])
+                            .range([0, width]))
+                    .orient("bottom");
+                
+                var yAxis = d3.svg.axis()
+                        .scale(d3.scale.linear()
+                                .domain(y[idx])
+                                .range([height, 0]))
+                        .orient("left");
+                var _ppnode = d3.select(d3.select(this)[0][0].parentNode.parentNode);
 
-            return svg_i;
-        });
+                _ppnode.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+                _ppnode.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis);
 
-        var e_data = d3.range(40).map(function(i) {
-            return {x: (i - 20) / 5, y: Math.pow(Math.E,  (i - 20) / 5)};
-            }),
-            ex = d3.scale.linear()
-                .domain([-5, 5])
-                .range([0, width]),
-            ey = d3.scale.linear()
-                .domain([0, 0.7])
-                .range([height, 0]),
-            e_line = d3.svg.line()
-                .x(function(d) { return ex(d.x); })
-                .y(function(d) { return ey(d.y); });
-        svg[2].datum(e_data, 2)
-             .attr("width", width + margin.left + margin.right)
-             .attr("height", height + margin.top + margin.bottom)
-             .append("g")
-             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-             .append("path")
-             .attr("class", "line second")
-             .attr("d", e_line);
+                _ppnode.selectAll(".dot")
+                    .data(data_i)
+                    .enter().append("circle")
+                    .attr("class", "dot")
+                    .attr("cx", line.x())
+                    .attr("cy", line.y())
+                    .attr("r", 3.5);
+                //console.log(this);
+                //console.log(arguments);
+            });
+
+
+        //var x2 = d3.scale.linear()
+        //        .domain([0, 1])
+        //        .range([0, width]);
+        //var y2 = d3.scale.linear()
+        //        .domain([0, 1])
+        //        .range([height, 0]);
+        //
+        //var xAxis2 =  d3.svg.axis()
+        //        .scale(x2)
+        //        .orient("bottom");
+        //
+        //var yAxis2 = d3.svg.axis()
+        //        .scale(y2)
+        //        .orient("left");
+
+        //var data2 = [
+        //    d3.range(40).map(function(i) {
+        //            return {x: i / 39, y: (Math.sin(i / 3) + 2) / 4};
+        //        }),
+        //    d3.range(40).map(function(i) {
+        //            return {x: i / 39, y: (Math.cos(i / 3) + 2) / 4};
+        //        })
+        //];
+
+        //var line2 = d3.svg.line()
+        //    .interpolate("basis")
+        //    .x(function(d) { return x2(d.x); })
+        //    .y(function(d) { return y2(d.y); });
+
+        //var svg2 = d3.select("#test").append("svg")
+        //        .attr("width", width + margin.left + margin.right)
+        //        .attr("height", height + margin.top + margin.bottom)
+        //        .append("g")
+        //        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        //    data2.map(function(data2_i) {
+        //        svg2.datum(data2_i)
+        //            .append("g").append("path")
+        //                .attr("class", "line")
+        //                .attr("d", line2);
+        //    });
+
+        //    svg2.append("g")
+        //        .attr("class", "x axis")
+        //        .attr("transform", "translate(0," + height + ")")
+        //        .call(xAxis2);
+        //    
+        //    svg2.append("g")
+        //        .attr("class", "y axis")
+        //        .call(yAxis2);
         
     });
 })();
