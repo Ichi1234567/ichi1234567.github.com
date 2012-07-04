@@ -1,0 +1,119 @@
+<link href="{{ root_url }}/stylesheets/d3/axis.css" rel="stylesheet" type="text/css">
+<script src="http://d3js.org/d3.v2.js"></script>
+
+<script>
+(function() {
+    var data = [
+        d3.range(40).map(function(i) {
+            return {x: i / 39, y: (Math.sin(i / 3) + 2) / 4};
+        }),
+        d3.range(41).map(function(i) {
+            return {x: 5 * Math.cos((i % 40) * Math.PI * 2 / 40), y: 5 * Math.sin((i % 40) * Math.PI * 2 / 40)};
+        }),
+        d3.range(40).map(function(i) {
+            return {x: (i - 20) / 5, y: (Math.pow(Math.E, -Math.pow(((i - 20) / 5), 2) / 2)) / (1 * Math.sqrt(2 * Math.PI))};
+        })
+    ];
+    
+    var margin = {top: 10, right: 15, bottom: 25, left: 40},
+        width = 400 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+    
+    $("body").ready(function() {
+        var x = [
+            d3.scale.linear()
+                .domain([0, 1])
+                .range([0, width]),
+            d3.scale.linear()
+                .domain([-5, 5])
+                .range([0, width]),
+            d3.scale.linear()
+                .domain([-5, 5])
+                .range([0, width])
+        ];
+        
+        var y = [
+            d3.scale.linear()
+                .domain([0, 1])
+                .range([height, 0]),
+            d3.scale.linear()
+                .domain([-5, 5])
+                .range([height, 0]),
+            d3.scale.linear()
+                .domain([0, 0.7])
+                .range([height, 0])
+        ];
+        
+        var xAxis = x.map(function(x_i) {
+            return d3.svg.axis()
+                .scale(x_i)
+                .orient("bottom")
+        });
+        
+        var yAxis = y.map(function(y_i) {
+            return d3.svg.axis()
+                .scale(y_i)
+                .orient("left")
+        });
+        
+        var svg = data.map(function(data_i, idx) {
+            var line = d3.svg.line()
+                .x(function(d) { return x[idx](d.x); })
+                .y(function(d) { return y[idx](d.y); });
+            var svg_i = d3.select("#test").append("svg")
+                .datum(data_i)
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            svg_i.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis[idx]);
+            
+            svg_i.append("g")
+                .attr("class", "y axis")
+                .call(yAxis[idx]);
+            
+            svg_i.append("path")
+                .attr("class", "line")
+                .attr("d", line);
+            
+            svg_i.selectAll(".dot")
+                .data(data_i)
+                .enter().append("circle")
+                .attr("class", "dot")
+                .attr("cx", line.x())
+                .attr("cy", line.y())
+                .attr("r", 3.5);
+
+            return svg_i;
+        });
+
+        var e_data = d3.range(40).map(function(i) {
+            return {x: (i - 20) / 5, y: Math.pow(Math.E,  (i - 20) / 5)};
+            }),
+            ex = d3.scale.linear()
+                .domain([-5, 5])
+                .range([0, width]),
+            ey = d3.scale.linear()
+                .domain([0, 0.7])
+                .range([height, 0]),
+            e_line = d3.svg.line()
+                .x(function(d) { return ex(d.x); })
+                .y(function(d) { return ey(d.y); });
+        svg[2].datum(e_data, 2)
+             .attr("width", width + margin.left + margin.right)
+             .attr("height", height + margin.top + margin.bottom)
+             .append("g")
+             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+             .append("path")
+             .attr("class", "line second")
+             .attr("d", e_line);
+        
+    });
+})();
+</script>
+

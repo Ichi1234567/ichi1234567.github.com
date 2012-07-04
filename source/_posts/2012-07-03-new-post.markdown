@@ -1,102 +1,21 @@
 ---
 layout: post
-title: "new-post"
+title: "d3"
 date: 2012-07-03 14:17
 comments: true
-categories: math{math}
+categories: 其他{others}
 ---
 
+此d3非彼d3~ XDDD
+加上這個後，有些東西應該可以更方便的表示，也不用自己刻了耶~真好~
+雖然，跟它還不熟，不過...還有很多機會可以去熟悉它的~科科科
+
+為了避免奇怪的error，請使用**新的**瀏覽器。 XDDD
+
+
+
+<!-- more -->
+
+{% include _4posts/2012-07-03-new-post.html %}
 <div id="test"></div>
-<style>
-
-body {
-  font: 10px sans-serif;
-}
-
-.axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-.dot {
-  fill: white;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-</style>
-
-<script src="http://d3js.org/d3.v2.js"></script>
-<script>
-
-//var data = d3.range(40).map(function(i) {
-//  return {x: i / 39, y: (Math.sin(i / 3) + 2) / 4};
-//});
-var data = d3.range(40).map(function(i) {
-    return {x: (i - 20) / 5, y: (Math.pow(Math.E, -Math.pow(((i - 20) / 5), 2) / 2)) / (1 * Math.sqrt(2 * Math.PI))};
-});
-//var data = d3.range(40).map(function(i) {
-//    return {x: 5 * Math.cos(i * Math.PI * 2 / 40), y: 5 * Math.sin(i * Math.PI * 2 / 40)};
-//});
-
-var margin = {top: 10, right: 10, bottom: 20, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-var x = d3.scale.linear()
-    .domain([-5, 5])
-    .range([0, width]);
-
-var y = d3.scale.linear()
-    .domain([0, 1])
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
-
-var line = d3.svg.line()
-    .x(function(d) { return x(d.x); })
-    .y(function(d) { return y(d.y); });
-
-var svg = d3.select("#test").append("svg")
-    .datum(data)
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
-svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis);
-
-svg.append("path")
-    .attr("class", "line")
-    .attr("d", line);
-
-svg.selectAll(".dot")
-    .data(data)
-  .enter().append("circle")
-    .attr("class", "dot")
-    .attr("cx", line.x())
-    .attr("cy", line.y())
-    .attr("r", 3.5);
-
-</script>
 
