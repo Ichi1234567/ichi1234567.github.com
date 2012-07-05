@@ -6,7 +6,7 @@ comments: true
 categories: 其他{others}
 ---
 
-此d3非彼d3~ XDDD
+此[d3](https://github.com/mbostock/d3)非彼[d3](http://tw.battle.net/d3/zh/)~ XDDD
 加上這個後，有些東西應該可以更好的表示，也不用自己刻了耶~真好~
 雖然，跟它還不熟，不過...應該還有很多機會可以去熟悉它的~科科科
 
