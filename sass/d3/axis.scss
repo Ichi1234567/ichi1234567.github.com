@@ -4,21 +4,26 @@
   shape-rendering: crispEdges;
 }
 
-.line {
+.line1 {
   fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;
 }
 
-.second {
+.line2 {
   fill: none;
   stroke: red;
   stroke-width: 1.5px;
 }
 
-.dot {
+.dot1 {
   fill: white;
   stroke: steelblue;
+  stroke-width: 1.5px;
+}
+.dot2 {
+  fill: white;
+  stroke: red;
   stroke-width: 1.5px;
 }
 
