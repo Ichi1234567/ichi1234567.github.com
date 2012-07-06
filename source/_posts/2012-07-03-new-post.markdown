@@ -21,4 +21,6 @@ categories: 其他{others}
 <div class="d3"></div>
 <div class="d3"></div>
 
+<div id="axis"></div>
+
 <div id="multilines"></div>

@@ -148,6 +148,31 @@
         $svgs.append("g")
             .attr("class", "y axis")
             .call(yAxis2);
+
+
+        var x3 = d3.scale.linear()
+            .domain([.05, .95])
+            .range([0, width]);
+        
+        var y3 = d3.scale.linear()
+            .range([0, height]);
+
+        var height2 = 80;
+        var svg = d3.select("#axis").append("svg")
+            .attr("width", width + margin.right + margin.left)
+            .attr("height", height2 + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        
+        svg.append("g")
+            .attr("class", "x minor")
+            .attr("transform", "translate(0," + height2 + ")")
+            .call(d3.svg.axis().scale(x3).tickSubdivide(2).tickSize(-6));
+        
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height2 + ")")
+            .call(d3.svg.axis().scale(x3));
         
     });
 })();

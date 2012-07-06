@@ -1,8 +1,13 @@
-.axis path, .axis line {
+.axis path, .axis line, .minor path, .minor line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
+.minor :not(.minor) {
+  display: none;
+}
+
 
 .line1 {
   fill: none;
