@@ -1,0 +1,553 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>range | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="阿阿~其實…原本不是要寫這個的耶~ XDD 可是、想不出來該怎摸寫我想寫的、再慢慢醞釀一下好了，就讓好東西醞釀的再久一點好了 哈~來出個好久不見的小品文就好。不然~人家好想趕快認真的試試看剛學的$\LaTeX{}$ (←硬是要用一下就是了~XDD) 好~馬上進入正題…。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="range">
+<meta property="og:url" content="http://yoursite.com/2012/06/27/new-post/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="阿阿~其實…原本不是要寫這個的耶~ XDD 可是、想不出來該怎摸寫我想寫的、再慢慢醞釀一下好了，就讓好東西醞釀的再久一點好了 哈~來出個好久不見的小品文就好。不然~人家好想趕快認真的試試看剛學的$\LaTeX{}$ (←硬是要用一下就是了~XDD) 好~馬上進入正題…。">
+<meta property="og:updated_time" content="2016-07-04T05:03:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="range">
+<meta name="twitter:description" content="阿阿~其實…原本不是要寫這個的耶~ XDD 可是、想不出來該怎摸寫我想寫的、再慢慢醞釀一下好了，就讓好東西醞釀的再久一點好了 哈~來出個好久不見的小品文就好。不然~人家好想趕快認真的試試看剛學的$\LaTeX{}$ (←硬是要用一下就是了~XDD) 好~馬上進入正題…。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/06/27/new-post/" title="range" itemprop="url">range</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-06-27T14:37:00.000Z" itemprop="datePublished"> 發表於 2012-06-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>阿阿~其實…原本不是要寫這個的耶~ XDD 可是、想不出來該怎摸寫我想寫的、再慢慢醞釀一下好了，就讓好東西醞釀的再久<br>一點好了 哈~來出個好久不見的小品文就好。不然~人家好想趕快認真的試試看剛學的$\LaTeX{}$ (←硬是要用一下就是了~<br>XDD) 好~馬上進入正題…。</p>
+<a id="more"></a>
+<p>還記得、n久以前的某篇嗎~<a href="http://ichi1234567.github.com/math/2012-05-15/cond/" target="_blank" rel="external">運算判斷</a>，裡面有一個小部份是<br>大家非常常用的小東西，就是判斷範圍…。判斷範圍、是個不論在哪個領域、就連生活中都常常使用到的…。</p>
+<ul>
+<li>如果落在範圍[x, y] (當然，(x, y)、(x, y]或[x, y)這些用法都很常見)。</li>
+<li>假如範圍上述的範圍外。</li>
+<li>或者是、interpolation也會用到。</li>
+<li>甚至有、超過2個基準數的範圍。</li>
+</ul>
+<p>以大家在程式裡面，最常見的寫法大概就是像下面這樣：<br>$$<br>\begin{equation}<br>  \text{Let}~x\in\mathbb{R},<br>  n1 \le x \wedge x \le n2<br>  \label{eq:fn1}<br>\end{equation}<br>$$</p>
+<p>而我自己目前的偏好大概是像下面這樣：<br>$$<br>\begin{equation}<br>\text{Let}~x\in\mathbb{R},<br>\ (x - n1) \times (x - n2) \le 0<br>\label{eq:fn2}<br>\end{equation}<br>$$</p>
+<p>不知道大家有沒有發現兩種的差別了呢~雖然、我有時候也會用$\eqref{eq:fn1}$、不過並沒有很常，原因如下：<br></p>
+<ul>
+<li><p>我每次都需要很認真的看是 $\&amp;\&amp;$ 或者是 $\parallel$，如果範圍弄錯了、又要重新很認真的確認一次是<br>$\&amp;\&amp;$ 或者是 $\parallel$。很煩、不喜歡。</p>
+</li>
+<li><p>特別像我、因為工作內容很容易的就偏向數學~ XDD 所以、常常會有一堆像這樣的判斷，有問題、一次改下來非~~常的驚<br>人阿，眼睛都花了。</p>
+</li>
+<li><p>扣除那以外、唔~ 我個人啦~ 比較不愛用邏輯判斷，用一堆$\&amp;\&amp;$ 或者是 $\parallel$來串起判斷式、也是<br>我不太喜歡的。</p>
+</li>
+</ul>
+<p>也<del>許、大家就會好奇啦~ = . .= 那、我不要在範圍內、我要在範圍外…你</del>那種寫法是要怎摸改阿~$\eqref{eq:fn1}$<br>我會改、可是$\eqref{eq:fn2}$我不會改。其~~實，非常的簡單~只要把$\eqref{eq:fn2}$的$\leq$換成$\geq$就好啦~XDD<br>改過之後會變成下面那樣：<br></p>
+<p>$$<br>\begin{equation}<br>\text{Let $x, n1, n2 \in\mathbb{R}$, $\\$ }<br>(x - n1) \times (x - n2) \ge 0<br>\label{eq:fn3}<br>\end{equation}<br>$$</p>
+<p>有沒有~有沒有~有沒有這<del>~</del>摸快阿~ XDD 用vi、只要刷刷~~就改好了歐~指標只要移動到一個地方就可以改好了捏~ XDD</p>
+<p>接下來是…吹毛求疵時間：<br></p>
+<ol>
+<li><p>Q：我不要等於可以嗎~？<br><br>A：可~~以，你就拿掉等於吧~</p>
+</li>
+<li><p>Q：我可以一邊等於一邊不要等於嗎~？<br><br>A：可~~以，當然、這會需要一點小技巧…因為本人很熟，所以、不在意這種小麻煩，因為它可以帶來一點點額外的好<br>   處。聽我慢慢道來。以希望 $n1 \le x &lt; n2$來說，寫法將被替換成：<br></p>
+<p>   $$<br>   \begin{equation}<br>   \text{Let $x$, $\phi\in\mathbb{R}$, $\phi$ is tatal error $\\$ }<br>   (x - n1) \times (x - (n2 - \phi)) \le 0<br>   \label{eq:fn4}<br>   \end{equation}<br>   $$</p>
+<p>   不知道大家看出來了沒，這種寫法帶來的額外好處是…彈性變得非常大~ XDD 比如、大家很愛<strong>模糊</strong>，那都<br>   <strong>模糊</strong>了、範圍會變得有點動態耶~那…怎摸算阿~我要用switch-case寫下長長一段case嗎~(哭) 如果、結果不如<br>   預期..後果真的是不堪想像阿~這種寫法的好處就是…，你只要定義好$\phi$要如何給定他的規則，就爽爽的寫啦~<br>   兩邊都要、也迷有問題的呢~多~~~美好的寫法阿、甚至、給定$\phi$的計算根據情況給定不同的算式、都沒有關係<br>   的歐、真的是太美好了呢~你還可以把這個抽出來，變成一個區域內公用的function call，哈~if的判斷就會變得超<br>   好寫、也超好懂的了歐~</p>
+</li>
+<li><p>Q：那…不是說有多段寫法嗎？多段咧~<br><br>A：阿~的確是有多段啦~不過、多段就真的要借用switch-case了，這樣比較好寫啦~我也是很懶惰的呢~套用上面判斷<br>   range的寫法，結合switch-case，我們可以寫出類似下面的寫法：</p>
+   <figure class="highlight js"><figcaption><span>多段range</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(<span class="literal">true</span>)&#123;</div><div class="line">  <span class="keyword">case</span> ((x - n1) * (x - n2) &lt; <span class="number">0</span>):</div><div class="line">    <span class="comment">// balabala1</span></div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">case</span> ((x - n3) &gt;= <span class="number">0</span>):</div><div class="line">    <span class="comment">// balabala2</span></div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">case</span> ((x - n1) * (x - n4 - phi) &gt;= <span class="number">0</span>):</div><div class="line">    <span class="comment">// balabala3</span></div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    <span class="comment">// balabala default</span></div><div class="line">    <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好<del>像上面那樣寫、阿就會多段啦~同樣的、可以善用phi、就可以超</del>彈性的、微調那該死的區間啦~</p>
+</li>
+</ol>
+<p>其實、這種寫法還有很多好處啦~ XDD 像是、你寫完就會發現…阿~某區間可以合併、又少一個判斷了、甚至突然想改變一下<br>哈 都很方便捏~ 對於想要嘴巴開開瞳孔放大就想要完成這些麻煩判斷的，真的是好好用噢~ 我用這種寫法、不知道修正了<br>多少bug耶~如果、再套用上之前講的那篇、就是..一開始提到的<br><a href="http://ichi1234567.github.com/math/2012-05-15/cond/" target="_blank" rel="external">那篇</a>噢噢噢、我的天~ XDD 你可以想像的出來、這樣簡單的<br>寫法可以讓你的程式充滿多大的彈性、變化和樂趣嗎~ XDDDD 更不用說、其實它還有眾多的變化型啦~ = . .= 可是、變化<br>型就不是那摸容易識別了~所以就…算啦~ 不多談了。</p>
+<p>好~~~ 以上。爽爽的用完$\LaTeX{}$和codeblock了~歐歐耶~ ╮(///▽//)╭♥♥♥</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/code/">code</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/code/">code</a><a href="/tags/數學/">數學</a><a href="/tags/效能/">效能</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2012/06/27/new-post/" data-title="range | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2012/06/30/new-post/" title="range --- 續">
+  <strong>上一篇：</strong><br/>
+  <span>
+  range --- 續</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2012/06/26/new-post/"  title="latex &amp; code-highlight...測試">
+ <strong>下一篇：</strong><br/> 
+ <span>latex &amp; code-highlight...測試
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>

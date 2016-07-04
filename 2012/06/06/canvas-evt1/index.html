@@ -1,0 +1,553 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[canvas]上的事件 --- (1) | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="canvas的事件相關的部份、一直以來都是我心中永遠的痛~ (←明明就還很嫩、還在永遠些啥~ XDDD) 我不太喜歡目前自己用來監聽canvas上、觸發圖形事件的方法。就~~其實很好用啦~可是、就彆扭咩~(扭扭扭)
+其實…這個部份~某部份還在實驗~(大卡關阿~ Q ^Q) 然後、這個想法，在還沒有看到別人實做出來的時候，一直有個疑問，不知道這樣的想法、會不會很耗資源，可是、又很懶的弄~然後、在這遊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[canvas]上的事件 --- (1)">
+<meta property="og:url" content="http://yoursite.com/2012/06/06/canvas-evt1/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="canvas的事件相關的部份、一直以來都是我心中永遠的痛~ (←明明就還很嫩、還在永遠些啥~ XDDD) 我不太喜歡目前自己用來監聽canvas上、觸發圖形事件的方法。就~~其實很好用啦~可是、就彆扭咩~(扭扭扭)
+其實…這個部份~某部份還在實驗~(大卡關阿~ Q ^Q) 然後、這個想法，在還沒有看到別人實做出來的時候，一直有個疑問，不知道這樣的想法、會不會很耗資源，可是、又很懶的弄~然後、在這遊">
+<meta property="og:updated_time" content="2016-07-04T04:51:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[canvas]上的事件 --- (1)">
+<meta name="twitter:description" content="canvas的事件相關的部份、一直以來都是我心中永遠的痛~ (←明明就還很嫩、還在永遠些啥~ XDDD) 我不太喜歡目前自己用來監聽canvas上、觸發圖形事件的方法。就~~其實很好用啦~可是、就彆扭咩~(扭扭扭)
+其實…這個部份~某部份還在實驗~(大卡關阿~ Q ^Q) 然後、這個想法，在還沒有看到別人實做出來的時候，一直有個疑問，不知道這樣的想法、會不會很耗資源，可是、又很懶的弄~然後、在這遊">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/06/06/canvas-evt1/" title="[canvas]上的事件 --- (1)" itemprop="url">[canvas]上的事件 --- (1)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-06-05T16:00:00.000Z" itemprop="datePublished"> 發表於 2012-06-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>canvas的事件相關的部份、一直以來都是我心中永遠的痛~ (←明明就還很嫩、還在永遠些啥~ XDDD) 我不太喜歡目前自己<br>用來監聽canvas上、觸發圖形事件的方法。就~~其實很好用啦~可是、就彆扭咩~(扭扭扭)</p>
+<p>其實…這個部份~某部份還在實驗~(大卡關阿~ Q ^Q) 然後、這個想法，在還沒有看到別人實做出來的時候，一直有個疑問，<br>不知道這樣的想法、會不會很耗資源，可是、又很懶的弄~然後、在這遊戲引擎如雨後春筍般冒出來的情況下~挖了一些出來<br>研究了一下。<a href="http://enchantjs.com/en/?s=en" target="_blank" rel="external">enchant</a>、<a href="http://entityjs.com/" target="_blank" rel="external">entityjs</a>、<br><a id="more"></a></p>
+<p><a href="http://www.createjs.com/#!/EaselJS" target="_blank" rel="external">easelJs</a>、還有最近好像還蠻多人提起的<br><a href="https://github.com/mrdoob/three.js/" target="_blank" rel="external">three.js</a> (←目前腦海有印象的就這幾個啦~很像還有不少捏)也去挖到了之前<br>google doodle的<a href="http://www.google.com/logos/lem/" target="_blank" rel="external">機器人</a>的<br><a href="https://code.google.com/p/stanislaw-lem-google-doodle/" target="_blank" rel="external">source code</a></p>
+<p>很認真的翻了很久~眼睛都看花了~ Q ^Q 在好心的<a href="http://blog.blackbing.net/" target="_blank" rel="external">Bingo</a>的指引下、發現了EaselJS、其實<br>不是我迷有看過它~ XDDD 是…我那時候翻了太多、把它忘記了~ XDDD</p>
+<p>就這樣…我就邁入了~不歸路… Q 口Q 真的~我覺得我現在好糟糕…一定有XX強迫症了~沒救了~哭…。這個系列、將介紹我在canvas<br>上的心路歷程…. Q ^Q 之一。</p>
+<p>好~趕快進入正題…XDDDDD 前言真的太長了呢~</p>
+<p>雖然、canvas是個html的tag、也可以觸發事件，不過…它就跟一般的html元素一樣，並沒有辦法去觸發畫在canvas上面的<br>特定內容，嗯嗯嗯…就canvas這個字面上的意思來看，就是『畫布』咩~畫布…當然是屬於靜態的…畫上去就結束了~。</p>
+<p>所以、為了達成大家的願望…其實canvas有個method就是<br><a href="http://www.html5.jp/canvas/ref/method/isPointInPath.html" target="_blank" rel="external">isPointInPath</a> 其實…可以拿來用啦~雖然它有幾個<br>堪稱致命的小瑕疵：</p>
+<ul>
+<li><p>最致命的當然就是…為了兼容不支援canvas各家瀏覽器(其實就是那一個~ Q ^Q)、不得不使用像是<br><a href="http://excanvas.sourceforge.net/" target="_blank" rel="external">excanvas</a>、<a href="http://burzak.com/proj/fxcanvas/" target="_blank" rel="external">fxCanvas</a>這類的~很像還有幾個<br>可是我也忘記名字了…想不起來~ XDD 可是、不管這些製作的多摸的優良~總是會有一些功能還沒有被實做出來…<br>很光榮的<strong>isPointInPath</strong>名列其中~ Q 口Q isPointInPath掰掰~(揮揮手)</p>
+</li>
+<li><p>接下來另一個致命的就是…請注意它的名字<strong>isPointInPath</strong>，我知道…大家一定都迷有注意到~ 唔、好吧~大多數的人類<br>應該是迷有注意到這件事isPoint<strong>InPath</strong>。是的，這個方法是去判斷一個點有沒有 <strong>in</strong> Path。那…然後呢~ Q 口Q 讓<br>人傷心的事情就是在這裡發生了。在canvas裡面，嗯 我想也許可以這摸說啦~也許…這部份是屬於我個人的理解歐~我沒有<br>仔細的去看相關的內容，有問題就…(搔搔臉) 就是那樣~(好<del>~</del>~~回正題)</p>
+<ul>
+<li>code A  <pre><code>ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.lineTo(x3, y3);
+  ctx.closePath();
+  ctx.fill();
+</code></pre></li>
+<li>code B  <pre><code>ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.lineTo(x3, y3);
+  ctx.stroke();
+</code></pre>
+
+</li>
+</ul>
+<p>上面那兩段就差在<strong>closePath</strong>，然後、有close的那個…會成為一個封閉圖形…阿~迷有錯…所以、<strong>isPointInPath</strong>在<br>第一個會有作用、第二個就一點用都沒有了~它用在polyline上、就算你on在線上…也都會給你回傳false的…也<del>~</del>就是說<br>isPointInPath只能用在封閉圖形，其~~~實也不是不能用在polyline上啦~只是、很麻煩捏~ = “””= 我不想把自己搞得很<br>頭大，excanvas那類的…又不支援~ XDDDD 就算算囉~</p>
+</li>
+</ul>
+<p>基於以上兩種理由…canvas原生的method<strong>isPointInPath</strong>掰~！！</p>
+<p>好~因為…我累了~ = . .= 所以，這篇就先到這裡~ XDDDD <strong>isPointInPath</strong> 到此告一段落。</p>
+<p><strong>To Be Continued……</strong></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/canvas/">canvas</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/canvas/">canvas</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2012/06/06/canvas-evt1/" data-title="[canvas]上的事件 --- (1) | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2012/06/07/canvas-evt2/" title="[canvas]上的事件 --- (2)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  [canvas]上的事件 --- (2)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2012/06/05/new-post/"  title="雜談 - 選擇jekyll Bootstrap的理由">
+ <strong>下一篇：</strong><br/> 
+ <span>雜談 - 選擇jekyll Bootstrap的理由
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>

@@ -1,0 +1,657 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[JS]switch-case | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="相信很多人寫程式、寫到後來一定會有著如以下的情況：
+
+好多的if-else、我分不清楚哪個括號裡面的是哪個了。
+
+好多的switch-case、這一段是哪裡的case阿~我找不到case了。
+
+這個的switch太長了、我找不到上面、也找不到下面，我要加在哪裡~~~(暴怒)。
+
+咦咦、這個case我寫過了沒、有吧、沒有吧~(拔花花) 到底有還是沒有~~~ (我生氣了)。
+
+這段和那段case好像歐">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[JS]switch-case">
+<meta property="og:url" content="http://yoursite.com/2012/08/09/js-switch/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="相信很多人寫程式、寫到後來一定會有著如以下的情況：
+
+好多的if-else、我分不清楚哪個括號裡面的是哪個了。
+
+好多的switch-case、這一段是哪裡的case阿~我找不到case了。
+
+這個的switch太長了、我找不到上面、也找不到下面，我要加在哪裡~~~(暴怒)。
+
+咦咦、這個case我寫過了沒、有吧、沒有吧~(拔花花) 到底有還是沒有~~~ (我生氣了)。
+
+這段和那段case好像歐">
+<meta property="og:updated_time" content="2016-07-04T05:02:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[JS]switch-case">
+<meta name="twitter:description" content="相信很多人寫程式、寫到後來一定會有著如以下的情況：
+
+好多的if-else、我分不清楚哪個括號裡面的是哪個了。
+
+好多的switch-case、這一段是哪裡的case阿~我找不到case了。
+
+這個的switch太長了、我找不到上面、也找不到下面，我要加在哪裡~~~(暴怒)。
+
+咦咦、這個case我寫過了沒、有吧、沒有吧~(拔花花) 到底有還是沒有~~~ (我生氣了)。
+
+這段和那段case好像歐">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/08/09/js-switch/" title="[JS]switch-case" itemprop="url">[JS]switch-case</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-08-09T15:26:00.000Z" itemprop="datePublished"> 發表於 2012-08-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>相信很多人寫程式、寫到後來一定會有著如以下的情況：<br></p>
+<ul>
+<li><p>好多的if-else、我分不清楚哪個括號裡面的是哪個了。</p>
+</li>
+<li><p>好多的switch-case、這一段是哪裡的case阿~我找不到case了。</p>
+</li>
+<li><p>這個的switch太長了、我找不到上面、也找不到下面，我要加在哪裡~~~(暴怒)。</p>
+</li>
+<li><p>咦咦、這個case我寫過了沒、有吧、沒有吧~(拔花花) 到底有還是沒有~~~ (我生氣了)。</p>
+</li>
+<li><p>這段和那段case好像歐~可是又有點點不一樣耶~ = “””= 我好煩躁、明明就很像，為什摸還要傻傻的再寫一次，好煩好煩<br>好煩噢~(扭扭)。</p>
+</li>
+</ul>
+<p>寫膩switch-case了嗎~?? 我聽到大家的心聲了~(毆飛、明明上面那個就是小助助的內心戲)。好、好唄~說是我的內心戲就是<br>我的吧~ (咬手帕) 身為很懶惰(?)的工程師、一定會很想要很懶的寫code、要很容易的可以一眼看到底、可以不動的地方、<br>最好就是一輩子都不動它(再次毆飛)、還要可以刪掉都不心痛、不用改一堆有的沒的~這樣的話、這篇真的太適合不過了~ w</p>
+<a id="more"></a>
+<p>有幾個小前提啦~ = “””= <br></p>
+<ul>
+<li><p>基於我是用js醞釀的、我不確定在其他非script的語言是不是也可以通~ XDD 應該是可以、只不過寫法可能要稍微修一下。<br>以下範例都是js的片段，可能有問題(?)、就~~加減湊合吧~ w</p>
+</li>
+<li><p>大部分的人、switch-case應該都是基於某個symbol、也就是說、大概就是string或者number…這類的為最常見。所以、<br>這次的例子，主要就是針對這樣的情況做些修改囉~ w</p>
+</li>
+</ul>
+<p>##switch-case 超~~基礎類型1</p>
+<p>首先、當然是從最基礎的類型開始看起，下面這段、是平常隨手寫來就是長成這樣的類型。下面這段應該是完~~~~全不會有<br>問題的、就是最基礎的樣板。</p>
+<figure class="highlight js"><figcaption><span>switch-case1</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(cond) &#123;</div><div class="line">    <span class="keyword">case</span> (<span class="string">"a"</span>):</div><div class="line">        fn1();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="string">"b"</span>):</div><div class="line">        fn2();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        fn3();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>這樣的類型、一開始的確是很好寫、也不會有任何的問題。問題在什摸時候會開始發生呢~？<br></p>
+<ul>
+<li><p>我的程式越來越大了、怎摸辦~我看不到上面也看不到下面，我寫不下去了、我再也沒辦法修改了。bug出現、抓完一隻又<br>一隻、這段有沒有寫阿~ Q ^Q 欲哭無淚、誰來拯救我、黑歐噗咪~</p>
+</li>
+<li><p>唔、我有好多類別歐~ = “””= 好煩歐~怎摸要一直判斷類別阿~ 這裡也要type is xxx 那邊要type is ooo。每一個<br>function都要來一下switch(type)在case…balabala好煩好煩好煩阿~我有1x個type耶~我要崩潰了<del>~</del>~~ Q 口Q</p>
+</li>
+</ul>
+<p>為了改善這樣的情況、請改用下面的寫法吧~w<br><br>既然、尼已經知道是什摸樣的條件、就不要吝嗇使用它~把它利用到底吧~ @ @++ 它會感謝尼讓它出場次數那摸多、這樣大家<br>都會記得它。<br><br>我們將條件(以下就把它叫做cond吧~)相關的處理提出來、用一個object來存好它。然後、在我們接收到cond、然後要操作<br>相關運算時、可就方便啦~知道cond、就知道要執行哪個動作了~ w 歐耶~ <strong>perfect</strong></p>
+<figure class="highlight js"><figcaption><span>改寫switch-case1</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fns = &#123;</div><div class="line">    a: fn1,</div><div class="line">    b: fn2,</div><div class="line">    <span class="keyword">default</span>: fn3</div><div class="line">&#125;</div><div class="line">fns[cond]();</div></pre></td></tr></table></figure>
+<p>其實、一般來說，最基礎的這個類型就十分夠用了啦~ w 真的、大概可以解決70%的問題~ 可是、除了懶、還有更懶，沒有<br>龜毛、只有最龜毛。是的、如果在上述中、我的function、不是一個就可以解決的怎摸辦、我就很懶阿~我就想把我已經<br>醞釀好的sub-function、一個個的串起來~(扭扭) 我不想一直寫一樣的code~。</p>
+<p>如果、尼懶惰到這種程度，就請繼續往下看吧~ (我承認~ Q 口Q 如果多年以後我忘了、回來複習本篇、一定會接著往下看)</p>
+<p>##switch-case 基礎類型2</p>
+<p>好的、這一段就是基於上述的需求，我們把它攤開用switch-case下寫來、毫無疑問的，應該會是跟下面那段長的差不多像。<br>那、我們要怎摸改咧~請看下面的再下面那段code….. XDDDD</p>
+<figure class="highlight js"><figcaption><span>switch-case2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(cond) &#123;</div><div class="line">    <span class="keyword">case</span> (<span class="string">"a"</span>):</div><div class="line">        fn1();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="string">"b"</span>):</div><div class="line">        fn2();</div><div class="line">        fn3();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        fn4();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>跳過來了嗎~? 好好、那我們就開始囉~ @ 3@ <br><br>既然、尼想把那些sub-function兜起來，那就把它們兜起來嘛~ XDDDD 想要怎摸串、就怎摸串歐~ 很簡單吧~ w 我也是這摸<br>覺得的吶~！！<br><br>是的、這個跟上面的差別就在於…我在sub-function的外面用一個function把它們都包起來而已、其實換湯不換藥喇~ XDDD<br>我相信、聰明的大家，就算我迷有提出來還是會醞釀出來的呢~ w</p>
+<figure class="highlight js"><figcaption><span>改寫switch-case2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">fns = &#123;</div><div class="line">    a: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn1() &#125;,</div><div class="line">    b: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn2(); fn3(); &#125;,</div><div class="line">    <span class="keyword">default</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn4() &#125;</div><div class="line">&#125;;</div><div class="line">desc = (!!fns[cond]) ? (cond) : (<span class="string">"default"</span>);</div><div class="line">fns[cond]();</div></pre></td></tr></table></figure>
+<p>那…這樣就結束了~?? 太空虛了吧~如果、尼這摸覺得，那尼也太小看懶惰的威力了~ &gt; 3&lt; 我相信、除了上面那些以外，<br>很常寫規則、動不動就要趴資料的人…一定會遇到，我的case有時候有2個要一樣、有的3個、有的只有1個…我的case<br>是動態的耶~ Q 口Q 那…我要把剛剛類型1、2的…重複寫那摸多次歐~ 一定會寫都不知道在寫什摸的喇~</p>
+<p>如果、尼有降得困擾…那就接著看吧~ w</p>
+<p>##switch-case 可有可無之動態二分類型</p>
+<p>為什摸會說它是可有可無咧~ XDDD 其實是因為、這個比較小型喇~而且有很多替代方案，不過、為了接下來的部份，我們先<br>來牛刀小試一下、大家對我接下來寫法的接受程度囉~ w</p>
+<p>好的、我們的case變成降了，我們的cond、可能有a、b、c或者…更多，anyway~我們不care它們到底有多少個~我們的重點<br>在於~常常在if-else的情況下，我們的if會落落長…然後、就可能會把它拆成switch-case (看起來的確順眼多了…)，<br>可是、每加一個條件、就要在寫一個~ = . .= 好懶歐~還要在重複一次case…balabala 很麻煩耶~要是不小心寫長了、<br>就看不到上面也看不到下面了~一點點也不ok。所以、我把它改掉了…請跳下下個codeblock。</p>
+<figure class="highlight js"><figcaption><span>switch-case4(動態二分類型)</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(cond) &#123;</div><div class="line">    <span class="keyword">case</span> (<span class="string">"a"</span>):</div><div class="line">    <span class="keyword">case</span> (<span class="string">"b"</span>):</div><div class="line">    <span class="keyword">case</span> (<span class="string">"c"</span>):    <span class="comment">// 也許更多..., 無所謂啦~</span></div><div class="line">        fn1();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        fn2();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>就是這段~ @ @++ 好玩的來囉~ w 我代入了…..迷有錯~尼絕<del>~</del>對迷有看錯歐~我使用了正則來ko它了…。其實、在正則<br>之前，還有個版本，是用array-while的組合，可是我怎摸看怎摸彆扭，不喜歡~ &gt; 3&lt; 這可怎摸辦咧~我想著想著、突然…<br>靈光一閃~ @ @+++++ 這不是、反正我就是要定這個cond的<strong>描述</strong>，這…正則不是最方便了嘛~不就是個描述嘛~ XDDDDDD</p>
+<p>我才不要只是很單調的拿它(正則)來check那些data的樣板、還是拿來做replace，那…正則就太可年了~ Q 口Q 明明就是這摸口愛的<br>小東西。為了發揚光大我最愛的正則、所以、落落長的switch-case的case就被我嘗試著改成….下面那樣了… 一行ko~然<br>後因為是if-else嘛~ 二分類型、所以只要這樣判斷就迷有問題了…。</p>
+<p>[註] 下面那段的正則、因為我偷懶~ XDDDD 因為例子是單個字母的條件，我就這摸寫喇~ w</p>
+<figure class="highlight js"><figcaption><span>改寫switch-case4(動態2分類型)</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pool = <span class="regexp">/^[abc]$/</span></div><div class="line">result = pool.test(cond);</div><div class="line">(result &amp;&amp; fn1());</div><div class="line">(!result &amp;&amp; fn2());</div></pre></td></tr></table></figure>
+<p>可是、可是、可是~尼說得那個是2分類型阿~我要3分、5分、100分咧~ &gt; 3&lt; 而且、我每個都要動態的、我還要有數字、文字<br>長度都還要不一樣~那那那…怎摸辦~ &gt; 3&lt; <br></p>
+<p>糾結了嗎~?? 那摸就繼續往下看吧~ w</p>
+<p>##switch大絕 之 正則真的是太棒了~正則萬歲</p>
+<p>是的、當我醞釀出上面那段的時候、我腦袋就浮出這那些問題了，我的終極目標是…<br></p>
+<ul>
+<li><p>有個紀錄條件的data。</p>
+</li>
+<li><p>一個是儲存了對應條件的動作的地方。</p>
+</li>
+<li><p>只要我寫好mapping、直接就可以取得動作了。</p>
+</li>
+</ul>
+<p>基於以上的目標、我弄了下面那段code，有比較長一點點，就湊合著看唄~w<br></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// step1</span></div><div class="line">   cond = [</div><div class="line">       <span class="regexp">/^(1|2)$/</span>,</div><div class="line">       <span class="regexp">/^(-3|a|abc)$/</span>,</div><div class="line">       <span class="regexp">/^(4)$/</span></div><div class="line">   ];</div><div class="line"><span class="comment">// step2</span></div><div class="line">   method = [</div><div class="line">       fn1, fn2, fn3, default_fn</div><div class="line">   ];</div><div class="line"><span class="comment">// step3</span></div><div class="line">   switchFn = <span class="function"><span class="keyword">function</span>(<span class="params">input_cond</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> i = cond.length,</div><div class="line">           chk_cond = <span class="literal">false</span>;</div><div class="line">       cond.map(<span class="function"><span class="keyword">function</span>(<span class="params">cond_i, idx</span>) </span>&#123;</div><div class="line">           (cond_i.test(input_cond) &amp;&amp; (</div><div class="line">               method[idx](),</div><div class="line">               chk_cond = <span class="literal">true</span></div><div class="line">           ))</div><div class="line">       &#125;)</div><div class="line">	<span class="comment">// 很偷懶的使用這個方法、可以確保最後一項為default function</span></div><div class="line">       (!chk_cond &amp;&amp; method[method.length - <span class="number">1</span>]());</div><div class="line">   &#125;;</div><div class="line"><span class="comment">// step4</span></div><div class="line">   switchFn(input_cond);</div></pre></td></tr></table></figure>
+<p>然後、這邊我就不在用object來做mapping了，原因如下：</p>
+<ul>
+<li><p>要取名字很麻煩。</p>
+</li>
+<li><p>取了名字要打比較多字母很麻煩。</p>
+</li>
+<li><p>其實我不喜歡object。</p>
+</li>
+</ul>
+<p>因為這幾個理由、我使用了array~ XDDD code的步驟解說如下：</p>
+<ol>
+<li><p>建立條件判斷，一樣採用正則~ Q 口Q 正則、我真的愛死尼了~。這邊應該可以很明顯的看出、我迷有偷懶了 = “””=</p>
+</li>
+<li><p>把寫好的function們一樣塞到一個array，不用我說，大家都應該要知道…不要自找麻煩，一個對一個是最好的啦~!!</p>
+</li>
+<li><p>把之前那個例子的判斷方法抄過來…。</p>
+</li>
+<li><p>將將將~~!! 恭喜尼、kkkkko了~ (扭扭)</p>
+</li>
+</ol>
+<p>所以、其實只是把之前那個例子，改成用array的方式拓展出去而已啦~ 又是個換湯不換藥囉~ w 很簡單簡單吧~</p>
+<p>##結論時間</p>
+<p>其實~~這最後的2個例子…不瞞尼說，一般人真的用不太到，除了~寫規則寫的很煩躁的人，動不動就有1x個條件要判斷…<br>要不就是趴格式趴到很火大的謎樣生命體(?) 簡單的說、就是比較枯燥繁瑣的系統，又有點點龐大的情況才合適。<br>一般、前面2個就很夠用了呢~！！</p>
+<p>而用這樣的方式寫出來的、可以幹麻~以後只要寫好配置檔就好了~ @ @++ 怎摸刪都不肉疼…而且、條件可以一目10行…<br>多好阿~ 不只code的行數急遽下滑…看起來又很清爽、彈性又很大。</p>
+<p>根據我不負責任的實驗結果，採用上面的方式來改寫掉得code、預估大概結果如下：<br><br>(不準的原因是因為、我一定還會偷偷摸摸的在程式裡面動手腳~ XDDD 所以、速度可能也沒有真的快上那摸多喇~)<br></p>
+<ul>
+<li><p>以…前面2種方法來改寫、速度的改進眼睛看得見、code的量，依情況不同，可減少10~30%不等…可多可少喇~<br>bug可以少掉30~40%根據我改前人的code~(有多不繁瑣、bug就會少掉多少~ w)</p>
+</li>
+<li><p>以…後面2種來改寫上面已經改寫過的，在效能的穩定性也提高不少、code的量，<br>依據cond重複多寡，重複越多省越多，可節省50+%的容量。(這個的bug就少不了多少了~ 基本上、我相信，如果尼已<br>經早就會這種寫法、表示…尼一定是個以一擋百、萬夫莫敵的勇者)</p>
+</li>
+</ul>
+<p>額外好處如下：<br></p>
+<ul>
+<li><p>可一目十行。</p>
+</li>
+<li><p>很好重複再利用。無論是哪一塊。</p>
+</li>
+<li><p>不喜歡就刪掉、很好刪。</p>
+</li>
+<li><p>code有問題、改好一個，其他的就解決了。相當於，殺死一隻小強、就殺死千千萬萬隻小強子孫。</p>
+</li>
+<li><p>更好複製貼上了。</p>
+</li>
+</ul>
+<p>不知道還有迷有更簡潔的寫法耶~ 有的話、請鼻要吝嗇、指點指點嫩嫩的小助助吧~ XDDD 請給我經驗值衝等！！</p>
+<hr>
+<p>寫完這篇、真的是體會到粒粒(例例)皆辛苦了捏~ &gt; 3&lt; 然後…感覺離不開functional language了、也離不開正則了…<br>我愛尼們~ &gt; “””&lt; 請鼻要離開我的世界！！</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/js/">js</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/code/">code</a><a href="/tags/js/">js</a><a href="/tags/效能/">效能</a><a href="/tags/架構/">架構</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2012/08/09/js-switch/" data-title="[JS]switch-case | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2012/09/02/js-scope/" title="[JS]scope --- (1)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  [JS]scope --- (1)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2012/07/22/box-muller2/"  title="box muller --- (2)">
+ <strong>下一篇：</strong><br/> 
+ <span>box muller --- (2)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>

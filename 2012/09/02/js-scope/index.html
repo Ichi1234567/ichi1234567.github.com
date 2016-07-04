@@ -1,0 +1,624 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[JS]scope --- (1) | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="本篇醞釀的時機灰常的微妙，我親愛的學姐~ &amp;gt; ////&amp;lt; 也(因為五斗米)踏入了JS界了~。
+很多的書籍在介紹js的時候、除了一開始的超經典hello world，接著就會開始介紹browser的歷史，然後、什摸什摸的分野，接著就是ㄜ…什摸沒有型態又有型態的弱型態特性，然後bind event，接著有些也許會深入介紹一下經典特性、例子什摸的。可是、其實我覺得在弄完hello world">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[JS]scope --- (1)">
+<meta property="og:url" content="http://yoursite.com/2012/09/02/js-scope/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="本篇醞釀的時機灰常的微妙，我親愛的學姐~ &amp;gt; ////&amp;lt; 也(因為五斗米)踏入了JS界了~。
+很多的書籍在介紹js的時候、除了一開始的超經典hello world，接著就會開始介紹browser的歷史，然後、什摸什摸的分野，接著就是ㄜ…什摸沒有型態又有型態的弱型態特性，然後bind event，接著有些也許會深入介紹一下經典特性、例子什摸的。可是、其實我覺得在弄完hello world">
+<meta property="og:updated_time" content="2016-07-04T05:02:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[JS]scope --- (1)">
+<meta name="twitter:description" content="本篇醞釀的時機灰常的微妙，我親愛的學姐~ &amp;gt; ////&amp;lt; 也(因為五斗米)踏入了JS界了~。
+很多的書籍在介紹js的時候、除了一開始的超經典hello world，接著就會開始介紹browser的歷史，然後、什摸什摸的分野，接著就是ㄜ…什摸沒有型態又有型態的弱型態特性，然後bind event，接著有些也許會深入介紹一下經典特性、例子什摸的。可是、其實我覺得在弄完hello world">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/09/02/js-scope/" title="[JS]scope --- (1)" itemprop="url">[JS]scope --- (1)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-09-02T11:40:00.000Z" itemprop="datePublished"> 發表於 2012-09-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>本篇醞釀的時機灰常的微妙，我親愛的學姐~ &gt; ////&lt; 也(因為五斗米)踏入了JS界了~。</p>
+<p>很多的書籍在介紹js的時候、除了一開始的超經典hello world，接著就會開始介紹browser的歷史，然後、什摸什摸的分野<br>，接著就是ㄜ…什摸沒有型態又有型態的弱型態特性，然後bind event，接著有些也許會深入介紹一下經典特性、例子什<br>摸的。可是、其實我覺得在弄完hello world後、應該是要先講scope和closure~ XDDD 那可以讓好多人少繞很多彎路。</p>
+<p>因為、以前找資料，前輩們說起js時、總是會…『這就是因為scope呀~』『阿這個就是用那個closure喇~』<br>『這個bug就是因為scope，balabala…』</p>
+<p>在剛學JS的時候，這2個名詞對我來說、真的好疑惑好神秘，不懂耶~問了很多次…還是一知半解~ Q 口Q 真的很失敗。<br>所以、scope…. 其實是我很一開始的時候就想好好記錄下來的一個topic，因為、它對我有很深的意義。是我一開始接觸<br>JS時，遇到的第一個從完全不知道怎摸下手測試與trace，只好呆呆的硬背下來。也因為正式的面對它、讓我真正邁入JS的<br>門檻。這..難道就是所謂的、<strong>成也蕭何、敗也蕭何</strong> (大誤)</p>
+<a id="more"></a>
+<p>其實、這世界上有很多講解scope的文章和書籍，我也陸陸續續看過很多篇，不過、也許是我不夠聰明、或者和前輩們的觀點<br>不太一樣，在我trace的過程、總覺得…有些細節怪怪的。不過、我也不敢保證我的說法一定是對的啦~(汗) 也許、這個東<br>西講起來會有點點抽象，不過、就想做一個紀錄。</p>
+<p>一開始、說到scope，我們對於不熟悉的語言都會有點點害怕… 所以、把它翻成中文就是…『作用域』<br>講到作用域、就很熟了~ = . .= 對、我熟悉的作用域、是數學的作用域~ XDDD 不過、那又怎樣…起碼它給我靈感了。<br>所謂的『<strong>作用域</strong>』就是在這個範圍內，是有用的、有意義的。</p>
+<p>所以、在有了方向後，接著來看下面這2個框框的東西：<br></p>
+<ul>
+<li><p>如果、我們在作用域1定義了<strong>a</strong>、在作用域2也定義了<strong>a</strong>，還蠻明顯的，有在寫程式的人應該可以區分出來，在作<br>用域2中的<strong>a</strong>和作用域1的<strong>a</strong>明顯的不同。<br></p>
+ <div align="center" style="border:solid black 2px; width:270px; height: 110px;"><br>    (作用域1)<br>    var <strong>a</strong> (&lt;—視為globle)<br>    <div align="center" style="border:solid red 2px; width: 230px; height: 70px;"><br>        (作用域2)<br>        var <strong color="red">a</strong> (&lt;—視為local)<br>     </div><br>  </div>
+</li>
+<li><p>一樣、我們在作用域1定義<strong>a</strong>，不過我們在作用域2沒有定義<strong>a</strong>，可是一樣使用a，那…很明顯的，有在寫程式的<br>人，也一定可以區分出在作用域2的<strong>a</strong>就是作用域1的<strong>a</strong><br></p>
+<p> <div align="center" style="border:solid black 2px; width:270px; height: 150px;"></div></p>
+<pre><code>(作用域1)
+var &lt;strong&gt;a&lt;/strong&gt; (&lt;---視為globle)
+&lt;div style=&quot;border:solid red 2px; width: 230px; height: 100px; text-align:left;&quot;&gt;
+    (作用域2)
+    &lt;strong color=&quot;red&quot;&gt;a&lt;/strong&gt;  (&lt;---local找不到，往上層...發現a，所以，這個a是globle的a)
+&lt;/div&gt;
+</code></pre><p> <br><br></p>
+</li>
+</ul>
+<p>然後、我自己後來覺得有個比喻很棒耶~ @ @++ <br><br>就把function當作籠子、變數們當作小動物…關起來、這樣這樣、然後再那樣那樣~ w<br>好吧、說穿了~ = . .= 我覺得這就是所謂的scope。可是、為什摸還是有很多人敗在scope下，被它耍的團團轉咧~！！<br>其實、原因也很簡單，歸納如下：</p>
+<ul>
+<li>大家其實說scope、說得很順…卻從來沒有認真的搞清楚過JS的作用域的定義。<br><strong> JS是functional language，大部分的人都會說、在寫程式的時候，並沒有把function視為一個領域看待，特別是先學<br>   過其他</strong>非functional language**的人來說，在最一開始、應該都會把花括號當作一個scope、因此就混亂了。</li>
+<li>因為它沒有強制定義型別，JS的變數都可以塞任何型別進去，在交互作用下，早就忘記abcd到底塞了些啥進去了。</li>
+<li>當尼的code落落長的時候、慘慘…跑到最上面看不到整個運作、跑到最下面看不到定義… = “””= 更不用說，花括號<br>亂亂長，縮排縮到不知道哪兒去了。</li>
+<li>不良的寫作習慣。</li>
+</ul>
+<p>其實、每種語言的風格都差蠻多的啦、以我來說~ = “””= 真的、都差很多~ w 以前、我也會想，我想要把functional<br>language搞得很像oo language，後來…想把oo language搞得像functional language~ = . .= 是可以啦~ 不過、我覺得<br>那是自討苦吃~ XDD 應該這摸說，可以沿用它的精神，也就是…神似而型不似，這是沒有問題的，而不推薦要整個都長得<br>很像(從定義到實做)。</p>
+<p>##作用域 之 初學幼幼班</p>
+<p>在最前面、看過作用域的基本定義後，一定要來現學現賣，練習一下…所以、來看小小2段程式。</p>
+<ul>
+<li>範例1<ol>
+<li>流程：<ol>
+<li>在最外面定義變數 a 和function b。</li>
+<li>function b中、給予a一個新的value。</li>
+<li>依照順序把a給log出來看。</li>
+</ol>
+</li>
+<li>說明：<ol>
+<li>第一個log：毫無疑問的，因為在最一開始定義了a，遇到第一個之前並沒有任何的操作會影響，因此、肯定是123。</li>
+<li>第二個log：執行b function，同樣的、在b裡面，a被影響到了，應該也不會遲疑a=456這個答案。</li>
+<li>有疑問的第三個log來了：前面有提過、JS的作用域的基本單位是function，所以、在function內有定義的、會<br>  和外面不同、不然就是同一個。而在b中，我們的a並沒有另外定義，因此、b內的變數a就是外面的那個a。然後、<br>  因為在b裡面已經被改過了，所以、第三個log的結果就會是… 456囉~</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><figcaption><span>範例1</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">123</span>,</div><div class="line">    b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        a = <span class="number">456</span>;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"a = "</span> + a);</div><div class="line">    &#125;;</div><div class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// 123</span></div><div class="line">b();                <span class="comment">// a = 456</span></div><div class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// 456</span></div></pre></td></tr></table></figure>
+<p>這個、和上面那個差不多同樣的方法推演喇~ = . .= 就跳過了~ w</p>
+<figure class="highlight js"><figcaption><span>範例2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">123</span>,</div><div class="line">    b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> a = <span class="number">456</span>;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"a = "</span> + a);</div><div class="line">    &#125;;</div><div class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// 123</span></div><div class="line">b();                <span class="comment">// a = 456</span></div><div class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// 123</span></div></pre></td></tr></table></figure>
+<p>##作用域 之 超常見陷阱題</p>
+<p>嗯嗯、這一段的程式，相信是大家很常見的一個類型，然後… 大家的答案近乎一致性的都是『阿這就是scope(closure)~』<br>小的駑鈍~ = “””= 當時的我沒有辦法用這種話就可以明白。現在的我、用我所理解的來解釋一下。</p>
+<ul>
+<li><p>範例3：</p>
+<ol>
+<li><p>流程：相信、有些許程式經驗的人，一般來說，都會覺得、下面是沒有什摸問題的code，就是把function塞進去空<br>陣列a，然後…再接著執行陣列a的每一個function，然後… function只是很單純的把index給log出來。</p>
+<p>是~~~~這摸想的對吧~ = . .=<br>沒錯、初學JS，而又有一點基礎的人，十之八九都會這摸寫。因為、在我們心裡，潛藏著花括號就是作用域的刻板印象。<br>而…這就是造成，為什摸大家會說『js很難懂』『js很怪』『js根本就不是人學的』『js很討厭』『js…balabala』的<br>原因。</p>
+</li>
+<li><p>解析：在解析前，請大家認真的把function當作個柵欄，把變數們當作小動物…關起來(圍毆…XDD!?)。</p>
+<ol>
+<li>首先、我們這一段code，作用域1。</li>
+<li>接著定義了空陣列a。</li>
+<li>用一個loop定義了…3個小作用域。且、小作用域的i…沒有使用定義，因此…參考至外部的…i。因此、i就會<br>  隨著loop的i改變而改變。(←注意到了嗎? 這就是，人家說的… = . .= js的陷阱)</li>
+<li><p>執行塞到a陣列的function。</p>
+</li>
+<li><p>執行階段：根據上述的解析，在執行a陣列的各個function的時候，此時的i=3 (←這個道理、應該…不用詳述了吧~<br>= . .=)、而小function的i沿用外部的定義，因此….這個i，log出來不等於3要等於啥摸咧~ 懂了吧、懂了吧~<br>就就就是降~~~~ w</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><figcaption><span>範例3</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">a = []</div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">    a.push(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"i = "</span> + i);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">fn_i</span>) </span>&#123;</div><div class="line">    fn_i();</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// result</span></div><div class="line"><span class="comment">// i = 3</span></div><div class="line"><span class="comment">// i = 3</span></div><div class="line"><span class="comment">// i = 3</span></div></pre></td></tr></table></figure>
+<ul>
+<li>範例4：那…如果想達到原本上面我們所想的，該怎摸做咧~看接下來的這個就對了~ w<ol>
+<li>解析：<ul>
+<li>同樣的定義空陣列a。</li>
+<li>一樣遇到loop了，為了解決因為作用域引起的問題，也就是說…我們只要讓function裡面的i可以跟外面的i有所區別<br>   就可以解決了對吧~ <em> 0</em> 因此在這邊、我們在原本的function在包上一層。也就是說，我們使用了一個馬上執行的匿名<br>   function，把i塞進去。這裡花幾個步驟，稍微解釋一下囉~ w<ol>
+<li>所謂的匿名function，白話的說、就是，這個function是個沒有名字的function，除了沒名字以外，跟一般<br>  的function都一樣。所以、我們可以得到如下的訊息：<ul>
+<li>function是個作用域。</li>
+<li>function的參數，是有被定義的。</li>
+<li>根據上面2點、我們可以知道，有被參數定義過的，會和外層同樣名字的意義是不一樣的。</li>
+</ul>
+</li>
+<li>因此、根據上面那點，再更詳細的描述一下，這一小段的意義。我們要的是真正想要的是return回來的<br>  function那一段，而為了i，我們幫它包上一層function、以隔絕掉內外的差別，而這個i必須給予定義，<br>  如果、不以參數的形式，那…就沒意義了，因此、帶入參數…。<ul>
+<li>最後把a陣列的function都執行一次出來看… 歐耶~結果對了~ w               </li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><figcaption><span>範例4</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">a = []</div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">    a.push((<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123; <span class="comment">// 匿名function</span></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   <span class="comment">// 真正想要的function</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"index = "</span> + i);</div><div class="line">        &#125;</div><div class="line">    &#125;)(i));</div><div class="line">&#125;</div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">fn_i</span>) </span>&#123;</div><div class="line">    fn_i();</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// result</span></div><div class="line"><span class="comment">// i = 0</span></div><div class="line"><span class="comment">// i = 1</span></div><div class="line"><span class="comment">// i = 2</span></div></pre></td></tr></table></figure>
+<p>聰明的尼，一定會想說… 阿~ i來i去的~ = . .= 匿名function的參數我可不可以不用i… 可~~以，來對照一下吧</p>
+<figure class="highlight js"><figcaption><span>範例4只有loop</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">    a.push((<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123; <span class="comment">// 匿名function</span></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   <span class="comment">// 真正想要的function</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"index = "</span> + j);</div><div class="line">        &#125;</div><div class="line">    &#125;)(i));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##總結</p>
+<p>其實、因為js定義範圍的基本單位是function，因此、有些寫法，也許會讓人覺得多餘…，可是，其實我覺得很有道理耶~<br>比起會被block住的其他語言來說，其實…functional language更能說服我，我覺得…那很直覺、很蘇湖的想法~ @ 3@</p>
+<hr>
+<p>嗯嗯、如果尼對scope很熟悉…那真的是太好了~ 我一點都幫不上忙~(攤手)<br>如果、尼是scope苦手，那…請試著用我有點點彆腳、又需要一點點想像力的描述~ (Q 口Q 我很努力了~)<br>看看自己的code、別人的code…。當尼越來越熟悉這樣的方式時，尼會發現，好多js的code都隱藏了不少的bug(大誤)</p>
+<p>本篇、也將開啟一個系列文~ Q 口Q 怎摸辦、我又挖坑了。為什摸咧~因為、有太多的東西…都跟這個作用域有關西，<br>什摸memory leak、recursive、tail recursive…一堆堆balabala很難懂的、隱藏性bug的地方。其實、說穿了都沒啥~ w<br>藉此、也想強迫自己認真的用自己的話，為自己的頓悟下個註記。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/js/">js</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/code/">code</a><a href="/tags/js/">js</a><a href="/tags/效能/">效能</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2012/09/02/js-scope/" data-title="[JS]scope --- (1) | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2012/09/10/scope2/" title="[JS]scope --- (2)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  [JS]scope --- (2)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2012/08/09/js-switch/"  title="[JS]switch-case">
+ <strong>下一篇：</strong><br/> 
+ <span>[JS]switch-case
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>

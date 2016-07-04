@@ -1,0 +1,602 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>box muller --- (1) | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="我要很認真的說、我真的不是數學系的~ = . .=
+這次想要來筆記一下、一個超好用的東西~ @ 0@++ 雖然、過程也許可能有點難懂，不過、it’s ok。最重要的只是不要害怕算式。(← 順便提醒自己一下)
+rand number、是個跑模擬會用到、基本到不行的一樣東西。不管是在哪種語言，只要、srand()、rand()，然後…rand num就會被生出來了。可是、挑剔的我，絕對不會因此滿足的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="box muller --- (1)">
+<meta property="og:url" content="http://yoursite.com/2012/07/21/box-muller/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="我要很認真的說、我真的不是數學系的~ = . .=
+這次想要來筆記一下、一個超好用的東西~ @ 0@++ 雖然、過程也許可能有點難懂，不過、it’s ok。最重要的只是不要害怕算式。(← 順便提醒自己一下)
+rand number、是個跑模擬會用到、基本到不行的一樣東西。不管是在哪種語言，只要、srand()、rand()，然後…rand num就會被生出來了。可是、挑剔的我，絕對不會因此滿足的，">
+<meta property="og:updated_time" content="2016-07-04T08:13:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="box muller --- (1)">
+<meta name="twitter:description" content="我要很認真的說、我真的不是數學系的~ = . .=
+這次想要來筆記一下、一個超好用的東西~ @ 0@++ 雖然、過程也許可能有點難懂，不過、it’s ok。最重要的只是不要害怕算式。(← 順便提醒自己一下)
+rand number、是個跑模擬會用到、基本到不行的一樣東西。不管是在哪種語言，只要、srand()、rand()，然後…rand num就會被生出來了。可是、挑剔的我，絕對不會因此滿足的，">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/21/box-muller/" title="box muller --- (1)" itemprop="url">box muller --- (1)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-21T05:44:00.000Z" itemprop="datePublished"> 發表於 2012-07-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>我要很認真的說、我真的不是數學系的~ = . .=</p>
+<p>這次想要來筆記一下、一個超好用的東西~ @ 0@++ 雖然、過程也許可能有點難懂，不過、it’s ok。最重要的只是不要害怕<br>算式。(← 順便提醒自己一下)</p>
+<p>rand number、是個跑模擬會用到、基本到不行的一樣東西。不管是在哪種語言，只要、srand()、rand()，然後…rand num<br>就會被生出來了。可是、挑剔的我，絕對不會因此滿足的，因為、根據情況不同，資料的數據分佈肯定會不一樣。</p>
+<p>而、這次要講的box muller、在實做上、只需要短短的幾行就可以解決了我的問題阿~ (握拳) 為了怕自己忘記、一定要認真<br>的紀錄一下整個過程(有的過程、我大概會跳過啦~ XDDD 很多東西沒那摸熟 哈)</p>
+<p>不想看無趣(又不正確?)的推導嗎~XDDDD<br>那就直接看<a href="http://ichi1234567.github.com/blog/2012/07/22/box-muller2/" target="_blank" rel="external">精簡版</a>吧~</p>
+<a id="more"></a>
+<p><link href="/2012/07/21/box-muller/axis.css" rel="stylesheet" type="text/css"></p>
+<script src="http://d3js.org/d3.v2.js"></script>
+<script data-main="/2012/07/21/box-muller/app.js" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+
+<div id="line-g"></div>
+
+<p>box muller、和一般的rand有啥不同咧~ 其實、一般程式裡面用的rand、都是線性的，無論是從系統出的、還是尼很自豪的<br>說，『我那可是用內建的rand函數跑出來的咧~』其實、都跳脫不了那個線性的框框。很前一陣子、我異常的著迷於rand~。<br>就在那時候、我挖到了box muller，它和系統出的不同在於，box muller有著、最常見的圖形分佈，也就是『常態分佈』，<br>所謂的常態分佈就是…. 統計裡面最常看到的 → 中間高、兩邊低。而這種分佈圖、在各方面都有蠻多運用的。也有很多<br>讓人容易混亂的別名(中間定理、鐘型分佈、高斯分佈…balabala)，和類似常態分佈(柯西分佈、韋伯分佈…)的其他圖形<br>。其實、我沒有很認真的去比較過它們的不同啦~ = “””= 功力不夠~ XDD 我只都覺得、它們就是中間比較高、其他地方比較<br>低。可能有些會牽扯到收不收斂的問題、還有對不對稱…這類的。</p>
+<p>而其中、box muller、就是要用到<a href="http://zh.wikipedia.org/wiki/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83" target="_blank" rel="external">常態分佈</a><br>圖形和其算式啦~ @ @+++</p>
+<p>常態分佈圖形及算式如下，代表著期望值0、變異數1、其相關的變化，基本上就是基於修改這2數所產生的變化：</p>
+<div id="uniform-g"></div>
+
+<p>$$<br>    \begin{equation}<br>    p(x): = \frac {e ^{-\frac{x^2}{2}}} {\sqrt {2 \pi}} \Longleftarrow N(0, 1)<br>    \text{ ,$ \\\ $ the mean = 0, variance = 1 }<br>    \label{eq:fn1}<br>    \end{equation}<br>$$</p>
+<p>我們將 $ \eqref{eq:fn1} $ 經過轉換、可以得到下式 $ \eqref{eq:fn2} $ ：</p>
+<p>$$<br>    \begin{equation}<br>    \int _{-\infty} ^{\infty} {dxe^{-\frac{x^2}{2}}} = \sqrt {2 \pi}<br>    \label{eq:fn2}<br>    \end{equation}<br>$$</p>
+<p>將$ \eqref{eq:fn2} $取平方、並做簡單的拆解(科、那種平方啦、座標啦~最容易想到的就是x、y 轉 r、$\theta$的極座標了<br>，還蠻直覺的)。</p>
+
+$$
+  \begin{equation}
+    (\int _{-\infty} ^{\infty} {dxe^{-\frac{x^2}{2}}})^2 =
+    \int _{-\infty} ^{\infty} {dxdye^{- \frac {x^2 + y^2} {2}}}
+  \end{equation}
+$$
+
+<p>如同上段所說、我們利用xy座標系轉極座標系如下$\eqref{eq:block1}$以及$\eqref{eq:block2}$的基本資料、代入<br>$\eqref{eq:fn2}$ <br></p>
+<p>$$<br>    \begin{gather}<br>    &amp; x = r cos {\theta} \<br>    &amp; y = r sin {\theta}<br>    \label{eq:block1}<br>    \end{gather}<br>$$<br><br><br>$$<br>    \begin{gather}<br>    x^2 + y^2 = r^2 \<br>    \tan^{-1} {\frac{y}{x}} = \theta \<br>    \frac {\mid \partial(x, y) \mid} {\mid \partial(r, \theta) \mid} = r<br>    \label{eq:block2}<br>    \end{gather}<br>$$</p>
+<p>把上面那些都塞進去算式、利用一下超好用的Jacobian，我們可以得到$\eqref{eq:fn3}$<br></p>
+
+$$
+    \begin{equation}
+    \begin{aligned}
+    \int _{-\infty} ^{\infty} {dxdye^{-\frac{x^2 + y^2}{2}}}
+        & = \int _{0} ^{2 \pi} {d\theta \int _{0} ^{\infty} {drre^{- \frac {r^2}{2}}}} \\
+        & = 2 \pi \int _{0} ^{\infty} {due^{-u}} ~~~~ (u = \frac {r^2} {2}) \\
+        & = 2 \pi [ -e^{-u} ] _{0} ^{\infty} = 2 \pi
+    \end{aligned}
+	\label{eq:fn3}
+    \end{equation}
+$$
+
+<p>一直到這邊、其實我們都在證明…. 常態分佈的算式和$r$、$\theta$… ㄜ、是有關係的。 (應該是可以這摸說….吧~)<br>接下來、好不容易要進入正題了~ @ @+++</p>
+<p>我們將$\eqref{eq:fn3}$ 移來移去然後、再順便帶入一下$\eqref{eq:block2}$、我們可以得到下面這個$\eqref{eq:fn4}$</p>
+<p>$$<br>    \begin{equation}<br>    1 = \frac {1} {2 \pi} \int _{-\infty} ^{\infty} {dxdye ^{- \frac {x^2 + y^2} {2}}}<br>    \label{eq:fn4}<br>    \end{equation}<br>$$</p>
+<p>然後、我們將$\eqref{eq:fn4}$ 整個整理好成為 $R$ 的關係式、得到$\eqref{eq:fn5}$：</p>
+
+$$
+    \begin{equation}
+    \begin{aligned}
+    U(R) & = \frac {1} {2 \pi} \int _{0} ^{2 \pi} {d \theta \int _{0} ^{R} {drre^{- \frac {r^2} {2}}}} \\
+        & = \int _{0} ^{\frac {R^2} {2}} {due ^{-u}} = 1 - e ^{- \frac {R^2} {2}}
+    \end{aligned}
+	\label{eq:fn5}
+    \end{equation}
+$$
+
+<p>其實、我們也可以很清楚的知道$\eqref{eq:block3}$的內容，就…. 算式講得很白啦~ XDD 跳過~</p>
+
+$$
+    \begin{gather}
+    \lim _{R \to 0} U(R) & = & 0 \\
+    \lim _{R \to \infty} U(R) & = & 1
+	\label{eq:block3}
+    \end{gather}
+$$
+
+<p>再回去看一下$\eqref{eq:fn5}$、我們令它$ = p$、然後再交換交換…就可以得到$\eqref{eq:fn6}$</p>
+<p>$$<br>    \begin{equation}<br>    U(R) = p ~ \Longrightarrow ~ R = \sqrt{-2 log (1 - p)}<br>    \label{eq:fn6}<br>    \end{equation}<br>$$</p>
+<p>挖<del>~</del>結果、終於要出現囉~ 科科科 <br><br>我們再利用一下$\eqref{eq:block1}$的東西、把R帶入…然後經過一些整理、將它們表達為$s$、$t$的函數、得到$\eqref{eq:fn7}$</p>
+<p>$$<br>    \begin{equation}<br>    \begin{split}<br>    s := 1 - p \in [0, 1], t \in [0, 1] \<br>    x = \cases {<br>        \sqrt{-2log(s)}cos(2 \pi t) \cr<br>        \sqrt{-2log(s)}sin(2 \pi t)<br>    }<br>    \end{split}<br>    \label{eq:fn7}<br>    \end{equation}<br>$$</p>
+<p>最後一步囉~ (歐耶~) 我們將$\eqref{eq:fn7}$ 分別引入常態分佈的mean和variance，就完成…box muller的隨機數產生<br>器啦~<br></p>
+<p>$$<br>    \begin{equation}<br>    \begin{split}<br>    &amp; z = \mu + \sigma \sqrt {-2log(s)} cos(2 \pi t) \<br>    &amp; \text {or,} \<br>    &amp; z = \mu + \sigma \sqrt {-2log(s)} sin(2 \pi t) \<br>    \end{split}<br>    \label{eq:fn8}<br>    \end{equation}<br>$$</p>
+<p>好好、我相信…大家看完一定還是霧颯颯的、所以… 我們利用$\eqref{eq:fn8}$來一個精簡版總結：<br></p>
+<ul>
+<li><p>我們只要決定好$\mu$和$\sigma$，用這個決定好隨機數分佈範圍和樣貌。 (←這個就是邪惡的圖形函數)</p>
+</li>
+<li><p>利用系統產生隨機數$s$和$t$。 (←利用這2個隨機數、讓圖形產生變動、其實讓$s=t=rand()$也不是不行、就按照需求吧<br>一般來說、我比較愛2個都是隨機~ XDDD)</p>
+</li>
+<li><p>最後把所有的東西統統帶入 $\eqref{eq:fn8}$、就完成啦~ XDDDD</p>
+</li>
+</ul>
+<p>很簡單、很簡單、很簡單的吧~ @ @+++ <br><br>也就是說、我們依照上面的精簡版，可以得到一個簡單到不行的規律，就是….. 只要、爽爽的把圖形函數換掉，然後…<br>其他通通帶入算式就好啦~(撒花轉圈圈) 想要什摸分佈、就會是什摸分佈囉~ (←請考慮合理的情況下~ = . .=|||)</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/math/">數學</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2012/07/21/box-muller/" data-title="box muller --- (1) | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2012/07/22/box-muller2/app/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2012/07/21/box-muller/app/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>

@@ -1,0 +1,1115 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="小助助的精神實驗室">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小助助的精神實驗室">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/21/box-muller/" title="box muller --- (1)" itemprop="url">box muller --- (1)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-21T05:44:00.000Z" itemprop="datePublished"> 發表於 2012-07-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>我要很認真的說、我真的不是數學系的~ = . .=</p>
+<p>這次想要來筆記一下、一個超好用的東西~ @ 0@++ 雖然、過程也許可能有點難懂，不過、it’s ok。最重要的只是不要害怕<br>算式。(← 順便提醒自己一下)</p>
+<p>rand number、是個跑模擬會用到、基本到不行的一樣東西。不管是在哪種語言，只要、srand()、rand()，然後…rand num<br>就會被生出來了。可是、挑剔的我，絕對不會因此滿足的，因為、根據情況不同，資料的數據分佈肯定會不一樣。</p>
+<p>而、這次要講的box muller、在實做上、只需要短短的幾行就可以解決了我的問題阿~ (握拳) 為了怕自己忘記、一定要認真<br>的紀錄一下整個過程(有的過程、我大概會跳過啦~ XDDD 很多東西沒那摸熟 哈)</p>
+<p>不想看無趣(又不正確?)的推導嗎~XDDDD<br>那就直接看<a href="http://ichi1234567.github.com/blog/2012/07/22/box-muller2/">精簡版</a>吧~</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2012/07/21/box-muller/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/math/">數學</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/21/box-muller/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/21/box-muller/app/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-20T16:00:00.000Z" itemprop="datePublished"> 發表於 2012-07-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        require.config({
+  "baseUrl": "http://ichi1234567.github.com/rnds/javascript",
+  "paths": {
+    "jq-rnds": "http://ichi1234567.github.com/rnds/javascript/jq-rnds",
+    "rnd": "http://ichi1234567.github.com/rnds/javascript/rnd",
+    "display": "http://ichi1234567.github.com/rnds/javascript/display"
+  }
+});
+
+define([
+  "jq-rnds"
+  ], function() {
+    setTimeout(function() {
+      $("#line-g").rndD3({
+          "mode": "rand_mm"
+      });
+    }, 1000);
+});
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/21/box-muller/app/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/21/box-muller/axis/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-20T16:00:00.000Z" itemprop="datePublished"> 發表於 2012-07-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        .axis path,.axis line,.minor path,.minor line{fill:none;stroke:#000;shape-rendering:crispEdges}.minor :not(.minor){display:none}.line1{fill:none;stroke:steelblue;stroke-width:1.5px}.line2{fill:none;stroke:red;stroke-width:1.5px}.dot1{fill:white;stroke:steelblue;stroke-width:1.5px}.dot2{fill:white;stroke:red;stroke-width:1.5px}
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/21/box-muller/axis/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/14/canvas-evt3/" title="[canvas]上的事件 --- (3)" itemprop="url">[canvas]上的事件 --- (3)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-14T04:54:00.000Z" itemprop="datePublished"> 發表於 2012-07-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>canvas系列…. = . .= 我停頓好久了耶~(心虛) 我還去回顧了一下，接下來，唔…盡量好了~ XDDD<br><strong>精神實驗室</strong>咩~ 就…大家發揮想像力好了~(汗||)</p>
+<p><a href="http://ichi1234567.github.com/blog/2012/06/07/canvas-evt2/">前情提要</a>：<br><br>前回、提到了幾種簡便的、可以說完全不是透過canvas來做事件監聽的方式，這一回終於要進入正題了，<br>先來講如何直接透過canvas製作的前提，然後接下來2回再來講大概的實做方法(←我真的太富奸了~ XDDD) 然後、應該就可以<br>結束這個系列了…(終於)。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2012/07/14/canvas-evt3/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/canvas/">canvas</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/canvas/">canvas</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/14/canvas-evt3/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/14/mvc/" title="MVC" itemprop="url">MVC</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-14T03:00:00.000Z" itemprop="datePublished"> 發表於 2012-07-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>科~ 我怠惰了一個多星期了耶~ @ . .@++ 迷有fu~ (攤手)<br>然後、就突然想起來…咦咦~ 前不久(?)去參加了JSDC，然後接著想到了MVC、就像某人所說的，『大家不約而同的MVC起來了』</p>
+<p>所以、我也要來 MVC 一下~ (以下言論、純屬感想…|||)</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2012/07/14/mvc/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/other/">雜談</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/架構/">架構</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/14/mvc/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/03/new-post/" title="d3" itemprop="url">d3</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-03T06:17:00.000Z" itemprop="datePublished"> 發表於 2012-07-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>此<a href="https://github.com/mbostock/d3">d3</a>非彼<a href="http://tw.battle.net/d3/zh/">d3</a>~ XDDD<br>加上這個後，有些東西應該可以更好的表示，也不用自己刻了耶~真好~<br>雖然，跟它還不熟，不過…應該還有很多機會可以去熟悉它的~科科科</p>
+<p>為了避免有可能出現奇怪的error，請使用<strong>新的</strong>瀏覽器。 XDDD</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2012/07/03/new-post/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/other/">雜談</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/雜談/">雜談</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/03/new-post/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/03/new-post/app/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-02T16:00:00.000Z" itemprop="datePublished"> 發表於 2012-07-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        (function() {
+    var data = [
+        d3.range(40).map(function(i) {
+            return {x: i / 39, y: (Math.sin(i / 3) + 2) / 4};
+        }),
+        d3.range(41).map(function(i) {
+            return {x: 5 * Math.cos((i % 40) * Math.PI * 2 / 40), y: 5 * Math.sin((i % 40) * Math.PI * 2 / 40)};
+        }),
+        d3.range(50).map(function(i) {
+            return {x: (i - 25) / 5, y: (Math.pow(Math.E, -Math.pow(((i - 25) / 5), 2) / 2)) / (1 * Math.sqrt(2 * Math.PI))};
+        })
+    ];
+    var lineSet = [
+        "line1", "", "line2"
+    ], dotSet = [
+        "dot1", "", "dot2"
+    ];
+
+    var data2 = [
+        d3.range(40).map(function(i) {
+            return {x: i / 39, y: (Math.sin(i / 3) + 2) / 4};
+        }),
+        d3.range(40).map(function(i) {
+            return {x: i / 39, y: (Math.cos(i / 3) + 2) / 4};
+        })
+    ];
+
+    var margin = {top: 10, right: 15, bottom: 25, left: 40},
+        width = 400 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+    var x = [
+            [0, 1], [-5, 5], [-5, 5]
+    ], x2 = [0, 1];
+    var y = [
+        [0, 1], [-5, 5], [0, 0.7]
+    ], y2 = [0, 1];
+    var line = d3.svg.line()
+        .interpolate("basis")
+        .x(function(d) { return ex(d.x); })
+        .y(function(d) { return ey(d.y); });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        d3.selectAll(".d3").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .append("path")
+            .data(data)
+            .map(function(data_i, idx) {
+                var dx = d3.scale.linear()
+                        .domain(x[idx])
+                        .range([0, width]);
+                var dy = d3.scale.linear()
+                        .domain(y[idx])
+                        .range([height, 0]);
+                var line = d3.svg.line()
+                    .interpolate("basis")
+                    .x(function(d) { return dx(d.x); })
+                    .y(function(d) { return dy(d.y); });
+                d3.select(this)
+                    .datum(data_i)
+                    .attr("class", (lineSet[idx].length) ? (lineSet[idx]) : ("line1"))
+                    .attr("d", line);
+                var _ppnode = d3.select(d3.select(this)[0][0].parentNode);
+
+                (dotSet[idx].length &&
+                 _ppnode.selectAll(".dot")
+                     .data(data_i)
+                     .enter().append("circle")
+                     .attr("class", dotSet[idx])
+                     .attr("cx", line.x())
+                     .attr("cy", line.y())
+                     .attr("r", 2.5)
+                );
+
+                var xAxis = d3.svg.axis()
+                    .scale(d3.scale.linear()
+                            .domain(x[idx])
+                            .range([0, width]))
+                    .orient("bottom");
+
+                var yAxis = d3.svg.axis()
+                        .scale(d3.scale.linear()
+                                .domain(y[idx])
+                                .range([height, 0]))
+                        .orient("left");
+
+                _ppnode.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+                _ppnode.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis);
+            });
+        var $svgs = d3.selectAll("#multilines").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        data2.map(function(data_i, idx) {
+            var dx = d3.scale.linear()
+                .domain(x2)
+                .range([0, width]);
+            var dy = d3.scale.linear()
+                .domain(y2)
+                .range([height, 0]);
+            var line = d3.svg.line()
+                .interpolate("basis")
+                .x(function(d) { return dx(d.x); })
+                .y(function(d) { return dy(d.y); });
+            var tmp = $svgs.append("g").append("path")
+                .attr("class", ("line" + (idx + 1)))
+                .datum(data_i)
+                .attr("d", line);
+
+            d3.select(tmp[0][0].parentNode).selectAll(".dot")
+                .data(data_i)
+                .enter().append("circle")
+                .attr("class", ("dot" + (idx + 1)))
+                .attr("cx", line.x())
+                .attr("cy", line.y())
+                .attr("r", 2.5);
+        });
+        var xAxis2 = d3.svg.axis()
+            .scale(d3.scale.linear()
+                    .domain(x2)
+                    .range([0, width]))
+            .orient("bottom");
+
+        var yAxis2 = d3.svg.axis()
+            .scale(d3.scale.linear()
+                    .domain(y2)
+                    .range([height, 0]))
+            .orient("left");
+
+        $svgs.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis2);
+        $svgs.append("g")
+            .attr("class", "y axis")
+            .call(yAxis2);
+
+
+        var x3 = d3.scale.linear()
+            .domain([.05, .95])
+            .range([0, width]);
+
+        var y3 = d3.scale.linear()
+            .range([0, height]);
+
+        var height2 = 80;
+        var svg = d3.select("#axis").append("svg")
+            .attr("width", width + margin.right + margin.left)
+            .attr("height", height2 + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.append("g")
+            .attr("class", "x minor")
+            .attr("transform", "translate(0," + height2 + ")")
+            .call(d3.svg.axis().scale(x3).tickSubdivide(2).tickSize(-6));
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height2 + ")")
+            .call(d3.svg.axis().scale(x3));
+
+    }, false);
+})();
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/03/new-post/app/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/07/03/new-post/axis/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-07-02T16:00:00.000Z" itemprop="datePublished"> 發表於 2012-07-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        .axis path,.axis line,.minor path,.minor line{fill:none;stroke:#000;shape-rendering:crispEdges}.minor :not(.minor){display:none}.line1{fill:none;stroke:steelblue;stroke-width:1.5px}.line2{fill:none;stroke:red;stroke-width:1.5px}.dot1{fill:white;stroke:steelblue;stroke-width:1.5px}.dot2{fill:white;stroke:red;stroke-width:1.5px}
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/07/03/new-post/axis/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/06/30/new-post/" title="range --- 續" itemprop="url">range --- 續</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-06-30T05:48:00.000Z" itemprop="datePublished"> 發表於 2012-06-30</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>其實、原本沒打算要繼<a href="http://ichi1234567.github.com/math/2012-06-27/new-post/">range</a>再接下去寫一篇的~<br>可是，總覺得上一篇有一點點不完整耶~ 依我<strong>貓毛</strong>的個性來說。所以、來補一下好了。</p>
+<p>這篇應該會探討一下、ㄜ~ 我基於野生動物的直覺上的不知道正不正確的效能分析~(汗|||) 就算個小紀錄好了唄~(攤手)</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2012/06/30/new-post/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/code/">code</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/code/">code</a><a href="/tags/數學/">數學</a><a href="/tags/效能/">效能</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/06/30/new-post/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/06/27/new-post/" title="range" itemprop="url">range</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-06-27T14:37:00.000Z" itemprop="datePublished"> 發表於 2012-06-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>阿阿~其實…原本不是要寫這個的耶~ XDD 可是、想不出來該怎摸寫我想寫的、再慢慢醞釀一下好了，就讓好東西醞釀的再久<br>一點好了 哈~來出個好久不見的小品文就好。不然~人家好想趕快認真的試試看剛學的$\LaTeX{}$ (←硬是要用一下就是了~<br>XDD) 好~馬上進入正題…。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2012/06/27/new-post/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/code/">code</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/code/">code</a><a href="/tags/數學/">數學</a><a href="/tags/效能/">效能</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2012/06/27/new-post/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+ </html>

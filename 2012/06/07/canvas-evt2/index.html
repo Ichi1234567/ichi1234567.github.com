@@ -1,0 +1,532 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[canvas]上的事件 --- (2) | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ &amp;gt; 3&amp;lt; 既然有進度、那就接著延續昨天的話題、canvas事件吧~！！好~記得昨天辛酸史講到了isPointInPath、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[canvas]上的事件 --- (2)">
+<meta property="og:url" content="http://yoursite.com/2012/06/07/canvas-evt2/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ &amp;gt; 3&amp;lt; 既然有進度、那就接著延續昨天的話題、canvas事件吧~！！好~記得昨天辛酸史講到了isPointInPath、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w">
+<meta property="og:updated_time" content="2016-07-04T04:51:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[canvas]上的事件 --- (2)">
+<meta name="twitter:description" content="今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ &amp;gt; 3&amp;lt; 既然有進度、那就接著延續昨天的話題、canvas事件吧~！！好~記得昨天辛酸史講到了isPointInPath、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/06/07/canvas-evt2/" title="[canvas]上的事件 --- (2)" itemprop="url">[canvas]上的事件 --- (2)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2012-06-06T16:00:00.000Z" itemprop="datePublished"> 發表於 2012-06-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>今天、實驗進度大躍進~ XDD 雖然勒~ = 口= 唉唉唉~算算了、不提了~ &gt; 3&lt; 既然有進度、那就接著延續昨天的話題、canvas<br>事件吧~！！好~記得昨天辛酸史講到了<strong>isPointInPath</strong>、今天就接下去紀錄…嗯~今天就來歸納一下canvas如何綁定事件吧~ w</p>
+<a id="more"></a>
+<p>因為isPointInPath有一些使用上的麻煩、所以…(如果沒記錯的話~w)就有了以下的幾種方法：</p>
+<ul>
+<li><p>使用<strong>svg</strong>：<br><br>就是因為這樣…所以~用了svg，其實就可以不用canvas了~XDD 是說、值得一提的是，有不少讓原本不能用canvas的瀏覽器支援<br>的方法、都不約而同的利用svg。像是…<a href="http://excanvas.sourceforge.net/" target="_blank" rel="external">excanvas</a> 記得大部分的版本都是使用svg喇~<br>可是、我把名字忘光光了~囧</p>
+</li>
+<li><p>使用<strong>flash</strong>：<br><br>這個方法比較不常見耶~說真的、而且run起來聽說也比較慢。可是咧~印象中我挖到的這個<br><a href="http://burzak.com/proj/fxcanvas/" target="_blank" rel="external">fxCanvas</a>在實做canvas的功能上、的確有比較完整呢~不知道是好還是壞~ XDD<br>可是、我私心的並不喜歡flash~ Q ^Q</p>
+</li>
+<li><p>使用<strong>透明image圖層</strong>：<br><br>這個方法、其實就是使用了<a href="http://www.w3schools.com/tags/tag_area.asp" target="_blank" rel="external">area</a>這個html的tag，在圖形上、利用area<br>紀錄好shape、在去監聽事件。是不錯用、對於polygon、circle這類的都不錯，就是polyline稍嫌麻煩些。</p>
+</li>
+<li><p>使用<strong>DIV</strong>：<br><br>而上述的那些方法的確都可以監聽個別圖形的事件、可是~有時候並不需要那摸精細、畢竟…上述的方法都不是canvas的原生<br>方法，算起來就…肯定比較花時間啦~那…使用div的方法、就是說…只要大概的抓到它需要觸發事件的範圍就行了。其使用<br>的範疇大概就是…唔~最常見的大概就是…在…<a href="http://www.google.com/doodles/finder/2012/All%20doodles" target="_blank" rel="external">google doodle</a><br>裡、大家可以發現不少互動式的案例。它們都有一個共通點、就是…需要觸發事件的地方不多、而且單純，也許就是mouseover<br>某個物體的時候、發生了某某事情。或者是click的時候、做了balabala動作。</p>
+<p>其實、並不是每一種效果都需要非常精細的事件監聽和觸發~所以、我個人還蠻喜歡這種方法的啦~ XDDD<br>很方便偷懶阿~只要在產生圖形的時候，在需要的時候，順便產生對應大小的div，還有設定好anchor position，<br>接下來在圖形畫上去的順手append上去，接下來就可以邪惡的監聽事件了，在圖形有所變化的時候、也只需要修正大小<br>或位置…就完成了。說起來真的是非常的方便呢~ 這個部份、可以參考<br>google doodle的<a href="http://www.google.com/logos/lem/" target="_blank" rel="external">機器人</a>的<br><a href="https://code.google.com/p/stanislaw-lem-google-doodle/" target="_blank" rel="external">source code</a> 真的很讚呢~裡面可以看到很多邪惡的小<br>細節、太邪惡、太邪惡、真的是太邪惡了啦~ XDDD 即使看過再看、都還是能帶給我驚喜哩~ </p>
+<p>我喜歡有驚喜的code~太感謝製作團隊無私的分享了。希望我哪天也可以邪惡一把。(&lt;— 又在做白日夢了~|||)</p>
+</li>
+</ul>
+<p>雖然、還有一個<strong>超~~~~級邪惡</strong>的方法，不過、今天就到這邊吧~ 接下的那個方法、雖然概念很簡單、不過，實做上需要<br>一點點小技巧~ XDD 而且、其實我還在實驗啦~我想要弄一個自己順手的版本…不過，有人就是使用我下次要講的技巧歐~<br>就是這個<a href="http://www.createjs.com/#!/EaselJS" target="_blank" rel="external">easelJs</a> 好~~那就這樣吧~ 收工~ w</p>
+<p><strong>To Be Continued……</strong></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/canvas/">canvas</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/canvas/">canvas</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2012/06/07/canvas-evt2/" data-title="[canvas]上的事件 --- (2) | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2012/06/09/new-post/" title="我生命中的JS和OO">
+  <strong>上一篇：</strong><br/>
+  <span>
+  我生命中的JS和OO</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2012/06/06/canvas-evt1/"  title="[canvas]上的事件 --- (1)">
+ <strong>下一篇：</strong><br/> 
+ <span>[canvas]上的事件 --- (1)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
