@@ -1,0 +1,679 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>autocomplete-1 | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="這題目大概是為什摸我會想趕快把 octopress 換成 hexo，然後再寫些東西的動力之一。嗯、大概醞釀了大半年了歐。所以、我要來花很~~大的篇幅來寫這個。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="autocomplete-1">
+<meta property="og:url" content="http://yoursite.com/2016/07/05/autocomplete-1/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="這題目大概是為什摸我會想趕快把 octopress 換成 hexo，然後再寫些東西的動力之一。嗯、大概醞釀了大半年了歐。所以、我要來花很~~大的篇幅來寫這個。">
+<meta property="og:updated_time" content="2016-07-11T03:25:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="autocomplete-1">
+<meta name="twitter:description" content="這題目大概是為什摸我會想趕快把 octopress 換成 hexo，然後再寫些東西的動力之一。嗯、大概醞釀了大半年了歐。所以、我要來花很~~大的篇幅來寫這個。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/05/autocomplete-1/" title="autocomplete-1" itemprop="url">autocomplete-1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-05T13:18:43.000Z" itemprop="datePublished"> 發表於 2016-07-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#曾經看過的-plugin-們"><span class="toc-number">2.</span> <span class="toc-text">曾經看過的 plugin 們</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#經典的-typeahead"><span class="toc-number">2.1.</span> <span class="toc-text">經典的 typeahead</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react"><span class="toc-number">2.2.</span> <span class="toc-text">react</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#假想出的畫面和情境"><span class="toc-number">3.</span> <span class="toc-text">假想出的畫面和情境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有候選的情況"><span class="toc-number">3.1.</span> <span class="toc-text">有候選的情況</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未產生候選-錯誤或等待"><span class="toc-number">3.2.</span> <span class="toc-text">未產生候選(錯誤或等待)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一版需求醞釀"><span class="toc-number">4.</span> <span class="toc-text">第一版需求醞釀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事情的真相"><span class="toc-number">5.</span> <span class="toc-text">事情的真相</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#哀傷的原因"><span class="toc-number">5.1.</span> <span class="toc-text">哀傷的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生了第二版需求"><span class="toc-number">6.</span> <span class="toc-text">生了第二版需求</span></a></li></ol>
+		
+		</div>
+		
+		<p>這題目大概是為什摸我會想趕快把 octopress 換成 hexo，然後再寫些東西的動力之一。嗯、大概醞釀了大半年了歐。所以、我要來花很~~大的篇幅來寫這個。</p>
+<a id="more"></a>
+<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>當然是因為工作上的需要啦~ XDD<br>對於這功能，我大概是生理上可以接受、但心理不能接受。可是、顯然這功能是必要的了…。</p>
+<p>生理上：</p>
+<ul>
+<li>的確有這種需求。</li>
+<li>功能也很合理。</li>
+</ul>
+<p>心理上：</p>
+<ul>
+<li>layout 根本不應該這樣啊！這種功能的長相就應該是 select + option 的組合！為什摸會是 input + dropdown！</li>
+<li>這明明應該就很單純的、怎摸會是 option 還要有各種長相各種需求各種……！</li>
+<li>為什摸明明就是 select + option，為什摸尼 option 還要可以變動！</li>
+</ul>
+<p>所以、基於以上的原因，我對他感覺非常的矛盾。</p>
+<h2 id="曾經看過的-plugin-們"><a href="#曾經看過的-plugin-們" class="headerlink" title="曾經看過的 plugin 們"></a>曾經看過的 plugin 們</h2><p>當然、除了這些，任性的前端和設計師們，也一定出了更多我沒有看過的版本！<br>這些 plugin 在使用上，多少都會有些問題，以我來說，大部份都會出在：</p>
+<ul>
+<li>彈性不夠<ul>
+<li>layout 的限制。</li>
+<li>可調整的 option 不夠。</li>
+</ul>
+</li>
+<li>操作上<ul>
+<li>不順暢。</li>
+<li>缺乏一些個人需要的狀態。</li>
+</ul>
+</li>
+</ul>
+<p>但是、有時候還是蠻方便的啦~</p>
+<h3 id="經典的-typeahead"><a href="#經典的-typeahead" class="headerlink" title="經典的 typeahead"></a>經典的 typeahead</h3><ul>
+<li><p><a href="https://github.com/twitter/typeahead.js" target="_blank" rel="external">twitter-typeahead</a></p>
+</li>
+<li><p><a href="https://angular-ui.github.io/bootstrap/#/typeahead" target="_blank" rel="external">angular-typeahead</a></p>
+</li>
+</ul>
+<h3 id="react"><a href="#react" class="headerlink" title="react"></a>react</h3><p>  後來再導入 <a href="https://github.com/facebook/react" target="_blank" rel="external">React</a> 要使用 autocomplete 的時候，又去挖了一些 plugin。像是…</p>
+<ul>
+<li><p><a href="https://github.com/JedWatson/react-select" target="_blank" rel="external">react-select</a></p>
+</li>
+<li><p><a href="https://github.com/eliseumds/react-autocomplete" target="_blank" rel="external">react-autocomplete</a></p>
+</li>
+<li><p><a href="https://github.com/fmoo/react-typeahead" target="_blank" rel="external">react-typeahead</a></p>
+</li>
+<li><p><a href="https://github.com/prometheusresearch/react-selectbox" target="_blank" rel="external">react-selectbox</a></p>
+</li>
+</ul>
+<h2 id="假想出的畫面和情境"><a href="#假想出的畫面和情境" class="headerlink" title="假想出的畫面和情境"></a>假想出的畫面和情境</h2><h3 id="有候選的情況"><a href="#有候選的情況" class="headerlink" title="有候選的情況"></a>有候選的情況</h3><table>
+<thead>
+<tr>
+<th style="text-align:center"><em>INPUT</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>HEADER</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center">option(disabled)</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>FOOTER</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="未產生候選-錯誤或等待"><a href="#未產生候選-錯誤或等待" class="headerlink" title="未產生候選(錯誤或等待)"></a>未產生候選(錯誤或等待)</h3><table>
+<thead>
+<tr>
+<th style="text-align:center"><em>INPUT</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>HEADER</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">some message</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>FOOTER</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="第一版需求醞釀"><a href="#第一版需求醞釀" class="headerlink" title="第一版需求醞釀"></a>第一版需求醞釀</h2><ul>
+<li>option 的 layout 要可以自訂。<ul>
+<li>會有可以按的。</li>
+<li>會有不可以按的。</li>
+</ul>
+</li>
+<li>header 要有。</li>
+<li>footer 也要有。</li>
+<li>為了 http request 的各種等待、錯誤、找沒有，message 果斷要有。</li>
+</ul>
+<p>但、不管header、footer、message，都可以偷懶視他們為 <code>option</code>，只是可以定義 option 的 layout 一切都不是問題。</p>
+<p>天真的我、以為就這摸結束了。這樣的話、顯然曾經的 plugin 們，絕對找得到可以用的。(姑且不論那 layout 和 css 好不好套進去)</p>
+<h2 id="事情的真相"><a href="#事情的真相" class="headerlink" title="事情的真相"></a>事情的真相</h2><p>實際的需求會有類似下面的長相</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>autocomplete-1</code></td>
+<td><code>autocomplete-2</code></td>
+</tr>
+</tbody>
+</table>
+<p>然後 <code>autocomplet-2</code> 要向 <a href="http://xoxco.com/projects/code/tagsinput/example.html" target="_blank" rel="external">tags-input</a> 這樣的顯示方式，所以….<br>案情根本沒有像想像的單純！！！！！！ (根本就被騙了~)</p>
+<h3 id="哀傷的原因"><a href="#哀傷的原因" class="headerlink" title="哀傷的原因"></a>哀傷的原因</h3><ul>
+<li>因為 responsive ， desktop 和 mobile 寬度顯然不同 –&gt; 塞兩個 input 也太擠了。</li>
+<li>desktop 和 mobile 操作習慣果然不一樣。</li>
+</ul>
+<p>也許、大家都認為，這沒有太大的問題，不過就是把兩個 input 分開，然後、tags-input 嘛~ 上面提到的也是有支援噠！有什摸好哀傷的…</p>
+<p>而事實的真相是，上述的 plugin：</p>
+<ul>
+<li>要不就是導入真實的位置後，style 真的很難調整。</li>
+<li>desktop 和 mobile 的輸入習慣真的不同啊！(因為發現還不錯用、彈性大的 plugin，操作習慣比較偏向 mobile 輸入)</li>
+<li>最讓人哀傷的是…. 我們用的是一個<code>需要切換輸入法的語言</code>。他們用起來都不順啊！</li>
+</ul>
+<h2 id="生了第二版需求"><a href="#生了第二版需求" class="headerlink" title="生了第二版需求"></a>生了第二版需求</h2><p>我們<a href="#第一版需求醞釀">回顧第一版</a> 然後再一條一條補：</p>
+<ul>
+<li>tags-input<br>顯然、一個 input 裡面再疊上 1 層或 2 層 div 就為了一邊輸入一邊顯示 tags、嗯、還要可以刪除已經輸入的，我覺得這很麻煩，而且操作起來行為超怪、layout 也不合理，特別短短的寬度，輸入隨便就超過寬度，更難處理了。 input 就應該專心當他的 input 啊！<ul>
+<li>聰明的同事想起了 <a href="pinterest.com">pinterest</a> 的輸入。太棒了！就決定是它了！</li>
+</ul>
+</li>
+<li>mobile 上、兩個 input 太擠了<br>太好了、聰明的同事把他們拆出來了，採用了一個本人真心不愛但是又提不出好想法，所以最後還是乖乖接受的方法那就是…<ul>
+<li>input 底下搭配 tab 切換各自不同的需求。</li>
+</ul>
+</li>
+</ul>
+<p>然後、開始了令人開心又哀傷的開發旅程！</p>
+<p>to be continued…</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/js/">js</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/07/05/autocomplete-1/" data-title="autocomplete-1 | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/07/10/autocomplete-2/" title="autocomplete-2">
+  <strong>上一篇：</strong><br/>
+  <span>
+  autocomplete-2</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/07/04/hello-hexo/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#曾經看過的-plugin-們"><span class="toc-number">2.</span> <span class="toc-text">曾經看過的 plugin 們</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#經典的-typeahead"><span class="toc-number">2.1.</span> <span class="toc-text">經典的 typeahead</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react"><span class="toc-number">2.2.</span> <span class="toc-text">react</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#假想出的畫面和情境"><span class="toc-number">3.</span> <span class="toc-text">假想出的畫面和情境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有候選的情況"><span class="toc-number">3.1.</span> <span class="toc-text">有候選的情況</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未產生候選-錯誤或等待"><span class="toc-number">3.2.</span> <span class="toc-text">未產生候選(錯誤或等待)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一版需求醞釀"><span class="toc-number">4.</span> <span class="toc-text">第一版需求醞釀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事情的真相"><span class="toc-number">5.</span> <span class="toc-text">事情的真相</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#哀傷的原因"><span class="toc-number">5.1.</span> <span class="toc-text">哀傷的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生了第二版需求"><span class="toc-number">6.</span> <span class="toc-text">生了第二版需求</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.blackbing.net/" target="_blank" title="Blackbing&#39;s Playground">Blackbing&#39;s Playground</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://yy-programer.blogspot.tw/" target="_blank" title="Yy&#39;s program">Yy&#39;s program</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kainors.github.com/" target="_blank" title="小諾的沒技術農場">小諾的沒技術農場</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>

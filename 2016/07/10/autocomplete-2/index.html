@@ -1,0 +1,721 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>autocomplete-2 | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="接續上篇，這次會從需求和功能設計推進。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="autocomplete-2">
+<meta property="og:url" content="http://yoursite.com/2016/07/10/autocomplete-2/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="接續上篇，這次會從需求和功能設計推進。">
+<meta property="og:updated_time" content="2016-07-11T08:19:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="autocomplete-2">
+<meta name="twitter:description" content="接續上篇，這次會從需求和功能設計推進。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/10/autocomplete-2/" title="autocomplete-2" itemprop="url">autocomplete-2</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-10T03:02:35.000Z" itemprop="datePublished"> 發表於 2016-07-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前情提要"><span class="toc-number">1.</span> <span class="toc-text">前情提要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-number">2.</span> <span class="toc-text">Option</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自訂-template"><span class="toc-number">2.1.</span> <span class="toc-text">自訂 template</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Click-event"><span class="toc-number">2.2.</span> <span class="toc-text">Click event</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Highlight"><span class="toc-number">2.3.</span> <span class="toc-text">Highlight</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Option-結論"><span class="toc-number">2.4.</span> <span class="toc-text">Option 結論</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Input"><span class="toc-number">3.</span> <span class="toc-text">Input</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-or-Dyanmic-Options"><span class="toc-number">3.1.</span> <span class="toc-text">Static or Dyanmic Options</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Set-throttle-or-debounce"><span class="toc-number">3.1.1.</span> <span class="toc-text">Set throttle or debounce</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tagsinput"><span class="toc-number">3.2.</span> <span class="toc-text">Tagsinput</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#輸入法問題"><span class="toc-number">3.3.</span> <span class="toc-text">輸入法問題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Desktop-vs-Mobile"><span class="toc-number">3.4.</span> <span class="toc-text">Desktop vs Mobile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-結論"><span class="toc-number">3.5.</span> <span class="toc-text">Input 結論</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#總結"><span class="toc-number">4.</span> <span class="toc-text">總結</span></a></li></ol>
+		
+		</div>
+		
+		<p>接續<a href="/2016/07/11/autocomplete-1/">上篇</a>，這次會從需求和功能設計推進。</p>
+<a id="more"></a>
+<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li>基本的架構完全可以從現在很多人關注、或者認為好用的 pluins 下手。</li>
+<li><p>我們已知的基本 autocomplete layout 如下：</p>
+<ul>
+<li><strong>有候選的情況</strong></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><em>INPUT</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>HEADER</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center">option(disabled)</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>option(clickable)</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>FOOTER</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>未產生候選(錯誤或等待)</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><em>INPUT</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>HEADER</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">some message</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>FOOTER</strong></td>
+</tr>
+</tbody>
+</table>
+<p>所以、可拆成</p>
+<ul>
+<li>input</li>
+<li>option<br>之後就會圍繞著這兩個 component 討論。</li>
+</ul>
+<h2 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h2><p>從相對單純的 <code>Option</code> 開始。</p>
+<p>根據我們的需求，option 其實只需要單純的…  <code>可以自訂template + click event</code> 好像就可以結束了，也許會有人說『那 message 呢？』 『我的 key 還要 highlight』『尼上一篇說的 tabs 咧？』『還有 header 、 footer』，尼騙人、哪有那摸單純！</p>
+<h3 id="自訂-template"><a href="#自訂-template" class="headerlink" title="自訂 template"></a>自訂 template</h3><p>好的、當我們放鬆點，不要這摸認真的把因為樣貌的關係而造成我們有特殊觀感的元件視為特別的 component 的話。那、不論是 <code>header</code> 、 <code>footer</code> 、 <code>message</code> 或者 <code>tabs</code> 甚至其他超展開的元件，都是放在 <code>option</code> 區域啊~ 這樣的話、為什摸不能視他們為一種 option 呢？只是差在樣貌不同、跟 click event 有所差異。(當然、想特化也是沒有問題啦！但我認為沒有特化也是沒問題的。前提當然是要提供自訂的 template)</p>
+<h3 id="Click-event"><a href="#Click-event" class="headerlink" title="Click event"></a>Click event</h3><p>click event 為什摸抽出來呢？這是因為、的確會有這個 option 能不能 <code>按下</code> 的需求，撇開我們是不是將 <code>header</code> 等等特殊元件視為 <code>Option</code> ，一個正常的 option 的確有可能因其他的原因不能按(比如、這 option 即將失效？)</p>
+<p>但是、無論能不能按下，或者按下之後要幹麻… 我認為都不是這 option 可以決定的，頂多、是透過定義的時候，多訂個 <code>onClick</code> 的 option function 然後，綁定在 click event 上，讓他知道該做什摸事。</p>
+<h3 id="Highlight"><a href="#Highlight" class="headerlink" title="Highlight"></a>Highlight</h3><p>說了這摸多、都沒有提到 <code>highlight</code> ， 也許會很奇怪 highlight 應該很難吧？他牽扯那摸廣、還需要 input ，哪有這摸單純？</p>
+<p>但… 他其實真的很單純。</p>
+<p>基本上、我是把他歸類在 <code>自訂 template</code> 那部分，為什摸呢？顯然、 highlight 的 class-name，或者這樣的 component 的 layout ，絕對不可能一個打全部，一定會有各式各樣的超展開，所以、我不認為他是需要額外要抽出來在 <code>Option</code> 的其他區塊解決的。</p>
+<p>可是！為了達到這目地，我們必須在規劃 option 的時候，把 input 的 value 帶進來，然後再 customer template 裡取得 input 的 value，這樣、就可以解決這題啦~ 而且、 <code>Option</code> 可以很單純，基本上只處理 template 和 event。</p>
+<h3 id="Option-結論"><a href="#Option-結論" class="headerlink" title="Option 結論"></a>Option 結論</h3><p>開發這 component 需要注意以下幾點：</p>
+<ul>
+<li>customer &amp; default template<ul>
+<li>Get input value</li>
+</ul>
+</li>
+<li>click event<ul>
+<li>clickable or not</li>
+</ul>
+</li>
+</ul>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>比較難的其實是這個，也許、大家又開始困惑啦~</p>
+<p>『Input？他除了 onChange 還有什摸特別的？』<br>『他又沒有 customer template』<br>『不就是 onchange + 要讓 option 顯示嗎？』</p>
+<p>是的、他的確除了 <code>onChange</code> 以外，好像沒有什摸特別的。但是根據我們常見的需求，可能會有 <code>tagsinput</code> ， 對於一個輸入法是需要切換的語言，常見的幾個 autocomplete plugins 其實操作起來不順暢。再加上、 mobile 和 desktop 的操作習慣明顯不同。還有 static 或者透過 request 取得 options 的銜接不同。其實… <code>Input</code> 的細節會比 <code>Option</code> 要來得多。</p>
+<h3 id="Static-or-Dyanmic-Options"><a href="#Static-or-Dyanmic-Options" class="headerlink" title="Static or Dyanmic Options"></a>Static or Dyanmic Options</h3><p>他們的差異，其實就是 options 是不是已經定義好的，就只有這些 options 。總共 10 個 options 的話，那輸入超過這 10 種可能性就也沒有了。這是一般 plugin 都會具備的功能，也是 demo 一定都會做的。所以、這部分就不多提了。</p>
+<p>把主力放在 dyanmic。</p>
+<p>一般操作，其實廣泛地運用上，還是會希望輸入各種奇怪的東西後， option 也隨著改變，而顯然… 不管是哪種 devise 都不可能放上一個資料庫… 吧~||| 所以、理想狀況就是透過打 api 取得候選字組。這時候問題就來了….</p>
+<p>1 秒鐘如果輸入 10 個字，打 10 次 api？<br>那… 100 個人再用， 1 秒鐘就… 1000 次？<br>那… 如果是很不錯的服務，天阿！那不就要被打爆了？</p>
+<p>扣掉會不會被打爆的問題、另外衍生的問題還有…<br>發了 10 次 request，問題是、回來的時間不定，尼知道尼要的是哪個嗎？<br>就算知道尼想辦法知道尼要的是哪個、10 個裡、我只需要 1 個，然後 9 個都是要丟掉的、尼知道… js 在建立 request，發出之後需要消耗的時間和資源嗎~？而這不只造成了 sever 的負擔，同時也會造成 rerender 的時候的不順暢。</p>
+<p>這多可惜啊~ 也許、我們不能很完美的只發出那個需要的 request，但、我們絕對可以想辦法減少這樣的事情發生。所以、我們有兩個方案可以選擇 <code>throttle</code> 或者 <code>debounce</code> 。</p>
+<h4 id="Set-throttle-or-debounce"><a href="#Set-throttle-or-debounce" class="headerlink" title="Set throttle or debounce"></a>Set throttle or debounce</h4><p>有點陌生的話，可以參考<a href="https://blog.coding.net/blog/the-difference-between-throttle-and-debounce-in-underscorejs" target="_blank" rel="external">這篇</a> ，順手貼過來的、網路上有更多的參考資料。</p>
+<p>這兩種方案、也很難說哪個好、哪個不好啦~ 我是認為順暢的話就都很好。至於最困難(？)的時間該怎摸設定，這部分我其實是經驗判斷啦~ T UT</p>
+<p>根據分析(我忘了是在哪看到的)，一般人感受到的 <code>慢</code> 、 <code>卡卡的</code> 或者 <code>不順暢</code> ，大約是 <code>300ms</code> 。所以、那加上 requeset 需要的時間，我認為 <code>200~250ms</code> 甚至不想改變用 <code>300ms</code> 都還蠻合理的、要上調到 <code>350ms</code> 其實說不定也不是不行歐。如果很厲害可以知道目前的網速，甚至要再更精確地調整這時間我覺得都很好。</p>
+<h3 id="Tagsinput"><a href="#Tagsinput" class="headerlink" title="Tagsinput"></a>Tagsinput</h3><p>如同上篇所說，我不認為一個 input 疊上一層 div 做某些特殊化的 render ，然後馬上輸入什摸、就顯示什摸是個正常的 input。也許大家覺得很美觀(？)，但我無法接受。有幾個原因：</p>
+<ul>
+<li>一個 input(或 textarea) 如果考慮到開發出的 component 能不能 reuse 等等。還會有以下的情況。<ul>
+<li>我要固定大小。</li>
+<li>我要可以變高、變矮、變長、變短。</li>
+<li>我要輸入的時候就可以知道各種長相(比如、不只 tags，如果是 username？)</li>
+</ul>
+</li>
+<li>desktop 和 mobile 的操作行為不同。(這下下面會認真提)</li>
+</ul>
+<p>以上的原因、當認真思考的時候，會發現、 <code>input + div</code> 這種組合根本就只想要翻白眼而已啊！！！！！！！ 不管對於哪方面的工程師(開發實際功能與樣式)來說，這都是災難。</p>
+<p>因此、在觀察過很多人的框框後，我們採用了 <a href="pinterest.com">pinterest</a> 的做法。</p>
+<p>也就是在 multiple input 的情況，focus 是 input，blur 的時候會是 tags。</p>
+<h3 id="輸入法問題"><a href="#輸入法問題" class="headerlink" title="輸入法問題"></a>輸入法問題</h3><p>輸入法、這大概是開發時候，最讓人頭痛的事情了~，絕大多數的 plugin 並不會想到這件事，因為幾乎都是英文嘛~ 也不容易找到相關的資料。後來、解決的方法，我得說、這應該是運氣好，發現的吧！</p>
+<p>關鍵在 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/selectionStart" target="_blank" rel="external">selectionStart</a></p>
+<p>原本以為 <code>selectionStart</code> 不過就是只能找到開始的位置，或者在 slect 的狀態才有用，沒想到、意外發現… 在切換輸入法輸入的時候、 <code>selectionStart</code> 可以知道在切換之後輸入到一半的 value，真正是意外之喜啊~</p>
+<p>所以、搭配 <code>selectionStart</code> 、 <code>selectionEnd</code> 還有 <code>delimiter</code> 就可以解決 輸入法 + tagsinput 的問題啦~</p>
+<h3 id="Desktop-vs-Mobile"><a href="#Desktop-vs-Mobile" class="headerlink" title="Desktop vs Mobile"></a>Desktop vs Mobile</h3><p>這兩者在輸入的行為上，有非常大的差異…</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th>Mobile</th>
+<th>Desktop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">修改情況</td>
+<td>幾乎不修改</td>
+<td>可能移動從中插入或刪除</td>
+</tr>
+<tr>
+<td style="text-align:center">option操作</td>
+<td>點擊後直接到頁面</td>
+<td>點擊後更新 input</td>
+</tr>
+<tr>
+<td style="text-align:center">上下</td>
+<td>沒有</td>
+<td>focus option</td>
+</tr>
+<tr>
+<td style="text-align:center">mouseenter(leave)</td>
+<td>沒有</td>
+<td>focus option</td>
+</tr>
+<tr>
+<td style="text-align:center">左右</td>
+<td>沒有</td>
+<td>在 input 裡可以移動</td>
+</tr>
+<tr>
+<td style="text-align:center">enter</td>
+<td>沒有</td>
+<td>可選擇 option 或 submit</td>
+</tr>
+</tbody>
+</table>
+<p>顯然、 mobile 的操作可能相對的單純，在輸入的情況下、很少移動位置，與其移動位置，不然刪掉重來(？) 而這也造就了、他似乎不需要像 desktop 的這種 autocomplete ，他真正需要的應該是串出正確的 url 、並且 direct 。</p>
+<p>desktop 就複雜了，扣掉很多的 event ， 行為也瑣碎的多了，平常操作，就常常會移動位置更新輸入的資料， autocomplete 也的確比較像我們認知的行為，而且、從上下移動到 click 都是需要的。如果這個 input 是包在 form 裡面、更需要考慮 enter 是否可觸發 submit 事件，另外還需要考慮輸入法正在輸入的時候按下 <code>enter</code> 的事件是否會造成影響。(整個案情就不單純啊！！！！)</p>
+<h3 id="Input-結論"><a href="#Input-結論" class="headerlink" title="Input 結論"></a>Input 結論</h3><p>這邊分兩部分結論</p>
+<ul>
+<li>Mobile<ul>
+<li>event<ul>
+<li>focus：非必要，但可以透過這 event 更改 focus 後要調整哪些顯示。</li>
+<li>blur：非必要，同上。</li>
+<li>change：必要，並且需要串接 <code>option</code> ，組出正確的 link。 render option 需要注意 <code>highlight</code> 。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Desktop<ul>
+<li>event<ul>
+<li>focus：非必要，但在 multiple (也就是 tagsinput) 的情況下，可以透過它來切換樣式。</li>
+<li>blur：非必要，同上。</li>
+<li>change：必要， render option 需要注意 <code>highlight</code> 。</li>
+<li>keydown：<ul>
+<li>上下：focus option。</li>
+<li>enter：change input or submit，需要特別注意 multiple 情況下，更新字詞的位置是否正確。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>caret：用於處理 multiple 與輸入法切換輸入的情況。</li>
+<li>multiple 的情況，blur 後，需要特別處理 delimiter 重複的情形。</li>
+</ul>
+</li>
+</ul>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>運氣蠻好的是，這次是用 React 開發的，對於 redering 和 event 更好掌握。</p>
+<p>而當 Input 和 Option 這兩個 component 分開開發後，會發現雖然麻煩，但相對的單純、而且很多地方變得很有彈性，即使是 mobile 和 desktop 這兩個完全迥異的行為，其實、都可以共用這兩個 component，差別只在 Input 和 Option 結合起來的時候，在另外處理，但這樣的處理方式、我認為乾淨多了、而且更有彈性。</p>
+<p>最有趣、也最不討喜的地方在… input 的 caret，當時死馬當活馬醫、沒想到就突破了。</p>
+<p>最麻煩的地方其實是，兩個 component 分開的時候，其實蠻好開發的，比較難的地方是為了銜接。為了銜接好 request 和 onChange 之後該做的事情，的確下了番工夫。</p>
+<p>有點痛苦的是，在這次處理，mobile 在 focus 後必須彈出 tabs 並且可以操作。因為會觸發 blur，options 會收起來，又費了一番工夫。</p>
+<p>最讓我不耐煩的是，細節非常的多… 很多、很多、很多、很~~~~多。</p>
+<p>總而言之，其實看起來這小小的好像不難(？)，貌似也非常多人實作，但依據現實的情況，其實是有很多細節需要經過處理的。也不敢說，東西就已經很好了(是覺得應該有蠻多洞的…|||)，不過、對現在的我來說，蠻夠用的，以我現在知道的各種組合來說，大部份都是沒有問題的。</p>
+<p>至於更複雜的話、我會認為，過於複雜的操作或顯示是不現實的，像我太複雜我就會瞳孔放大啊！眼神、精神完全不能集中。</p>
+<p>以上、autocomplete 完結。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/js/">js</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/07/10/autocomplete-2/" data-title="autocomplete-2 | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/07/05/autocomplete-1/"  title="autocomplete-1">
+ <strong>下一篇：</strong><br/> 
+ <span>autocomplete-1
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前情提要"><span class="toc-number">1.</span> <span class="toc-text">前情提要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-number">2.</span> <span class="toc-text">Option</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自訂-template"><span class="toc-number">2.1.</span> <span class="toc-text">自訂 template</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Click-event"><span class="toc-number">2.2.</span> <span class="toc-text">Click event</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Highlight"><span class="toc-number">2.3.</span> <span class="toc-text">Highlight</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Option-結論"><span class="toc-number">2.4.</span> <span class="toc-text">Option 結論</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Input"><span class="toc-number">3.</span> <span class="toc-text">Input</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-or-Dyanmic-Options"><span class="toc-number">3.1.</span> <span class="toc-text">Static or Dyanmic Options</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Set-throttle-or-debounce"><span class="toc-number">3.1.1.</span> <span class="toc-text">Set throttle or debounce</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tagsinput"><span class="toc-number">3.2.</span> <span class="toc-text">Tagsinput</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#輸入法問題"><span class="toc-number">3.3.</span> <span class="toc-text">輸入法問題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Desktop-vs-Mobile"><span class="toc-number">3.4.</span> <span class="toc-text">Desktop vs Mobile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-結論"><span class="toc-number">3.5.</span> <span class="toc-text">Input 結論</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#總結"><span class="toc-number">4.</span> <span class="toc-text">總結</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.blackbing.net/" target="_blank" title="Blackbing&#39;s Playground">Blackbing&#39;s Playground</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://yy-programer.blogspot.tw/" target="_blank" title="Yy&#39;s program">Yy&#39;s program</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kainors.github.com/" target="_blank" title="小諾的沒技術農場">小諾的沒技術農場</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
