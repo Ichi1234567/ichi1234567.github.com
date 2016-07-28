@@ -1,0 +1,595 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>Clicked and Then ... | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="(趁著還有記憶，趕快填坑！)
+絕大多數的行為(姑且不論操作動向)，都是一個 click 、接著一個反應，但是、有各種不同名稱 ，有時候、我搞不清楚哪個名字的行為是什摸，因為對我來說，就是 click 然後…。
+也就是說、這是個很好入手、不入手絕對會後悔的 pattern 阿！！！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clicked and Then ...">
+<meta property="og:url" content="http://yoursite.com/2016/07/24/clicked-and-then/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="(趁著還有記憶，趕快填坑！)
+絕大多數的行為(姑且不論操作動向)，都是一個 click 、接著一個反應，但是、有各種不同名稱 ，有時候、我搞不清楚哪個名字的行為是什摸，因為對我來說，就是 click 然後…。
+也就是說、這是個很好入手、不入手絕對會後悔的 pattern 阿！！！！">
+<meta property="og:updated_time" content="2016-07-28T12:33:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Clicked and Then ...">
+<meta name="twitter:description" content="(趁著還有記憶，趕快填坑！)
+絕大多數的行為(姑且不論操作動向)，都是一個 click 、接著一個反應，但是、有各種不同名稱 ，有時候、我搞不清楚哪個名字的行為是什摸，因為對我來說，就是 click 然後…。
+也就是說、這是個很好入手、不入手絕對會後悔的 pattern 阿！！！！">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/24/clicked-and-then/" title="Clicked and Then ..." itemprop="url">Clicked and Then ...</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-24T13:45:51.000Z" itemprop="datePublished"> 發表於 2016-07-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#所謂-pattern"><span class="toc-number">1.</span> <span class="toc-text">所謂 pattern</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本構成"><span class="toc-number">2.</span> <span class="toc-text">基本構成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pseudo-code"><span class="toc-number">3.</span> <span class="toc-text">pseudo code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#part-1"><span class="toc-number">3.1.</span> <span class="toc-text">part 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part2"><span class="toc-number">3.2.</span> <span class="toc-text">part2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part3"><span class="toc-number">3.3.</span> <span class="toc-text">part3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sample-code"><span class="toc-number">4.</span> <span class="toc-text">sample code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">5.</span> <span class="toc-text">結論</span></a></li></ol>
+		
+		</div>
+		
+		<p>(趁著還有記憶，趕快填坑！)</p>
+<p>絕大多數的行為(姑且不論操作動向)，都是一個 click 、接著一個反應，但是、有各種<code>不同名稱</code> ，有時候、我搞不清楚哪個名字的行為是什摸，因為對我來說，就是 click 然後…。</p>
+<p>也就是說、這是個<code>很好入手</code>、不入手絕對會後悔的 pattern 阿！！！！</p>
+<a id="more"></a>
+<h2 id="所謂-pattern"><a href="#所謂-pattern" class="headerlink" title="所謂 pattern"></a>所謂 pattern</h2><p>程式嘛~ 寫多了、寫久了，就會有各種像小時候學校說的 <code>看到A 尼就回答 B</code>，這種無趣的公式解，很無趣沒錯、但是、他可以讓尼把時間花在更有趣的事情上，所以身上一定要累積了各種 pattern，好處就是… 就跟玩樂高一樣、隨便組、就是一個新東西，好像很厲害的樣子。</p>
+<p>而既然會說是 pattern 那代表… 很有可能其他語言也可以用啊！所以、pattern 當然累積的越多越好啊！</p>
+<p>不過前提是<code>請記得久久更新一次腦海裡的 pattern</code>，我認為不管哪種語言也都有所謂的流行、也會修正一些所謂大家都不會有 bug 但其實可能有問題的 pattern (跟隨著演進、以前沒有 bug ，不代表以後沒有…)。</p>
+<h2 id="基本構成"><a href="#基本構成" class="headerlink" title="基本構成"></a>基本構成</h2><p>click 然後發生某些事情，基本上在 web 界就是 <code>不 click 不然要幹麻...</code>，這摸理所當然的事情。撇開各種前情提要的操作， click 後會發生什摸事呢？的確有些看起來很難、但事實上就只是 click 、然後…。</p>
+<p>以現在到處都要用一下的 <a href="http://getbootstrap.com/" target="_blank" rel="external">bootstrap</a> 來說：</p>
+<ul>
+<li><a href="http://getbootstrap.com/javascript/#modals" target="_blank" rel="external">modal</a></li>
+<li><a href="http://getbootstrap.com/javascript/#dropdowns" target="_blank" rel="external">dropdown</a></li>
+<li><a href="http://getbootstrap.com/javascript/#tabs" target="_blank" rel="external">tab</a></li>
+<li><a href="http://getbootstrap.com/javascript/#popovers" target="_blank" rel="external">popover</a></li>
+<li><a href="http://getbootstrap.com/javascript/#collapse" target="_blank" rel="external">collapse</a></li>
+<li><a href="http://getbootstrap.com/javascript/#carousel" target="_blank" rel="external">carousel</a></li>
+</ul>
+<p>扣掉長得很複雜、也許還有很多的設定，整個拆出來看、都是很基本的 click 一個東西、然後發生什摸事的操作。在更精確一點，不只是 click 發生什摸事情這樣的 pattern。還幾乎都是 —–</p>
+<blockquote>
+<p>click 1 element<br>show/hide other element</p>
+</blockquote>
+<p>以 <code>modal</code> 來說：<br>click 一個按鈕，燈箱出現。click 某個地方，燈箱消失。</p>
+<p>以 <code>dropdown</code> 來說：<br>click 一個按鈕，menu 出現。click 某個地方，menu 消失。</p>
+<p>以 <code>tab</code> 來說：<br>click 一個tab，content 出現。</p>
+<p>以 <code>popover</code> 來說：<br>click 一個按鈕，提示出現。click 某個地方，提示消失。</p>
+<p>以 <code>collapse</code> 來說：<br>click 一個按鈕，content 出現。click 某個地方，content (可以)消失。</p>
+<p>以 <code>carousel</code> 來說：<br>click next，content 往前，click previous，content 往後。</p>
+<p>^^^^^ 很明顯的規律對吧！相較於複雜到不行的 layout 、 css ，各種眼花撩亂的設計和內容，程式(js) 有沒有超單純！更不用提、其實像 <a href="http://getbootstrap.com/javascript/#popovers" target="_blank" rel="external">popover</a> 跟 <a href="http://getbootstrap.com/javascript/#tooltips" target="_blank" rel="external">bootstrap-tooltip</a> 兩個超像、只是 tooltip 一般都是用 <code>hover</code> 控制，沒錯、其實很多東西抽象化後都可以當一家人的！</p>
+<h2 id="pseudo-code"><a href="#pseudo-code" class="headerlink" title="pseudo code"></a>pseudo code</h2><p>根據上一段，我們可以稍微整理出一些樣板了。</p>
+<h3 id="part-1"><a href="#part-1" class="headerlink" title="part 1"></a>part 1</h3><p>最簡單版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def button_click</div><div class="line">  then view shows</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def document_click</div><div class="line">  then view hides</div></pre></td></tr></table></figure>
+<h3 id="part2"><a href="#part2" class="headerlink" title="part2"></a>part2</h3><p>補上幾個 customer event</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def button_click</div><div class="line">  before view shows</div><div class="line">  then view shows</div><div class="line">  after view shows</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def document_click</div><div class="line">  before view hides</div><div class="line">  then view hides</div><div class="line">  after view hides</div></pre></td></tr></table></figure>
+<h3 id="part3"><a href="#part3" class="headerlink" title="part3"></a>part3</h3><p>把他們合在一起一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def click_pattern</div><div class="line">  button listen click</div><div class="line">    before view shows</div><div class="line">    then view shows</div><div class="line">    after view shows</div><div class="line">  document listen click</div><div class="line">    before view hides</div><div class="line">    then view hides</div><div class="line">    after view hides</div></pre></td></tr></table></figure>
+<p>撇開細節、就差不多完整囉~！</p>
+<h2 id="sample-code"><a href="#sample-code" class="headerlink" title="sample code"></a>sample code</h2><p>直接用 code 來看看一些細節吧~</p>
+<p>使用 options 並且設定 <code>onShow</code> 、 <code>onHide</code> 可以讓 trigger 和後續行為拆開，不會讓他們因為畫面受限。這其實是很基本的寫法，很多經典的 jquery widget 還有 twitter-bootstrap 也是採用這樣的寫法。當然、根據需求肯定會有更多的設定，像是：interval、active style 之類的，當然也可能有更多樣的 event callback。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pattern</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(elm, options = &#123;&#125;) &#123;</div><div class="line">    <span class="keyword">const</span> defaultOpts = &#123;</div><div class="line">      onShow() &#123;&#125;,</div><div class="line">      onHide() &#123;&#125;,</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.options = <span class="built_in">Object</span>.assign(&#123;&#125;, defaultOpts, options);</div><div class="line">    <span class="keyword">this</span>.bindEvt(elm, <span class="keyword">this</span>.options);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  bindEvt(elm, opts) &#123;</div><div class="line">    elm.addEventListener(<span class="string">'click'</span>, () =&gt; opts.onShow);</div><div class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>, () =&gt; opts.onHide);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>歐、補充一下、上面這段不用是 class 啦~ 其實… 只要是個 <code>function</code> 就可以了。</p>
+</blockquote>
+<p>更具體一點，上面這段其實是在定義 trigger ，也就是說、他根本就沒有在管後續要做什摸的。所以、上面這段 pattern 真的很好用。也許大家開始疑惑了，那… 只定義了 trigger 那後續要怎摸辦。</p>
+<p>如果是簡單的反應、其實可以像這樣用…</p>
+<blockquote>
+<p>因為不想寫的落落長、 <code>$(&#39;#modal&#39;)</code> 只是個簡單代表下</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Pattern(buttonNode, &#123;</div><div class="line">  onShow() &#123; $(<span class="string">'#modal'</span>).show(); &#125;,</div><div class="line">  onHide() &#123; $(<span class="string">'#modal'</span>).hide(); &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>但是、我們常常遇到的可能是…. <code>$(&#39;#modal&#39;)</code> 這裡面的東西非常的複雜(？)，可能有其他的操作。所以、也可以把它拆出來另外處理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Modal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(elm, options) &#123;</div><div class="line">    <span class="comment">// 省略歐....</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  open() &#123;&#125;</div><div class="line"></div><div class="line">  close() &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> modal = <span class="keyword">new</span> Modal();</div></pre></td></tr></table></figure>
+<p>取得 <code>instance</code> 他就具備有 <code>open</code> 和 <code>close</code> 的 method ，用這種方式定義的話，就可以更方便的把他們拆開來，甚至一個 modal 可以有多個 trigger ，也不容易互相影響。</p>
+<p>所以、使用上就會變成像這樣…。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Pattern(buttonNode, &#123;</div><div class="line">  onShow() &#123; modal.open() &#125;,</div><div class="line">  onHide() &#123; modal.close() &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>也許、也有人會抱持懷疑，這樣有什摸好處，反正不都是一樣打開 modal ，只要定好 <code>onShow</code> / <code>onHide</code> 這些 callback 就好了，這樣的方式沒有意義啊！</p>
+<p>是的、如果以這樣的出發點來看待、的確沒錯，但如果是希望可以共用 <code>#modal</code> 這個 element 的前提下，那摸使用這樣的方式定義，我認為會比較容易開發。當然、 <code>Modal</code> 還需要加上 <code>updateContent</code> 這樣的 method。</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>雖然、這 pattern 存在的時間蠻久的了，也經過一段使用 <code>Angular</code> 、 <code>React</code> 的時期，當然觀察過這類型的 plugin ，是怎摸開發的。果然還有另一種方式，他是採用 data 去控制對象的狀態，我認為這種方式其實也有個很大的好處啦~ 就是綁定對象非常的明確。</p>
+<p>但這就有個問題，那就是… 對於神展開的各種設計和需求可能不太容易開發，另外、也遇過有兩個以上的地方要 trigger 的問題，再加上、像是各種常見的 plugin ，其實對於可以運作的 template 都有很嚴格的要求，導入後常常有問題。css 很難改、沒有某些需求….。</p>
+<p>我遇過覺得最麻煩的其實就是 <code>modal</code> 和 <code>carousel</code> ，特別是 <code>carousel</code> 各種神展開的 layout ，些微的改變、就可以讓整個 plugin 掛掉~。然後、採用這種方式寫了個非常小的 plugin 後，至今都沒有問題啊~！強烈推薦、如果沒有需要大大們定義好的 template 或 style 的話，真的可以按照自己的各種任性的需求試試。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/js/">js</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/pattern/">pattern</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/07/24/clicked-and-then/" data-title="Clicked and Then ... | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/07/16/hate-js/"  title="要開始討厭 js 了嗎？">
+ <strong>下一篇：</strong><br/> 
+ <span>要開始討厭 js 了嗎？
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#所謂-pattern"><span class="toc-number">1.</span> <span class="toc-text">所謂 pattern</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本構成"><span class="toc-number">2.</span> <span class="toc-text">基本構成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pseudo-code"><span class="toc-number">3.</span> <span class="toc-text">pseudo code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#part-1"><span class="toc-number">3.1.</span> <span class="toc-text">part 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part2"><span class="toc-number">3.2.</span> <span class="toc-text">part2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part3"><span class="toc-number">3.3.</span> <span class="toc-text">part3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sample-code"><span class="toc-number">4.</span> <span class="toc-text">sample code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">5.</span> <span class="toc-text">結論</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>8</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pattern/" title="pattern">pattern<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.blackbing.net/" target="_blank" title="Blackbing&#39;s Playground">Blackbing&#39;s Playground</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://yy-programer.blogspot.tw/" target="_blank" title="Yy&#39;s program">Yy&#39;s program</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kainors.github.com/" target="_blank" title="小諾的沒技術農場">小諾的沒技術農場</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
