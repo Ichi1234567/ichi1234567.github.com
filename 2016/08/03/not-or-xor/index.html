@@ -4,23 +4,23 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>box muller --- (2) | 小助助的精神實驗室</title>
+    <title>Not or Xor | 小助助的精神實驗室</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小助助">
     
 
     
-    <meta name="description" content="這個就…把什摸理論通通都丟開，直接來下個結論吧~ @ @++">
+    <meta name="description" content="程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 boolean 對吧！boolean 有 true 、 false。在我們需要判斷的時候，常常會有 假如他沒有... ， 假如他不是... 那種否定的判斷對吧！ 沒錯、這次說的就是那個 not 歐~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="box muller --- (2)">
-<meta property="og:url" content="http://yoursite.com/2012/07/22/box-muller2/index.html">
+<meta property="og:title" content="Not or Xor">
+<meta property="og:url" content="http://yoursite.com/2016/08/03/not-or-xor/index.html">
 <meta property="og:site_name" content="小助助的精神實驗室">
-<meta property="og:description" content="這個就…把什摸理論通通都丟開，直接來下個結論吧~ @ @++">
-<meta property="og:updated_time" content="2016-07-11T03:16:54.000Z">
+<meta property="og:description" content="程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 boolean 對吧！boolean 有 true 、 false。在我們需要判斷的時候，常常會有 假如他沒有... ， 假如他不是... 那種否定的判斷對吧！ 沒錯、這次說的就是那個 not 歐~">
+<meta property="og:updated_time" content="2016-08-03T07:30:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="box muller --- (2)">
-<meta name="twitter:description" content="這個就…把什摸理論通通都丟開，直接來下個結論吧~ @ @++">
+<meta name="twitter:title" content="Not or Xor">
+<meta name="twitter:description" content="程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 boolean 對吧！boolean 有 true 、 false。在我們需要判斷的時候，常常會有 假如他沒有... ， 假如他不是... 那種否定的判斷對吧！ 沒錯、這次說的就是那個 not 歐~">
 
     
     <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
@@ -74,14 +74,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2012/07/22/box-muller2/" title="box muller --- (2)" itemprop="url">box muller --- (2)</a>
+      <a href="/2016/08/03/not-or-xor/" title="Not or Xor" itemprop="url">Not or Xor</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
 		
   <p class="article-time">
-    <time datetime="2012-07-22T06:41:00.000Z" itemprop="datePublished"> 發表於 2012-07-22</time>
+    <time datetime="2016-08-03T05:32:06.000Z" itemprop="datePublished"> 發表於 2016-08-03</time>
     
   </p>
 </header>
@@ -90,56 +90,23 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Not"><span class="toc-number">1.</span> <span class="toc-text">Not</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xor"><span class="toc-number">2.</span> <span class="toc-text">Xor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比較"><span class="toc-number">3.</span> <span class="toc-text">比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
 		
 		</div>
 		
-		<p>這個就…把什摸理論通通都丟開，直接來下個結論吧~ @ @++</p>
+		<p>程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 <code>boolean</code> 對吧！boolean 有 <code>true</code> 、 <code>false</code>。在我們需要判斷的時候，常常會有 <code>假如他沒有...</code> ， <code>假如他不是...</code> 那種<code>否定</code>的判斷對吧！ 沒錯、這次說的就是那個 <code>not</code> 歐~</p>
 <a id="more"></a>
-<p><link href="/css/axis.css" rel="stylesheet" type="text/css"></p>
-<script src="http://d3js.org/d3.v2.js"></script>
-<script data-main="/js/2012-07-22-box-muller2.js" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
-
-<p>根據<a href="/2012/07/21/box-muller/">上篇</a>，或者… 唔、不想知道也不要緊~ XDD<br>我們可以歸納出、要進行box-mull有幾個不可或缺的步驟。</p>
-<ol>
-<li><p>得知常態分佈函數，如下：<br>$$<br> \begin{equation}<br> p(x): = \frac {e ^{-\frac{x^2}{2}}} {\sqrt {2 \pi}} \Longleftarrow N(0, 1)<br> \text{ ,$ \\\ $ the mean = 0, variance = 1 }<br> \end{equation}<br>$$</p>
-</li>
-<li><p>將上述算式利用Jacobian從xy系統變成極座標系統。然後，結論就出來了~ (← 這也太快了吧~ XDD)<br>$$<br> \begin{equation}<br> U(R) = p ~ \Longrightarrow ~ R = \sqrt{-2 log (1 - p)}<br> \end{equation}<br>$$</p>
-<p>因為是轉成極座標系統，所以 $x=r cos{\theta}$、$y=r sin{\theta}$</p>
-</li>
-<li><p>在此分成2部份…</p>
-<ul>
-<li><p>我覺得第2點結論出來就滿足了，那就…只需要取得p = rand()，代入得到R，然後，$\theta$的話就…方便咩~就<br>一樣使用p代入，然後隨便看是要找x或y的都可以，這樣就結束了。這個的…亂數分佈會是長下面那樣…<br></p>
-<div id="box-muller1"></div>
-</li>
-<li><p>假如，尼跟我一樣，我需要的是，在常態分佈下的樣本…那很簡單，就是取2個rand，一個是p，另一個就是$\theta$，<br>然後… 一樣帶入算式就沒問題啦~然後、這一個的分佈會是這樣…，應該可以很明顯的區分出它們的不同啦~嗯嗯<br><br>雖然，我本人有點偷懶~ = . .= 上面用的圖，是gaussian的圖形，可是，長得差不多啦~ 我懶得換了…<br></p>
-<div id="box-muller2"></div>
-
-
-</li>
-</ul>
-</li>
-</ol>
-<p>而其實咧~ @ @++ box-muller的作法，激發了我另一個猜想… = “””= 其實，原本就想過了，只是… 我不太懂的jacobian的<br>算法，該怎樣替換~ XDD 現在大概懂了(?) 哈…所以，我們把上述的結論稍微抽出來代換一下~ XDDD</p>
-<ol>
-<li><p>取得想要的函數圖形…</p>
-</li>
-<li><p>將上述的算式利用jacobian從xy系統變成uv系統。結論就出來了~ (uv系統，不一定是要orthogonal的座標系)</p>
-</li>
-<li><p>然後…跟上面的第3點一樣，看得到的算式是啥，就…取rand，然後，代入，接下來換掉就沒問題啦~ @ @+++</p>
-</li>
-</ol>
-<p>我覺得，如果採用自訂的函數圖形，通常就會是想要均勻樣本，所以…應該會採用2個rand的方式做代換。</p>
-<p>以下面的為簡單的例子，免得說我騙人~ = . .= 這明明就真的可以達到咩~</p>
-<p>這一個是cos分佈，範圍是取一個$\pi$，$-1 \le r \le 1$<br></p>
-<div id="rnd-cos"></div>
-
-<p>這個是2x-y的..線性分佈，由於不是mapping到極座標，所以，圖形就不會有那種$r cos{\theta}$或$r sin{\theta}$的特徵，<br>通常、線性的這種，會牽扯到正負無限大，或者要取$&gt;$或$&lt;$的問題…這類的問題，阿就自己評估一下就行，下面的話，<br>是取$&lt;$而且、x的範圍是[0, 2]，大概就是降…<br></p>
-<div id="2x-y"></div>
-
-<p><br><br></p>
-<p><hr><br>題外話，我真的覺得…. = . .= 寫這類的文章的..人類們真的很厲害，我佩服萬分，還可以一寫就…..啪答啪答的好<br>幾個系列，我…我寫一個就覺得要不行了~ = . .= 光是從回憶算式，然後，很龜毛的一定要弄成latex，接著，圖形<br>還要寫個程式跑跑看，測試一下，有時候再順便(?)醞釀的新東西也套進去玩(某方面來說，真的太不可取了~ XDD)，<br>玩完後…以為降就結束了(?)，不… 當然還要放到跟文章一起~ = . .= 然後，再加上突如其來的靈感，還要給它<br>balabala…這真的是~無底洞阿~(汗||) 光是這樣短短的2篇，尼知道我花了我多少時間嗎~ Q 口Q 是我花將近1個月拼<br>拼湊湊，犧牲我打電動、睡午覺、吃零食、看電視….無數歡樂的時光才換來的捏~</p>
-<p>所以，啾<del>~竟，小助助還可以堅持多久捏</del></p>
+<h2 id="Not"><a href="#Not" class="headerlink" title="Not"></a>Not</h2><p>在 js 裡、 not 隨便用好像都可以…。從 <code>!0</code> 、 <code>!null</code> 、 <code>!undefined</code> … 簡單的說，就是直得相反，完全沒有問題。如果真的要取得 <code>bool</code> ，其實就會比較建議使用 <code>!!value</code> 了，畢竟、 <code>value</code> 就是個值。</p>
+<p>所以、 <code>not</code> 沒有什摸好說的啦~ 就是個很常用的東西。</p>
+<h2 id="Xor"><a href="#Xor" class="headerlink" title="Xor"></a>Xor</h2><p>比較有趣的其實是這個， <code>^</code> 他其實是<code>位元計算</code>，大部份的人應該對他們都比較陌生。但有一陣子、我實在是蠻著迷的，因為數位邏輯真的很有趣(但那好久以前了)。最近突然回憶起來，所以、覺得應該很適合當一篇小品。</p>
+<p>xor 的定義…. 大家應該都蠻熟悉的(？) 就不多談了。</p>
+<h2 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h2><p>他要拿來跟 <code>not</code> 比較的前提，當然就是只有一個位元的情況啦~ <code>value ^= 1</code> 這是我最常用的情形，因為這樣的寫法跟 <code>not</code> 有異曲同工之妙啦~ 但是他們的差異在…. xor 的結果是 <code>number</code> ， not 是 <code>boolean</code> ，但是在 js 的判斷上，其實不會有問題。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(!<span class="number">0</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(!<span class="number">1</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">0</span>^<span class="number">1</span>); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>^<span class="number">1</span>); <span class="comment">// 0</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(!<span class="literal">true</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(!<span class="literal">false</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span>^<span class="number">1</span>); <span class="comment">// 0</span></div><div class="line"><span class="built_in">console</span>.log(<span class="literal">false</span>^<span class="number">1</span>); <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<p>基本上、 xor 我大概就是用在這幾種情況，但、不太建議用在 <code>非數字</code> 的情境啦~！也許會有人想說、 not 用得好好的幹嘛用 xor ，這也太冷門的用法了吧？</p>
+<p>是的、位元運算是比較少用沒錯，而我會用的情況通常是把它當作<code>種類</code>、<code>情形</code>這樣的前提下使用的。不過、用 boolean 也沒什摸不好啦~ 就是一種習慣，有時候、拿來操作也很方便。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> count = <span class="number">99</span>;</div><div class="line"><span class="keyword">let</span> toggle = <span class="number">0</span>;</div><div class="line"></div><div class="line">count += ((toggle ^= <span class="number">1</span>) || <span class="number">-1</span>);</div></pre></td></tr></table></figure>
+<p>用這種方法、在計算正反次數實在很方便啊啊啊啊！當然、其他有需要運算的情況有時候也是比<code>if-else</code> 要來得方便啦！所以、有時候我蠻喜歡用的。很久以前也試過用 bitwise 的方式導入流程，誒、還蠻有趣的，但是… 實在有點難懂~ XDDD 但蠻有趣的啦~ 然後、一個位元的這個方式，大概是我從當時玩到現在，覺得還是很好用的方式。也不會一堆 <code>!</code> ，看了也不舒服。</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>雖然、位元操作可能是比較不直覺的方式，但、有時候真的很好用。沒有過的人可以試試看、真的還蠻不錯的，有時候真的很省事。不過、如果有閱讀上的困難，那…也不建議用啦~</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -147,13 +114,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/math/">數學</a>
+  <a class="article-category-link" href="/categories/other/">雜談</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/數學/">數學</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a>
   </div>
 
 </div>
@@ -162,7 +129,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2012/07/22/box-muller2/" data-title="box muller --- (2) | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/08/03/not-or-xor/" data-title="Not or Xor | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -175,19 +142,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2012/08/09/js-switch/" title="[JS]switch-case">
-  <strong>上一篇：</strong><br/>
-  <span>
-  [JS]switch-case</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2012/07/21/box-muller/"  title="box muller --- (1)">
+<a href="/2016/07/24/clicked-and-then/"  title="Clicked and Then ...">
  <strong>下一篇：</strong><br/> 
- <span>box muller --- (1)
+ <span>Clicked and Then ...
 </span>
 </a>
 </div>
@@ -208,7 +167,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Not"><span class="toc-number">1.</span> <span class="toc-text">Not</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xor"><span class="toc-number">2.</span> <span class="toc-text">Xor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比較"><span class="toc-number">3.</span> <span class="toc-text">比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
  
   </div>
 
