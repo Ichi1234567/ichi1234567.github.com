@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/08/05/string-and-array/index.html">
 <meta property="og:site_name" content="小助助的精神實驗室">
 <meta property="og:description" content="字串和陣列，是很重要且基本的兩個型別，但、為什摸會想把他們擺一起呢？是因為、他們之間有非常有趣的關係。然後、另外打算附上個我個人愛用，但可能有點冷門的使用方式啦~！">
-<meta property="og:updated_time" content="2016-08-05T15:31:34.000Z">
+<meta property="og:updated_time" content="2016-08-05T15:52:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字串與陣列">
 <meta name="twitter:description" content="字串和陣列，是很重要且基本的兩個型別，但、為什摸會想把他們擺一起呢？是因為、他們之間有非常有趣的關係。然後、另外打算附上個我個人愛用，但可能有點冷門的使用方式啦~！">
@@ -106,7 +106,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'abcdefg'</span>;</div><div class="line">str = str.split(<span class="string">''</span>); <span class="comment">// ['a', 'b', 'c', 'd', 'e']</span></div></pre></td></tr></table></figure>
 <h3 id="字串玩法-1"><a href="#字串玩法-1" class="headerlink" title="字串玩法 1"></a>字串玩法 1</h3><p>其實、字串轉陣列，除非字串有某些規則啦~ 要不、沒有那摸好玩！但、簡單的玩下加解密還是可以的。就是簡單的用個算式，然後來個 loop 啪的算完得到加密結果。(但這、蠻無聊的啦~)</p>
 <h3 id="字串玩法-2"><a href="#字串玩法-2" class="headerlink" title="字串玩法 2"></a>字串玩法 2</h3><p>對於有意義的字串，比如：名字字組。可以排序什摸的、也可以 filter 啦~ 所有 array 可以用的 method 就都可以用了。但、前提是有規律啦~！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var editors = &apos;atom,vim,sublime,emacs,notepad++&apos;;</div><div class="line">editors.split(&apos;,&apos;).sort((a, b) =&gt; a.localeCompare(b));</div><div class="line">// [&apos;atom&apos;, &apos;emacs&apos;, &apos;notepad++&apos;, &apos;sublime&apos;, &apos;vim&apos;]</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> editors = <span class="string">'atom,vim,sublime,emacs,notepad++'</span>;</div><div class="line">editors.split(<span class="string">','</span>).sort((a, b) =&gt; a.localeCompare(b));</div><div class="line"><span class="comment">// ['atom', 'emacs', 'notepad++', 'sublime', 'vim']</span></div></pre></td></tr></table></figure>
 <h2 id="陣列變字串的玩法"><a href="#陣列變字串的玩法" class="headerlink" title="陣列變字串的玩法"></a>陣列變字串的玩法</h2><p>其實、我遇到的問題，絕大部份都是陣列啦~ 因為、一般來說，字串通常都是有意義的，像是名字這類的。想要遇到<a href="#字串玩法-2">字串玩法 2</a>其實沒有那摸容易。</p>
 <p>js 轉換各種型別其實真的蠻容易的，陣列變字串是我愛用的方法之一。也許大家會疑惑歐！陣列、尼轉成字串是要幹嘛啦~！有意義嗎？不管是煎煮炒炸、陣列都已經很方便用了誒，只要來個 <code>for loop</code> 、 <code>if-else</code> ，再不然、現在的陣列也有 <code>filter</code> 、 <code>forEach</code> 、 <code>map</code> 什摸的、都很好用了呀~！</p>
 <p>對、現在的 Array 擁有的 method 已經很多了啦~ 但、我覺得要寫很多啊~ 我不喜歡寫那摸多，有點累….。不過、推薦的陣列，還是以單純的，像<code>字串陣列</code>、<code>數字陣列</code>會比較好用。</p>
@@ -137,7 +137,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/code/">code</a><a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/code/">code</a><a href="/tags/雜談/">雜談</a>
   </div>
 
 </div>
@@ -159,6 +159,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/08/12/observed-karma/" title="從 karma 的演進發現...">
+  <strong>上一篇：</strong><br/>
+  <span>
+  從 karma 的演進發現...</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/08/03/not-or-xor/"  title="Not or Xor">
@@ -221,7 +229,7 @@
 		  
 		
 		  
-			<li><a href="/categories/other/" title="雜談">雜談<sup>8</sup></a></li>
+			<li><a href="/categories/other/" title="雜談">雜談<sup>9</sup></a></li>
 		  
 		
 		</ul>
@@ -234,11 +242,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/js/" title="js">js<sup>14</sup></a></li>
+				<li><a href="/tags/js/" title="js">js<sup>15</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/雜談/" title="雜談">雜談<sup>12</sup></a></li>
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>13</sup></a></li>
 			
 		
 			

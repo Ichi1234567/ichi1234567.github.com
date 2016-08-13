@@ -4,26 +4,23 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>如果世界是個離散空間 | 小助助的精神實驗室</title>
+    <title>從 karma 的演進發現... | 小助助的精神實驗室</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小助助">
     
 
     
-    <meta name="description" content="這是好前一陣子偷喵了超弦理論後、醞釀了好一陣子，好像有把零零散散的想法集合的跡象，然後、就來亂『掰』一通吧~ w
-嗯、其實，我對超弦理論，還是不太了解~ w 可是、在找文章的時候、看到了以下的幾個東西，很有趣~ (不一定是跟超弦有關的啦~)">
+    <meta name="description" content="唔、這算是我某種觀察日記(？)，就是那種、一直都沒有發現，然後，突然間看 doc 有感而發然後就突然發現的那種東西。對… 這次的靈感是從 karma 來著的，關於 api。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如果世界是個離散空間">
-<meta property="og:url" content="http://yoursite.com/2012/05/09/dsapce/index.html">
+<meta property="og:title" content="從 karma 的演進發現...">
+<meta property="og:url" content="http://yoursite.com/2016/08/12/observed-karma/index.html">
 <meta property="og:site_name" content="小助助的精神實驗室">
-<meta property="og:description" content="這是好前一陣子偷喵了超弦理論後、醞釀了好一陣子，好像有把零零散散的想法集合的跡象，然後、就來亂『掰』一通吧~ w
-嗯、其實，我對超弦理論，還是不太了解~ w 可是、在找文章的時候、看到了以下的幾個東西，很有趣~ (不一定是跟超弦有關的啦~)">
-<meta property="og:updated_time" content="2016-07-04T04:55:28.000Z">
+<meta property="og:description" content="唔、這算是我某種觀察日記(？)，就是那種、一直都沒有發現，然後，突然間看 doc 有感而發然後就突然發現的那種東西。對… 這次的靈感是從 karma 來著的，關於 api。">
+<meta property="og:updated_time" content="2016-08-13T15:10:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如果世界是個離散空間">
-<meta name="twitter:description" content="這是好前一陣子偷喵了超弦理論後、醞釀了好一陣子，好像有把零零散散的想法集合的跡象，然後、就來亂『掰』一通吧~ w
-嗯、其實，我對超弦理論，還是不太了解~ w 可是、在找文章的時候、看到了以下的幾個東西，很有趣~ (不一定是跟超弦有關的啦~)">
+<meta name="twitter:title" content="從 karma 的演進發現...">
+<meta name="twitter:description" content="唔、這算是我某種觀察日記(？)，就是那種、一直都沒有發現，然後，突然間看 doc 有感而發然後就突然發現的那種東西。對… 這次的靈感是從 karma 來著的，關於 api。">
 
     
     <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
@@ -77,14 +74,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2012/05/09/dsapce/" title="如果世界是個離散空間" itemprop="url">如果世界是個離散空間</a>
+      <a href="/2016/08/12/observed-karma/" title="從 karma 的演進發現..." itemprop="url">從 karma 的演進發現...</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
 		
   <p class="article-time">
-    <time datetime="2012-05-08T16:00:00.000Z" itemprop="datePublished"> 發表於 2012-05-09</time>
+    <time datetime="2016-08-12T13:56:35.000Z" itemprop="datePublished"> 發表於 2016-08-12</time>
     
   </p>
 </header>
@@ -93,52 +90,33 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#karma-是…？"><span class="toc-number">1.</span> <span class="toc-text">karma 是…？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我的觀察"><span class="toc-number">2.</span> <span class="toc-text">我的觀察</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#甜蜜期"><span class="toc-number">2.1.</span> <span class="toc-text">甜蜜期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#痛苦的開始"><span class="toc-number">2.2.</span> <span class="toc-text">痛苦的開始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拆拆拆"><span class="toc-number">2.3.</span> <span class="toc-text">拆拆拆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些小經驗"><span class="toc-number">3.</span> <span class="toc-text">一些小經驗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
 		
 		</div>
 		
-		<p>這是好前一陣子偷喵了超弦理論後、醞釀了好一陣子，好像有把零零散散的想法集合的跡象，然後、就來亂『掰』一通吧~ w</p>
-<p>嗯、其實，我對超弦理論，還是不太了解~ w 可是、在找文章的時候、看到了以下的幾個東西，很有趣~ (不一定是跟超弦有關的啦~)</p>
+		<p>唔、這算是我某種觀察日記(？)，就是那種、一直都沒有發現，然後，突然間看 doc 有感而發然後就突然發現的那種東西。對… 這次的靈感是從 <a href="https://karma-runner.github.io/1.0/index.html" target="_blank" rel="external">karma</a> 來著的，關於 api。</p>
 <a id="more"></a>
-<ul>
-<li>超弦將那些粒子視為都是因為振動所引起現象。</li>
-<li>利用超弦可以擴充到n維。</li>
-<li>以”相對”的看法來看世界。以細繩為例，對人來說、它算是2維；對小螞蟻來說、它就算是3維了。那、再對更小的東西來說~是不是可以再繼續延伸一些?就有了這樣的想法。</li>
-</ul>
-<p>嗯、前陣子又複習了一下projection，3D合理的顯示在螢幕上 (3D → 2D)，雖然、3D mapping 到 2D、有不少方法，不過、在這邊、只認真的觀察projection。(我覺得很讚的網站： <a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank" rel="external">http://www.songho.ca/opengl/gl_projectionmatrix.html</a>)<br>以xyz的3D空間來說、mapping到xy的2D平面空間上、在參考網站裡面的圖、發揮一點點想像力以及過往的經驗(小時候學的相似三角形的概念很像派上用場了?~ w)，我們可以知道、在mapping到平面中、關鍵在z軸。較遠的座標、mapping到最近的平面上、套上”相似”的看法與算法可以知道：</p>
-<pre><code>將座標( x, y, z ) 投射到 z平面上可得
-$$
-\begin{bmatrix}
-x &amp; y &amp; z
-\end{bmatrix}
-\begin{matrix}
-\text{ 投影 $\\\\$}
-\Longrightarrow
-\end{matrix}
-\begin{bmatrix}
-x/z &amp; y/z &amp; 1
-\end{bmatrix}
-$$
-</code></pre><p>相信、有不少人在看computer graphics的應該還蠻常看到類似的東西~ w</p>
-<p>綜合以上、我很大膽的隨便亂想：</p>
-<ul>
-<li>既然可以擴展到n維。</li>
-<li>既然可以用以相似的概念下去發展。</li>
-<li>雖然實數有連續性，但是每個數的的確確是獨立的存在。</li>
-<li>最小粒子存在、生物由粒子組成。</li>
-</ul>
-<p>(一定有人會想、那樣人不就散掉了、以為自己是克洛克達爾阿~|||  可是、在我遙遠的印象中、粒子間也是有引力存在的、所以…應該、生物還是可以長成它該長得樣子…?)</p>
-<p>根據上述的亂七八糟隨便亂想(XD)，假如這個世界真的是離散空間、一定可以有很多很妙的事情發生?~ XD</p>
-<p>比如：</p>
-<ul>
-<li>真的像克洛克達爾那樣可以散開~ XDDD (不知道質能守恆有迷有成立耶~我好好奇…)</li>
-<li>而且、既然是離散空間…那~是不是代表著、在外力的驅使下、可以把物體粒子化、然後~重新組成(?)</li>
-<li>那是不是就代表著…可以把物體粒子化後、在進行xx跳躍、那~移動速度就可以很快了耶~<br>而且、可以粒子化、那~假如大家的組成都是一樣的…是不是代表~其實成為橡皮人不是夢想?~ XDDD 搞不好超人系和自然系的、在未來的某一天、可以模擬的出來耶~我好想模擬一下歐~ &gt; 3&lt;</li>
-<li>既然、什摸東西都模擬的出來、那~~食物可不可以模擬阿~不知道會不會有味道耶~假如、氣味也是一種粒子~那…應該也可以模擬?~</li>
-<li>所以…人類和狗狗其實迷有什摸兩樣<del>~~(大驚) 狗狗也可以變成恐龍</del>~ (大誤)</li>
-</ul>
-<p>接踵而來的是…安全大概會更糟糕了吧~ XDDD||</p>
-<p>我承認、這篇有99%是來亂的~ w  就、亂亂想咩~嗯嗯、人類因為懶惰和亂亂想而進步~所以，小助助對人類的進步提供了莫大的貢獻…歐耶、歐耶~ XDDD (←自我感覺十分良好)</p>
+<h2 id="karma-是…？"><a href="#karma-是…？" class="headerlink" title="karma 是…？"></a>karma 是…？</h2><p><a href="https://karma-runner.github.io/1.0/index.html" target="_blank" rel="external">karma</a> 是幾年前出現，可以協助前端測試的一個…工具。當時使用的原因是，因為從 <a href="http://phantomjs.org/" target="_blank" rel="external">phantomjs</a> 、 <a href="http://jasmine.github.io/2.0/introduction.html" target="_blank" rel="external">jasmine</a> 、 然後自己的 code 這些都要自己接起來，然後還有 spec ，一想到就覺得累了。發現這工具的時候覺得很棒，他都接好了、身為使用者只需要把自己想要的 config 補上就可以結束這回合了。</p>
+<h2 id="我的觀察"><a href="#我的觀察" class="headerlink" title="我的觀察"></a>我的觀察</h2><h3 id="甜蜜期"><a href="#甜蜜期" class="headerlink" title="甜蜜期"></a>甜蜜期</h3><p>如同前述、一個把所有東西都兜好好的工具來說，免去自己需要設定、是一件很棒的事情。也因為這樣、用了很久、很久、很久。</p>
+<h3 id="痛苦的開始"><a href="#痛苦的開始" class="headerlink" title="痛苦的開始"></a>痛苦的開始</h3><p>因為他真的什摸都包了、尼要 <a href="http://coffeescript.org/" target="_blank" rel="external">coffee</a> 、 <a href="https://github.com/karma-runner/karma-coverage" target="_blank" rel="external">coverage</a> 、連 <a href="https://github.com/karma-runner/karma-ie-launcher" target="_blank" rel="external">ie launcher</a> 、 不想要 <a href="http://jasmine.github.io/2.0/introduction.html" target="_blank" rel="external">jasmine</a> 、 想換成 <a href="https://github.com/karma-runner/karma-mocha" target="_blank" rel="external">mocha</a> 、 <a href="https://github.com/karma-runner/karma-qunit" target="_blank" rel="external">qunit</a> 都有，但正因為什摸都有了、就是痛苦的開始….。</p>
+<p>前端的各種 framework 蓬勃發展，各種管理 dependancy 的方式、越來越多的 js framework ，karma 都有辦法幫尼包進去，這結果造成的是：</p>
+<ol>
+<li>越來越多、越來越複雜的設定。</li>
+<li>一不小心就會踩到各種陷阱卡，nodejs 升不上去、只能用某個(自己所需的) package 版本。</li>
+<li>然後、覺得測試跑起來越來越慢了。</li>
+</ol>
+<p>這其實都是可以想像到的，一個大型的 project 發展到後來，是必然發生的事情。</p>
+<h3 id="拆拆拆"><a href="#拆拆拆" class="headerlink" title="拆拆拆"></a>拆拆拆</h3><p>為了應付各種需求，甚至因為一些存在已久、也許有些 code 升級的代價過大，新舊問題等等，存活這摸久的 karma 顯然、成為一種讓人痛苦的存在。在比較新的版本、 karma 有了一個重大的變革 – <code>拆</code>。</p>
+<p>他不再把某些 dependancy 跟他的主體包裝的很好，而是由使用的人去管理他需要的版本。提供 interface 但不保證使用的某版本接上後會發生什摸樣的事情，大概是這樣。這一定程度上的緩解了各種版本造成的問題、但另一個衍生問題是，因為拆得更細了、所以… 設定上就更繁瑣了這樣。</p>
+<h2 id="一些小經驗"><a href="#一些小經驗" class="headerlink" title="一些小經驗"></a>一些小經驗</h2><p>過去、曾有一段瘋狂的開發經驗，有 n 個人對於一個功能有 n 種微妙的要求。舉個雖然不是真實案例、不過、大概就是這樣的例子…。</p>
+<p>關於排序…(以下的小括號表示本人。)</p>
+<p>A 要求：我的都是數字、但不確定有多少。</p>
+<p>B 要求：我的都是字串、但有 utf8。(數字固定嗎？) 嗯、固定。</p>
+<p>C 要求：我要排序、但我不知道我會有什摸樣的輸入。 (…) 座標也可以排序嗎？ (…)</p>
+<p>在同一個功能、但要符合各種參數(？)，或者微妙的差異下、很瘋狂的收斂，只用同一個 function name 然後做意義上一樣、但過程完全不同的事情~，啊、這好像叫做<code>泛型</code>的樣子。寫得好、那很棒，可是一旦走黑到底、就有點像是 java 在各種平台上都可以運作、但效能很差一樣。而更慘的是、因為要符合各種情況、不只是需要的判斷很多、也會需要很多的 option 設定，或者根據某些特定條件只會有某些設定可以使用等等…。</p>
+<p>某方面跟 karma 一開始類似，覺得這樣的偷懶好棒、好方便，但後續的維護跟效能還有設定上都是很大的困擾。特別是在後來、開始認真的跟各種 ui 接觸的情形下，這種狀況的出現更頻繁了。因為大家設計的 layout 都不一樣，使用的 tag 不一樣，像是大家都很愛用的 slides 、 carousel 也有各種版本，而這是因為…. 設計出來的長相不一樣。</p>
+<p>為了因應這樣的需求、目前設計的 plugin 基本上都是放棄 render (裝死不處理？)，只寫邏輯、功能…，可以用 es6 的就用 extends ， 不能用的就用設 custom event ，反正就是不處理 render 就是了。一定程度上更自由、但是我也不知道這樣好不好。因為更自由代表著、可能會有更任性的需求、但更大的可能是，根據要求改變後根本感覺不出前後差別…(改心酸的意思)</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>對於如何設計 api 讓各個使用的人包含維護的人都可以更安心、更開心，是一件很困難的事情。(&lt;– 根本廢話~ XD) 我只能說、現在對於這樣的要求，因為曾經有的各種瘋狂的實驗、漸漸的心中也有一把尺。但是、我想說的是，對於很多的願望清單，像是一個按鈕就這也可以那也沒問題的願望，不如期待什摸時候可以用腦波做各種事情的時代吧！</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -152,7 +130,7 @@ $$
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/雜談/">雜談</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a>
   </div>
 
 </div>
@@ -161,7 +139,7 @@ $$
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2012/05/09/dsapce/" data-title="如果世界是個離散空間 | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/08/12/observed-karma/" data-title="從 karma 的演進發現... | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -174,19 +152,11 @@ $$
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2012/05/12/world/" title="[圖學] 世界的組成">
-  <strong>上一篇：</strong><br/>
-  <span>
-  [圖學] 世界的組成</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2012/05/08/weight1/"  title="weight ----- (1)">
+<a href="/2016/08/05/string-and-array/"  title="字串與陣列">
  <strong>下一篇：</strong><br/> 
- <span>weight ----- (1)
+ <span>字串與陣列
 </span>
 </a>
 </div>
@@ -207,7 +177,7 @@ $$
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#karma-是…？"><span class="toc-number">1.</span> <span class="toc-text">karma 是…？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我的觀察"><span class="toc-number">2.</span> <span class="toc-text">我的觀察</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#甜蜜期"><span class="toc-number">2.1.</span> <span class="toc-text">甜蜜期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#痛苦的開始"><span class="toc-number">2.2.</span> <span class="toc-text">痛苦的開始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拆拆拆"><span class="toc-number">2.3.</span> <span class="toc-text">拆拆拆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些小經驗"><span class="toc-number">3.</span> <span class="toc-text">一些小經驗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
  
   </div>
 
