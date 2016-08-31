@@ -1,0 +1,609 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>前端測試要測...？ | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="這是我蠻常被問到的問題。想想也蠻有趣的，有不少是後端或者不太知道前端做些什摸樣的事情，然後、聽到寫測試，覺得很奇妙就問了這樣。相較於很多人分享測試環境該怎摸設定，用哪一套比較好，或者應該要 TDD 還是 BDD ，這篇想說的都不是這些，只是想描述下、前端測試要寫哪些東西、又該注意些什摸這樣。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端測試要測...？">
+<meta property="og:url" content="http://yoursite.com/2016/08/18/fe-test-is/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="這是我蠻常被問到的問題。想想也蠻有趣的，有不少是後端或者不太知道前端做些什摸樣的事情，然後、聽到寫測試，覺得很奇妙就問了這樣。相較於很多人分享測試環境該怎摸設定，用哪一套比較好，或者應該要 TDD 還是 BDD ，這篇想說的都不是這些，只是想描述下、前端測試要寫哪些東西、又該注意些什摸這樣。">
+<meta property="og:updated_time" content="2016-08-31T14:59:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端測試要測...？">
+<meta name="twitter:description" content="這是我蠻常被問到的問題。想想也蠻有趣的，有不少是後端或者不太知道前端做些什摸樣的事情，然後、聽到寫測試，覺得很奇妙就問了這樣。相較於很多人分享測試環境該怎摸設定，用哪一套比較好，或者應該要 TDD 還是 BDD ，這篇想說的都不是這些，只是想描述下、前端測試要寫哪些東西、又該注意些什摸這樣。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/18/fe-test-is/" title="前端測試要測...？" itemprop="url">前端測試要測...？</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-18T03:26:08.000Z" itemprop="datePublished"> 發表於 2016-08-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#順序"><span class="toc-number">2.1.</span> <span class="toc-text">順序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#該測什麼？"><span class="toc-number">2.2.</span> <span class="toc-text">該測什麼？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#痛點"><span class="toc-number">3.</span> <span class="toc-text">痛點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
+		
+		</div>
+		
+		<p>這是我蠻常被問到的問題。想想也蠻有趣的，有不少是後端或者不太知道前端做些什摸樣的事情，然後、聽到<code>寫測試</code>，覺得很奇妙就問了這樣。相較於很多人分享測試環境該怎摸設定，用哪一套比較好，或者應該要 TDD 還是 BDD ，這篇想說的都不是這些，只是想描述下、前端測試要寫哪些東西、又該注意些什摸這樣。</p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>搜尋下測試相關的文章，應該蠻容易看到測試的各種好處。對我來說、也是好處大過麻煩。至於對我來說 TDD 還是 BDD ，我只能說、從有想法的那個地方開始就是好的開始，如果因為被 TDD (或 BDD )打動，但是有一個目的很明確的功能要實作卻不知道如何開始，那還不如以自己拿手的為出發點開始。</p>
+<p>然後、如果是自己的 spec 自己寫的話，我覺得還有個很重要的心態，那就是要以旁觀者的角度來看自己的程式。如果、完全沈浸在一邊看 code 、一邊寫 spec，然後覺得 code 的東西都是對的，那就慘了！我想、這某方面也是 TDD 的好處，一般來說、如果 spec 是後來加上去的，那好像真的蠻容易犯這樣的錯誤。但是、我是認為，不可能單方面的寫完某一邊，另一邊就要完全遵從啦~！畢竟、一個功能的完善，都是反覆的修正，所以、我才會認為，從哪一方面開始並不是很重要，重要的是、必須以正確的心態，然後反覆的修正(有點夾擊的意味在…)，然後達到最後的目的。</p>
+<p>如果是寫他人的 spec ，也不行因為看得懂對方的程式，就認為對方的程式一定是對的，要跟他的結果一樣，這樣反而無法達到寫測試的目的，而且、有些問題也可能真的就是大家的認知不同，造成不同的結果，這也都是很好、可能很需要討論的問題，如果錯失了也太可惜了。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>內容大概包含從寫測試的順序到該測什摸。</p>
+<h3 id="順序"><a href="#順序" class="headerlink" title="順序"></a>順序</h3><p>我習慣的方式大概是從 data 部分開始測(現在比較大的 project 應該大部份都 mvc 了，就從資料部分開測)，然後小 component 到大的。採用這順序的理由是：</p>
+<ul>
+<li>如果資料處理的地方有問題，那… 能確保 component 真的是對的嗎？</li>
+<li>資料處理有沒有正確、真的很重要。</li>
+<li>大的 component 都是小的兜出來的， data flow 也是串接各種小 component。從大的測、確定小的沒問題嗎？</li>
+</ul>
+<p>基於上述的理由，所以、大致上會採用這樣的方式，當然、很單純的就無所謂了啦~！</p>
+<h3 id="該測什麼？"><a href="#該測什麼？" class="headerlink" title="該測什麼？"></a>該測什麼？</h3><p>先來寫個不太完整、但有個大概的 code 當被測範本。</p>
+<p>定義 class A<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">    <span class="comment">//  ...</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  method1() &#123;&#125;</div><div class="line"></div><div class="line">  method2() &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>定義 class B ，然後、B 裡面會用到 A 的 instance。大概是這個關係。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(a) &#123;</div><div class="line">    <span class="keyword">this</span>.state = &#123; a &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  method3() &#123;</div><div class="line">    <span class="keyword">this</span>.state.a.method1();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  method4() &#123;</div><div class="line">    <span class="keyword">this</span>.state.a.method2();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (&lt;div&gt;BBB&lt;/div&gt;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>首先、從順序上來說，就會先測 A ，這樣可以在測 B 的時候，不會擔心 A 的 method 有問題，所以、先來看 A 的測試。</p>
+<p>接著，要測什摸、該測到多詳細，這取決於個人的期待，但是我大概是循序的依照這些情況做的。</p>
+<ol>
+<li>要測的東西存不存在。<ul>
+<li>有時候會是 path 問題什摸的。或者改名字了。</li>
+</ul>
+</li>
+<li>初始化有沒有正確。<ul>
+<li>該具備的 state、method 有沒有都存在，理由同上。</li>
+</ul>
+</li>
+<li>按照順序把 method 測一遍。<ul>
+<li>如果有的 method 裡面有用到 <code>if-else</code> 、 <code>switch</code> 或者其他比較複雜的判斷，都可以多拆幾個情況試試。<ul>
+<li>truth table 其實蠻好用的。</li>
+<li>狄摩根也很好。</li>
+</ul>
+</li>
+<li>method 的順序也可以跟 component 一樣、由小到大。確保使用小 method 的時候沒有問題。</li>
+</ul>
+</li>
+<li>有 event 的話、要測 event。</li>
+<li>有 render 的話、要測 render。<ul>
+<li>初始化。</li>
+<li>初始參數可自訂。</li>
+<li>操作後的 render 變化。</li>
+</ul>
+</li>
+</ol>
+<p>4, 5 都是不一定會有的。然後、在現在 template 和 js 綁得比較緊的情況，event 沒有測也還好，但是 unit test 一定要好好寫。</p>
+<p>我想 3. 應該是比較有難度的(？)，就直接看看 3 就好囉~！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先測 A.method1，A.method2 是好的</span></div><div class="line">it(<span class="string">'A.method1 work'</span>, () =&gt; &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">it(<span class="string">'A.method2 work'</span>, () =&gt; &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 接下來測 B</span></div><div class="line">it(<span class="string">'B.method3 work'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> a = <span class="keyword">new</span> A();</div><div class="line">  <span class="keyword">const</span> b = <span class="keyword">new</span> B(a);</div><div class="line"></div><div class="line">  a.method1 = jasmine.createSpy();</div><div class="line">  b.method3();</div><div class="line">  expect(a.method1).toHaveBeenCall();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">it(<span class="string">'B.method4 work'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> a = <span class="keyword">new</span> A();</div><div class="line">  <span class="keyword">const</span> b = <span class="keyword">new</span> B(a);</div><div class="line"></div><div class="line">  a.method2 = jasmine.createSpy();</div><div class="line">  b.method3();</div><div class="line">  expect(a.method2).toHaveBeenCall();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>從上面 <code>B test</code> 會發現、我在測 <code>method3</code> 、<code>method4</code> 的時候，對於用到的 <code>a.method1</code> ， <code>a.method2</code> 只去檢查他有沒有被使用到。原因很簡單，因為 A 的測試已經檢查過。我們必須確保在 A 的時候、他的 method 都是對的。因此、在 B 的時候，就不用再把 A 的所有情況檢查一次，只需要檢查有沒有正確使用(像是、有沒有被呼叫，然後參數有沒有正確…)，這樣就可以了。</p>
+<p>同樣的方式、在檢查 render 或 component 的時候也是這樣。只要小 component 沒有問題，那摸、大 component 就只需要確保參數無誤、有包含小 component 就可以了。</p>
+<h2 id="痛點"><a href="#痛點" class="headerlink" title="痛點"></a>痛點</h2><p>還是有一些東西、我覺得不是很好寫，或者是沒有辦法進入測試的。</p>
+<ul>
+<li>redirect：如果有用到 <code>locaion.href...</code> 的話，大概都會沒辦法過啦~ 因為測試是不能導到其它頁面噠，path 大概也都不會對。</li>
+<li>httpRequeset：他需要另外處理 <code>reject</code> 和 <code>resolve</code>，覺得有這個的寫起來都有點麻煩。</li>
+<li>timeout：千萬不要傻傻得設那 <code>setTimeout</code> ，扣掉時間不會準以外，可能還會讓測試的時間拉長，我想大部份應該都有提供假的 time tick 歐~。但是、太多的 timer 我認為還是不好啦~ 會比較容易混亂，當 project 很大或者比較複雜的時候。</li>
+<li>千萬不要以為 backend 改了什摸、 frontend 就會知道了，不管是 schemema 還是 api 改了， frontend 是絕~~~對不會知道的。</li>
+</ul>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>不管寫的是哪種測試，我覺得大概都是 input 、 output 要掌握好。要寫到多詳細、就看需要，有些完全不可能發生的事情、我認為就算不測也沒有問題。然後、陸續寫過基於 xxx framework 的程式，倒是大同小異。覺得最大的差異大概就是 event 和 renderer 好不好測的差別了~。</p>
+<p>關於其他的眉眉角角、也許可以再多開幾個小篇來談談。(等醞釀好的時候~)</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/js/">js</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/測試/">測試</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/08/18/fe-test-is/" data-title="前端測試要測...？ | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/08/12/observed-karma/"  title="從 karma 的演進發現...">
+ <strong>下一篇：</strong><br/> 
+ <span>從 karma 的演進發現...
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#順序"><span class="toc-number">2.1.</span> <span class="toc-text">順序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#該測什麼？"><span class="toc-number">2.2.</span> <span class="toc-text">該測什麼？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#痛點"><span class="toc-number">3.</span> <span class="toc-text">痛點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>9</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pattern/" title="pattern">pattern<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/測試/" title="測試">測試<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.blackbing.net/" target="_blank" title="Blackbing&#39;s Playground">Blackbing&#39;s Playground</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://yy-programer.blogspot.tw/" target="_blank" title="Yy&#39;s program">Yy&#39;s program</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kainors.github.com/" target="_blank" title="小諾的沒技術農場">小諾的沒技術農場</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+<div id="recentcomments" class="dsq-widget">
+    <p class="asidetitle">最近留言</p>
+        <script type="text/javascript" src="https://ichi1234567.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=1&avatar_size=32&excerpt_length=50&hide_mods=0"></script>
+</div>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-32906104-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
