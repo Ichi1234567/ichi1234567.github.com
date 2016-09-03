@@ -1,0 +1,609 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>functional vs OO - 理念版 | 小助助的精神實驗室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="小助助">
+    
+
+    
+    <meta name="description" content="阿、也許接下來會開 haskell 的坑？但、想為自己對從以前到現在對 functional 的理解下一個簡單的結論，主要是描述該用什摸樣的想法來入 OO 和 functional，他們的想法差異又在哪裡這樣，然後、希望過一段時間後回來，會發現以前的自己果然太天真了~這樣。(絕對很傻很天真、所以此篇慎入)
+我希望我可以盡量的不辭窮(？) 但應該還是有點難。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="functional vs OO - 理念版">
+<meta property="og:url" content="http://yoursite.com/2016/09/01/func-vs-oo/index.html">
+<meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="阿、也許接下來會開 haskell 的坑？但、想為自己對從以前到現在對 functional 的理解下一個簡單的結論，主要是描述該用什摸樣的想法來入 OO 和 functional，他們的想法差異又在哪裡這樣，然後、希望過一段時間後回來，會發現以前的自己果然太天真了~這樣。(絕對很傻很天真、所以此篇慎入)
+我希望我可以盡量的不辭窮(？) 但應該還是有點難。">
+<meta property="og:updated_time" content="2016-09-02T16:20:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="functional vs OO - 理念版">
+<meta name="twitter:description" content="阿、也許接下來會開 haskell 的坑？但、想為自己對從以前到現在對 functional 的理解下一個簡單的結論，主要是描述該用什摸樣的想法來入 OO 和 functional，他們的想法差異又在哪裡這樣，然後、希望過一段時間後回來，會發現以前的自己果然太天真了~這樣。(絕對很傻很天真、所以此篇慎入)
+我希望我可以盡量的不辭窮(？) 但應該還是有點難。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小助助的精神實驗室">小助助的精神實驗室</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/01/func-vs-oo/" title="functional vs OO - 理念版" itemprop="url">functional vs OO - 理念版</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-01T13:04:46.000Z" itemprop="datePublished"> 發表於 2016-09-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sequence"><span class="toc-number">2.</span> <span class="toc-text">sequence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#functional-來了"><span class="toc-number">3.</span> <span class="toc-text">functional 來了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#進入擴充"><span class="toc-number">4.</span> <span class="toc-text">進入擴充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OO-part"><span class="toc-number">4.1.</span> <span class="toc-text">OO part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#functional-part"><span class="toc-number">4.2.</span> <span class="toc-text">functional part</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持續擴充中"><span class="toc-number">5.</span> <span class="toc-text">持續擴充中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">6.</span> <span class="toc-text">結論</span></a></li></ol>
+		
+		</div>
+		
+		<p>阿、也許接下來會開 haskell 的坑？但、想為自己對從以前到現在對 functional 的理解下一個簡單的結論，主要是描述該用什摸樣的想法來入 OO 和 functional，他們的想法差異又在哪裡這樣，然後、希望過一段時間後回來，會發現以前的自己果然太天真了~這樣。(絕對很傻很天真、所以此篇慎入)</p>
+<p>我希望我可以盡量的不辭窮(？) 但應該還是有點難。</p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>OO 似乎都很熟悉、就不多提了，因為我 OO 真的沒有很熟~。</p>
+<p>對於 functional programming 從網路上找、大概都可以找到幾個好像有點虛無縹緲，好像很有道理、但其實根本不知道他在說什摸的幾個特點：</p>
+<ul>
+<li>Higher-Order Function</li>
+<li>Lambdas</li>
+<li>No side effects</li>
+<li>Immutable data</li>
+</ul>
+<p>或者還會提到什摸 <code>First class</code> 之類的，但整組下來其實還是不知道 functional programming 是在幹麻…。看完後、想要寫、覺得難。<br>但我也沒有打算做名詞解釋啦~ 雖然、不管是名詞解釋，而且接下來的心得分享都可能是在誤導大家… T UT 但、我還是想寫寫的我想法。</p>
+<h2 id="sequence"><a href="#sequence" class="headerlink" title="sequence"></a>sequence</h2><p>一般從我們遇到問題，開始想辦法，然後開始一個個解決，可以回朔一下自己過往的經驗，幾乎都是一個個步驟取得需要的東西，然後、得到最後的結果，大概是這樣。而這種方式因為深入骨髓(？)所以、大部份也都是最容易開始的一種方式。而、我們最一開始的 c/c++ 不就是這樣嗎？書上的教學大概都是這樣：</p>
+<ol>
+<li>定義變數。</li>
+<li>開始做要做的事情</li>
+<li>得到結果。</li>
+</ol>
+<p>特別、當我們以第一人稱來描述問題的時候，會發現、哇~ 這樣好像感同身受、超容易有想法的。<br>然後、 OO 就是個更好拿來做這樣表現的一種方式。(我是這摸認為的啦~)</p>
+<p>比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(info) &#123; <span class="keyword">this</span>.info = info; &#125;</div><div class="line"></div><div class="line">  run(time) &#123; <span class="keyword">return</span> <span class="keyword">this</span>.info.speed * time; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> kiki = <span class="keyword">new</span> Animal(&#123; speed: <span class="number">10</span> &#125;);</div><div class="line">kiki.run(<span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>^^^<br>產生出(有一隻)新動物 <code>kiki</code> ， kiki 在奔跑、跑了 10 (秒/分/小時？)。好直白、但意思就是這樣~ T UT</p>
+<h2 id="functional-來了"><a href="#functional-來了" class="headerlink" title="functional 來了"></a>functional 來了</h2><p>而我呢！有一陣子不喜歡 OO 那樣、所以我會把它反過來。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">role, time</span>) </span>&#123; <span class="keyword">return</span> role.speed * time; &#125;</div><div class="line"><span class="keyword">const</span> kiki = &#123; speed: <span class="number">10</span> &#125;;</div><div class="line"></div><div class="line">run(kiki, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>^^^<br>對、這種方式看起來好像有點怪，一點也不順暢、什摸叫做 <code>跑吧 kiki 10(秒/分/小時？)</code>，好吧、祈使句的話應該還說得通啦~ XDDD</p>
+<p>但我認為、這種方式優秀的地方，並不完全在於語句的通順(也就是可讀性)，對我來說、他優秀的地方在於對於規則的描述和資料的可擴充性。</p>
+<h2 id="進入擴充"><a href="#進入擴充" class="headerlink" title="進入擴充"></a>進入擴充</h2><p>一般來說、寫程式很容易就會有很多很像但又有微妙不同的東西慢慢的無性生殖出來。</p>
+<p>比如一開始我們訂了 <code>Animal</code> class 然後、有一隻小動物叫 kiki。接著突然知道主人要使用交通工具(也許是腳踏車、摩托車、汽車、也可能是兩條腿歐)要帶 kiki 去公園散步。</p>
+<h3 id="OO-part"><a href="#OO-part" class="headerlink" title="OO part"></a>OO part</h3><p>除了 <code>Animal</code> ， 也許人類我們可以繼續沿用 <code>Animal</code> ，然後、交通工具我們就要再另外定。也許尼會想說、他們就一樣單純的有 <code>speed</code> 就好啦、我又沒有說要車牌號碼什摸的。(我們都先把案情想得很單純歐、千萬別複雜化)</p>
+<p>但是、尼可以想像 <code>bicycle = new Animal({ speed: 20 })</code> 像這樣嗎~？顯然不行吧~除非這交通工具有人工智慧或者成精了、要不、要不我認為我可能無法接受。因此、在 OO part，大概還會再定義個 <code>Vehicle</code> ，來擔任這角色。但是、痛苦的事情接著來了。當尼有更多不相容的類型加入的時候、代表尼需要更多的 class 來處理這件事情，偏偏他們類似，更可憐的是說不定還一模一樣？？？？</p>
+<p>這時候有人說尼可以用個 OO 的繼承啊！尼可以想像 <code>Vehicle</code> 和 <code>Animal</code> 誰繼承誰嗎~ T UT？ 或者他們上層在開個祖先？但祖先應該叫什摸~ 囧 有機物之類的嗎？對、我很在意這種眉眉角角，我有時候很難想像出合理的繼承啦~！所以、假設尼也想不出來只好跟我一樣無性生殖下去了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(info) &#123; <span class="keyword">this</span>.info = info &#125;</div><div class="line"></div><div class="line">  run(time) &#123; <span class="keyword">return</span> <span class="keyword">this</span>.info.speed * time; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> master = <span class="keyword">new</span> Animal(&#123; speed: <span class="number">5</span> &#125;);</div><div class="line"><span class="keyword">const</span> bicycle = <span class="keyword">new</span> Vehicle(&#123; speed: <span class="number">15</span> &#125;);</div><div class="line"><span class="keyword">const</span> car = <span class="keyword">new</span> Vehicle(&#123; speed: <span class="number">40</span> &#125;);</div><div class="line"></div><div class="line"><span class="comment">// 也許會有更多的 class、更多的角色加入</span></div></pre></td></tr></table></figure>
+<h3 id="functional-part"><a href="#functional-part" class="headerlink" title="functional part"></a>functional part</h3><p>有趣的來了，從第一次我們定義 <code>kiki</code> 的時候，很明顯發現他是資料。所以、即使尼有再多種角色，他們都是資料、跟 kiki 的地位是一樣的。所以、管尼是主人、還是騎車、還是開飛機，這些都跟 kiki 一樣。(萬物皆平等、歐、萬物皆資料的概念)</p>
+<p>所以就會變成這樣….</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> master = &#123; speed: <span class="number">5</span> &#125;;</div><div class="line"><span class="keyword">const</span> bicycle = &#123; speed: <span class="number">15</span> &#125;;</div><div class="line"><span class="keyword">const</span> car = &#123; speed: <span class="number">40</span> &#125;;</div></pre></td></tr></table></figure>
+<p>那需要訂 <code>run</code> 嗎？不需要啊、因為 run 是一樣的！那有更多的角色呢？也都跟 kiki 是一樣的。在這邊我們可以反芻一下第一階段的程式。</p>
+<p>結論就是：當時定義的 <code>run</code> 是一種規則。我定義了規則(run)，然後讓角色(資料)去自由地發揮。說穿了、其實就是一個 $f(x)$ 的概念啦~ 有沒有很熟悉？國中的時候就教過啦~！我認為這是很經典的代入方法。不知道 functional 是什摸、這就是 functional 啊、啊啊啊~！</p>
+<h2 id="持續擴充中"><a href="#持續擴充中" class="headerlink" title="持續擴充中"></a>持續擴充中</h2><p>接下來一定會有人說『蛤~如果我就是要大家的 run 都訂的不一樣、那尼不就要訂很多的 run ， run 噴得到處都是也沒有比較好吧？』『差評！』『負分！』『OO 比較好！』</p>
+<p>好啦、其實這也有幾種解法，其中一種解法我認為跟 functional language 的其中一個特性非常有關係。(其他的應該也有關係啦、但我好像印象不太深刻了、我不敢亂說~ T ^T 印象中應該還有好幾種寫法)</p>
+<p>這特性就是 <code>Higher-order Function</code> ，也就是說、function 可以當參數跟結果。這是 functional language 一個非常重要的指標，一個語言可不可以說他是 functional (先不提純不純)，我認為、一定要有這個。(好像也一定要有這個啦~)</p>
+<p>OO 我們就跳過了，functional 的尼就可以類似這樣定，然後 run 要稍微改寫一下…。(希望沒寫錯啊、寫錯就多多包涵了)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> master = &#123; speed: <span class="number">5</span>, newSpeed(speed) &#123; <span class="keyword">return</span> <span class="number">3</span> * speed; &#125; &#125;; <span class="comment">// 3倍速</span></div><div class="line"><span class="keyword">const</span> bicycle = &#123; speed: <span class="number">15</span>, newSpeed(speed, a, t) &#123; <span class="keyword">return</span> speed + a * t / <span class="number">2</span>; &#125; &#125;; <span class="comment">// 初始不為 0 的等加速度</span></div><div class="line"><span class="keyword">const</span> car = &#123; speed: <span class="number">40</span>, newSpeed(speed, a, t) &#123; <span class="keyword">return</span> a * t / <span class="number">2</span>; &#125; &#125;; <span class="comment">// 初始 0 的等加速度</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">role, time</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> role.newSpeed ? role.newSpeed(role.speed, role.a, t) * t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也就是說、我訂好規則，run 就是 <code>speed * time</code> ，那 speed 是那個角色該定義好的的事情，要怎摸定義是他的事，當然、如果型別可以統一最好、要不就是要加個判斷。上面的 speed 和 newSpeed 的呈現方式都可以再設計得更優秀、更彈性點啦~ 現在就簡單的拼湊下而已。</p>
+<p>這種方式的優點在於、尼會知道在尼程式裡面</p>
+<ul>
+<li>有一個公訂的規則，他代表的意義是不會跑掉，而且可以隨著角色(參數)變化。</li>
+<li>不需要一直的 extend ，重複的定義早就有的東西。</li>
+<li>以概括的來說，是可以不知道各個角色做了些什摸事情，然後他們有一樣的規則可以達到一樣的目的。</li>
+</ul>
+<p>另外可以延伸出的幾個我很喜歡的點（但這一樣也很看人喜不喜歡）</p>
+<p>延伸上述最後一點，我認為 functional language 弱化了 sequential programming 這件事。所有的東西(包含大家所認知的的資料和 function) 都是資料。我還記得以前在寫 lisp 一件很有趣的事情。</p>
+<p>當時的作業是：學校提供學生的成績、然後、請訂出規則(以下列出各種科系的規則)，幫各個科系取得錄取名單。</p>
+<p>當 function 的意義代表的是規則，訂出了規則後、資料倒進來，就有種 filter 的感覺，而事實上在取得的結果，也的確可能沒有按照 data 順序(阿、我記得這好像跟 lisp 有關啦~)，但這就蠻有趣的體現出 filter 、過篩，這樣的感覺。而且、像這類型的話、其實規則也沒有所謂的順序性，先後根本沒關。但如果以 sequence 的想法的話，大概就是要幾個 loop 然後搭配 if-else，反覆地進行到最後。但… functional 可以不用~ T UT 多棒啊~！</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>其實、我不太知道這樣的描述是不是有把他們差異講得很清楚，也不太確定對不對啦~！因為幾乎沒有像其他大大們講到的各種特性、注意事項，他帶來的 balabala。我認為那很抽象，要認真地用文字描述對我來說實在是有點難，說的出來的話、我應該也可以成為大大了的感覺。而且扣掉部分的特性以外，即使是 c/c++ 也可以模擬出類似 functional 的寫法和行為，相反過來也是可以（寫過來和寫過去我都有試過歐），即使真的沒有辦法非常完整的互相模擬（可能有效能上、實際運作方式不同的差異）。不過、即使這樣、我還是認為 functional 和 oo 是一種理念、想法，而不是一種油水不相容的概念。(其實、這好像又可以是一篇啦~ XDDD 他們的互相模擬，找到新題材的意思？)</p>
+<p>寫這篇的理由除了一開始講的要入 haskell 的坑之前先給自己做個理念的複習，等之後回來看有多幼稚以外，也因為我是 functional 控，大家突然問、我又老講不出個什摸來…所以，先寫起來放的概念~。希望可以以一種輕鬆的方式、不用各種名詞解釋就可以體會出他們的差異、希望不要再虛無縹緲了。</p>
+<p>謝謝大家！歐、也替以後來看這篇的自己先謝謝一下寫這篇的自己！(&lt;– 突然超正經的是壞掉了嗎？)</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/other/">雜談</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/雜談/">雜談</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/09/01/func-vs-oo/" data-title="functional vs OO - 理念版 | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/08/18/fe-test-is/"  title="前端測試要測...？">
+ <strong>下一篇：</strong><br/> 
+ <span>前端測試要測...？
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sequence"><span class="toc-number">2.</span> <span class="toc-text">sequence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#functional-來了"><span class="toc-number">3.</span> <span class="toc-text">functional 來了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#進入擴充"><span class="toc-number">4.</span> <span class="toc-text">進入擴充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OO-part"><span class="toc-number">4.1.</span> <span class="toc-text">OO part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#functional-part"><span class="toc-number">4.2.</span> <span class="toc-text">functional part</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持續擴充中"><span class="toc-number">5.</span> <span class="toc-text">持續擴充中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">6.</span> <span class="toc-text">結論</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/code/" title="code">code<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/js/" title="js">js<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="數學">數學<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/other/" title="雜談">雜談<sup>10</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/雜談/" title="雜談">雜談<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/code/" title="code">code<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架構/" title="架構">架構<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pattern/" title="pattern">pattern<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/測試/" title="測試">測試<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.blackbing.net/" target="_blank" title="Blackbing&#39;s Playground">Blackbing&#39;s Playground</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://yy-programer.blogspot.tw/" target="_blank" title="Yy&#39;s program">Yy&#39;s program</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kainors.github.com/" target="_blank" title="小諾的沒技術農場">小諾的沒技術農場</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+<div id="recentcomments" class="dsq-widget">
+    <p class="asidetitle">最近留言</p>
+        <script type="text/javascript" src="https://ichi1234567.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=1&avatar_size=32&excerpt_length=50&hide_mods=0"></script>
+</div>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="小助助">小助助</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-32906104-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
