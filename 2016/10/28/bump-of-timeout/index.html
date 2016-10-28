@@ -4,23 +4,23 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>Not or Xor | 小助助的精神實驗室</title>
+    <title>Time Tick 大爆炸 | 小助助的精神實驗室</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小助助">
     
 
     
-    <meta name="description" content="程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 boolean 對吧！boolean 有 true 、 false。在我們需要判斷的時候，常常會有 假如他沒有... ， 假如他不是... 那種否定的判斷對吧！ 沒錯、這次說的就是那個 not 歐~">
+    <meta name="description" content="好久好久好久以前、歷經過一段 timer 大爆炸時期，當時希望各個 time-ago 的顯示可以隨著時間變化改變。很幸運的、在這件事發生之前，就看過類似的案例。（其實是 google-doole 的案例啦~）當時還蠻有空亂 trace 的，突然想到、所以就來回憶一下。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Not or Xor">
-<meta property="og:url" content="http://yoursite.com/2016/08/03/not-or-xor/index.html">
+<meta property="og:title" content="Time Tick 大爆炸">
+<meta property="og:url" content="http://yoursite.com/2016/10/28/bump-of-timeout/index.html">
 <meta property="og:site_name" content="小助助的精神實驗室">
-<meta property="og:description" content="程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 boolean 對吧！boolean 有 true 、 false。在我們需要判斷的時候，常常會有 假如他沒有... ， 假如他不是... 那種否定的判斷對吧！ 沒錯、這次說的就是那個 not 歐~">
-<meta property="og:updated_time" content="2016-08-05T15:43:19.000Z">
+<meta property="og:description" content="好久好久好久以前、歷經過一段 timer 大爆炸時期，當時希望各個 time-ago 的顯示可以隨著時間變化改變。很幸運的、在這件事發生之前，就看過類似的案例。（其實是 google-doole 的案例啦~）當時還蠻有空亂 trace 的，突然想到、所以就來回憶一下。">
+<meta property="og:updated_time" content="2016-10-28T13:55:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Not or Xor">
-<meta name="twitter:description" content="程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 boolean 對吧！boolean 有 true 、 false。在我們需要判斷的時候，常常會有 假如他沒有... ， 假如他不是... 那種否定的判斷對吧！ 沒錯、這次說的就是那個 not 歐~">
+<meta name="twitter:title" content="Time Tick 大爆炸">
+<meta name="twitter:description" content="好久好久好久以前、歷經過一段 timer 大爆炸時期，當時希望各個 time-ago 的顯示可以隨著時間變化改變。很幸運的、在這件事發生之前，就看過類似的案例。（其實是 google-doole 的案例啦~）當時還蠻有空亂 trace 的，突然想到、所以就來回憶一下。">
 
     
     <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
@@ -74,14 +74,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/03/not-or-xor/" title="Not or Xor" itemprop="url">Not or Xor</a>
+      <a href="/2016/10/28/bump-of-timeout/" title="Time Tick 大爆炸" itemprop="url">Time Tick 大爆炸</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-03T05:32:06.000Z" itemprop="datePublished"> 發表於 2016-08-03</time>
+    <time datetime="2016-10-28T13:36:57.000Z" itemprop="datePublished"> 發表於 2016-10-28</time>
     
   </p>
 </header>
@@ -90,23 +90,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Not"><span class="toc-number">1.</span> <span class="toc-text">Not</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xor"><span class="toc-number">2.</span> <span class="toc-text">Xor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比較"><span class="toc-number">3.</span> <span class="toc-text">比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#稱不上解法的解法吧？"><span class="toc-number">2.</span> <span class="toc-text">稱不上解法的解法吧？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">3.</span> <span class="toc-text">結論</span></a></li></ol>
 		
 		</div>
 		
-		<p>程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 <code>boolean</code> 對吧！boolean 有 <code>true</code> 、 <code>false</code>。在我們需要判斷的時候，常常會有 <code>假如他沒有...</code> ， <code>假如他不是...</code> 那種<code>否定</code>的判斷對吧！ 沒錯、這次說的就是那個 <code>not</code> 歐~</p>
+		<p>好久好久好久以前、歷經過一段 timer 大爆炸時期，當時希望各個 time-ago 的顯示可以隨著時間變化改變。很幸運的、在這件事發生之前，就看過類似的案例。（其實是 google-doole 的案例啦~）當時還蠻有空亂 trace 的，突然想到、所以就來回憶一下。</p>
 <a id="more"></a>
-<h2 id="Not"><a href="#Not" class="headerlink" title="Not"></a>Not</h2><p>在 js 裡、 not 隨便用好像都可以…。從 <code>!0</code> 、 <code>!null</code> 、 <code>!undefined</code> … 簡單的說，就是直得相反，完全沒有問題。如果真的要取得 <code>bool</code> ，其實就會比較建議使用 <code>!!value</code> 了，畢竟、 <code>value</code> 就是個值。</p>
-<p>所以、 <code>not</code> 沒有什摸好說的啦~ 就是個很常用的東西。</p>
-<h2 id="Xor"><a href="#Xor" class="headerlink" title="Xor"></a>Xor</h2><p>比較有趣的其實是這個， <code>^</code> 他其實是<code>位元計算</code>，大部份的人應該對他們都比較陌生。但有一陣子、我實在是蠻著迷的，因為數位邏輯真的很有趣(但那好久以前了)。最近突然回憶起來，所以、覺得應該很適合當一篇小品。</p>
-<p>xor 的定義…. 大家應該都蠻熟悉的(？) 就不多談了。</p>
-<h2 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h2><p>他要拿來跟 <code>not</code> 比較的前提，當然就是只有一個位元的情況啦~ <code>value ^= 1</code> 這是我最常用的情形，因為這樣的寫法跟 <code>not</code> 有異曲同工之妙啦~ 但是他們的差異在…. xor 的結果是 <code>number</code> ， not 是 <code>boolean</code> ，但是在 js 的判斷上，其實不會有問題。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(!<span class="number">0</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(!<span class="number">1</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">0</span>^<span class="number">1</span>); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>^<span class="number">1</span>); <span class="comment">// 0</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(!<span class="literal">true</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(!<span class="literal">false</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span>^<span class="number">1</span>); <span class="comment">// 0</span></div><div class="line"><span class="built_in">console</span>.log(<span class="literal">false</span>^<span class="number">1</span>); <span class="comment">// 1</span></div></pre></td></tr></table></figure>
-<p>基本上、 xor 我大概就是用在這幾種情況，但、不太建議用在 <code>非數字</code> 的情境啦~！也許會有人想說、 not 用得好好的幹嘛用 xor ，這也太冷門的用法了吧？</p>
-<p>是的、位元運算是比較少用沒錯，而我會用的情況通常是把它當作<code>種類</code>、<code>情形</code>這樣的前提下使用的。不過、用 boolean 也沒什摸不好啦~ 就是一種習慣，有時候、拿來操作也很方便。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> count = <span class="number">99</span>;</div><div class="line"><span class="keyword">let</span> toggle = <span class="number">0</span>;</div><div class="line"></div><div class="line">count += ((toggle ^= <span class="number">1</span>) || <span class="number">-1</span>);</div></pre></td></tr></table></figure>
-<p>用這種方法、在計算正反次數實在很方便啊啊啊啊！當然、其他有需要運算的情況有時候也是比<code>if-else</code> 要來得方便啦！所以、有時候我蠻喜歡用的。很久以前也試過用 bitwise 的方式導入流程，誒、還蠻有趣的，但是… 實在有點難懂~ XDDD 但蠻有趣的啦~ 然後、一個位元的這個方式，大概是我從當時玩到現在，覺得還是很好用的方式。也不會一堆 <code>!</code> ，看了也不舒服。</p>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>雖然、位元操作可能是比較不直覺的方式，但、有時候真的很好用。沒有過的人可以試試看、真的還蠻不錯的，有時候真的很省事。不過、如果有閱讀上的困難，那…也不建議用啦~</p>
+<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><ul>
+<li>各種 timeout 亂噴，導致效能不彰（到底是噴了多少 timeout）</li>
+<li>timer 太多，也無法控制，當元件消失、tick 面臨需要 remove 比較好，但…。</li>
+</ul>
+<p>好的、相信大家都可以想像 timeout 一多可能會有什摸樣的大爆炸情形了。 timeout 、 interval ，其實都不能算是正常邏輯的一部份，因為它其實會在執行一段時間的時候，偵測時間到了，插進去做。所以… 尼認為、這 tick 是真的時間嗎？很顯然、當時間內需要執行的事情不多的時候，這個 tick 應該會是貼近我們所認知的時間，但是、當事情多的時候呢？真的、 1 秒都不是 1 秒了。</p>
+<h2 id="稱不上解法的解法吧？"><a href="#稱不上解法的解法吧？" class="headerlink" title="稱不上解法的解法吧？"></a>稱不上解法的解法吧？</h2><p>真正的解法、我覺得還是不要有 timeout 啦~ 但顯然不太可能，像是我們希望的 time-ago 就一定要設 timeout 。而這種 timeout 氾濫的情況好發於：各種動態訊息的網頁，像是討論區、留言板…。</p>
+<p>那那那、那該怎摸辦呢？？？？？</p>
+<p>嗯嗯、就是把 timer 集中起來，只有一個 time tick 囉~！這其實也是 event listener 的實作概念。(然後、各種 list 的操作覺得也是換湯不換藥啦~)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> addEvtListener = <span class="function"><span class="keyword">function</span>(<span class="params">elm, evt</span>) </span>&#123;</div><div class="line">  !elm.evt[evt.type] &amp;&amp; elm.evt[evt.type] = [];</div><div class="line">  elm.evt[evt.type].push(evt.action);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> listener = elm.addEventListener || elm.attachEvent;</div><div class="line">  <span class="keyword">const</span> runAction = (e) =&gt; &#123;</div><div class="line">    elm.evt[e.type].forEach((action) =&gt; action.apply(elm, [e]));</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  elm.evt.length === <span class="number">1</span> &amp;&amp; listener.apply(elm, [evt.type, runAction]);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>好啦、現在的 listener 大概都已經統一變成 <code>addEvtListener</code> 了，比較少直接使用 <code>onXXX</code> 的方式定義 action 了，不過、以前的 listener 大概就是用類似上面的方式實現的。這樣可以綁定一次 event，但實際上有很多的 action 可以接著執行下去。</p>
+<p>同理、timetick 也是一樣的。就是有個管理 tick 的地方，但有趣的是，這邊的實作並不是一次性的 timeout ，因為可能會有連續的不停的監聽 timer ，那… 這時候也許會想說、不用 timeout 那就是應該要用 interval 囉？也可以啦，不過、我個人比較不喜歡 interval 啦~ 一般我都還是用 setTimeout ，如果是動畫的話、就是用 <code>requestAnimationFrame</code> 。(不過、為什摸不用 interval 呢？其實原因有點忘了~ 太久以前看到的文章了、也許現在那些原因都不重要了也說不定。)</p>
+<p>使用單一 timer 監聽、其實有好有壞啦~。<br>優點：</p>
+<ul>
+<li>單一 timer ，在 timeout 噴得到處的情況下，效能、管理的確是還不錯的。<ul>
+<li>如果有需要，針對在 viewport 之外，或超出時間範圍內的活動，想要移除應該是沒有問題的。</li>
+</ul>
+</li>
+<li>單位時間固定，特別是拿來實作動畫，做完 A 過 n 秒要做 B。不只 timer 可以寫成一塊、角色劇本也可以寫成一塊。(n 久以前，google doodles 不少動畫都是這樣寫的。誒、對，我就是從他那邊偷學過來的~ w+)</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>因為比較傾向單位時間固定、像是 1 sec ，所以、對於大家希望這個快一點、那個慢一點、這個要比那個快上一點點、那個還要再慢一點點的情況，就不好用了。</li>
+<li>單一的 timer ，所以、在時間持續往前跑的情況，進去的時機點，不一定會是那摸剛好從 0 開始，時間可能會有點延遲。但對於長時間來說、我覺得影響不大。</li>
+</ul>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>如果說、四散的 timeout 可以很客製化的達到目的，我個人的確比較偏好單一個管理。畢竟、 timeout 我認為他本來就是個破壞秩序的東西，如果還亂噴…。也許、哪天發現或醞釀出很不錯的寫法，我之後再也不會討厭也說不定。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -114,13 +128,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/code/">code</a>
+  <a class="article-category-link" href="/categories/js/">js</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/code/">code</a><a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a>
+  <span></span> <a href="/tags/js/">js</a>
   </div>
 
 </div>
@@ -129,7 +143,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2016/08/03/not-or-xor/" data-title="Not or Xor | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/10/28/bump-of-timeout/" data-title="Time Tick 大爆炸 | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -142,19 +156,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/08/05/string-and-array/" title="字串與陣列">
-  <strong>上一篇：</strong><br/>
-  <span>
-  字串與陣列</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/07/24/clicked-and-then/"  title="Clicked and Then ...">
+<a href="/2016/09/01/func-vs-oo/"  title="functional vs OO - 概念版">
  <strong>下一篇：</strong><br/> 
- <span>Clicked and Then ...
+ <span>functional vs OO - 概念版
 </span>
 </a>
 </div>
@@ -175,7 +181,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Not"><span class="toc-number">1.</span> <span class="toc-text">Not</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xor"><span class="toc-number">2.</span> <span class="toc-text">Xor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比較"><span class="toc-number">3.</span> <span class="toc-text">比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">4.</span> <span class="toc-text">結論</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#稱不上解法的解法吧？"><span class="toc-number">2.</span> <span class="toc-text">稱不上解法的解法吧？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">3.</span> <span class="toc-text">結論</span></a></li></ol>
  
   </div>
 
