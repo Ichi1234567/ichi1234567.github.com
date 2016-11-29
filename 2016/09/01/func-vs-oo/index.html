@@ -117,10 +117,10 @@
 </ol>
 <p>特別、當我們以第一人稱來描述問題的時候，會發現、哇~ 這樣好像感同身受、超容易有想法的。<br>然後、 OO 就是個更好拿來做這樣表現的一種方式。(我是這摸認為的啦~)</p>
 <p>比如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(info) &#123; <span class="keyword">this</span>.info = info; &#125;</div><div class="line"></div><div class="line">  run(time) &#123; <span class="keyword">return</span> <span class="keyword">this</span>.info.speed * time; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> kiki = <span class="keyword">new</span> Animal(&#123; speed: <span class="number">10</span> &#125;);</div><div class="line">kiki.run(<span class="number">10</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(info) &#123; <span class="keyword">this</span>.info = info; &#125;</div><div class="line"></div><div class="line">  run(time) &#123; <span class="keyword">return</span> <span class="keyword">this</span>.info.speed * time; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> kiki = <span class="keyword">new</span> Animal(&#123; <span class="attr">speed</span>: <span class="number">10</span> &#125;);</div><div class="line">kiki.run(<span class="number">10</span>);</div></pre></td></tr></table></figure>
 <p>^^^<br>產生出(有一隻)新動物 <code>kiki</code> ， kiki 在奔跑、跑了 10 (秒/分/小時？)。好直白、但意思就是這樣~ T UT</p>
 <h2 id="functional-來了"><a href="#functional-來了" class="headerlink" title="functional 來了"></a>functional 來了</h2><p>而我呢！有一陣子不喜歡 OO 那樣、所以我會把它反過來。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">role, time</span>) </span>&#123; <span class="keyword">return</span> role.speed * time; &#125;</div><div class="line"><span class="keyword">const</span> kiki = &#123; speed: <span class="number">10</span> &#125;;</div><div class="line"></div><div class="line">run(kiki, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">role, time</span>) </span>&#123; <span class="keyword">return</span> role.speed * time; &#125;</div><div class="line"><span class="keyword">const</span> kiki = &#123; <span class="attr">speed</span>: <span class="number">10</span> &#125;;</div><div class="line"></div><div class="line">run(kiki, <span class="number">10</span>);</div></pre></td></tr></table></figure>
 <p>^^^<br>對、這種方式看起來好像有點怪，一點也不順暢、什摸叫做 <code>跑吧 kiki 10(秒/分/小時？)</code>，好吧、祈使句的話應該還說得通啦~ XDDD</p>
 <p>但我認為、這種方式優秀的地方，並不完全在於語句的通順(也就是可讀性)，對我來說、他優秀的地方在於對於規則的描述和資料的可擴充性。</p>
 <h2 id="進入擴充"><a href="#進入擴充" class="headerlink" title="進入擴充"></a>進入擴充</h2><p>一般來說、寫程式很容易就會有很多很像但又有微妙不同的東西慢慢的無性生殖出來。</p>
@@ -128,17 +128,17 @@
 <h3 id="OO-part"><a href="#OO-part" class="headerlink" title="OO part"></a>OO part</h3><p>除了 <code>Animal</code> ， 也許人類我們可以繼續沿用 <code>Animal</code> ，然後、交通工具我們就要再另外定。也許尼會想說、他們就一樣單純的有 <code>speed</code> 就好啦、我又沒有說要車牌號碼什摸的。(我們都先把案情想得很單純歐、千萬別複雜化)</p>
 <p>但是、尼可以想像 <code>bicycle = new Animal({ speed: 20 })</code> 像這樣嗎~？顯然不行吧~除非這交通工具有人工智慧或者成精了、要不、要不我認為我可能無法接受。因此、在 OO part，大概還會再定義個 <code>Vehicle</code> ，來擔任這角色。但是、痛苦的事情接著來了。當尼有更多不相容的類型加入的時候、代表尼需要更多的 class 來處理這件事情，偏偏他們類似，更可憐的是說不定還一模一樣？？？？</p>
 <p>這時候有人說尼可以用個 OO 的繼承啊！尼可以想像 <code>Vehicle</code> 和 <code>Animal</code> 誰繼承誰嗎~ T UT？ 或者他們上層在開個祖先？但祖先應該叫什摸~ 囧 有機物之類的嗎？對、我很在意這種眉眉角角，我有時候很難想像出合理的繼承啦~！所以、假設尼也想不出來只好跟我一樣無性生殖下去了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(info) &#123; <span class="keyword">this</span>.info = info &#125;</div><div class="line"></div><div class="line">  run(time) &#123; <span class="keyword">return</span> <span class="keyword">this</span>.info.speed * time; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> master = <span class="keyword">new</span> Animal(&#123; speed: <span class="number">5</span> &#125;);</div><div class="line"><span class="keyword">const</span> bicycle = <span class="keyword">new</span> Vehicle(&#123; speed: <span class="number">15</span> &#125;);</div><div class="line"><span class="keyword">const</span> car = <span class="keyword">new</span> Vehicle(&#123; speed: <span class="number">40</span> &#125;);</div><div class="line"></div><div class="line"><span class="comment">// 也許會有更多的 class、更多的角色加入</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(info) &#123; <span class="keyword">this</span>.info = info &#125;</div><div class="line"></div><div class="line">  run(time) &#123; <span class="keyword">return</span> <span class="keyword">this</span>.info.speed * time; &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> master = <span class="keyword">new</span> Animal(&#123; <span class="attr">speed</span>: <span class="number">5</span> &#125;);</div><div class="line"><span class="keyword">const</span> bicycle = <span class="keyword">new</span> Vehicle(&#123; <span class="attr">speed</span>: <span class="number">15</span> &#125;);</div><div class="line"><span class="keyword">const</span> car = <span class="keyword">new</span> Vehicle(&#123; <span class="attr">speed</span>: <span class="number">40</span> &#125;);</div><div class="line"></div><div class="line"><span class="comment">// 也許會有更多的 class、更多的角色加入</span></div></pre></td></tr></table></figure>
 <h3 id="functional-part"><a href="#functional-part" class="headerlink" title="functional part"></a>functional part</h3><p>有趣的來了，從第一次我們定義 <code>kiki</code> 的時候，很明顯發現他是資料。所以、即使尼有再多種角色，他們都是資料、跟 kiki 的地位是一樣的。所以、管尼是主人、還是騎車、還是開飛機，這些都跟 kiki 一樣。(萬物皆平等、歐、萬物皆資料的概念)</p>
 <p>所以就會變成這樣….</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> master = &#123; speed: <span class="number">5</span> &#125;;</div><div class="line"><span class="keyword">const</span> bicycle = &#123; speed: <span class="number">15</span> &#125;;</div><div class="line"><span class="keyword">const</span> car = &#123; speed: <span class="number">40</span> &#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> master = &#123; <span class="attr">speed</span>: <span class="number">5</span> &#125;;</div><div class="line"><span class="keyword">const</span> bicycle = &#123; <span class="attr">speed</span>: <span class="number">15</span> &#125;;</div><div class="line"><span class="keyword">const</span> car = &#123; <span class="attr">speed</span>: <span class="number">40</span> &#125;;</div></pre></td></tr></table></figure>
 <p>那需要訂 <code>run</code> 嗎？不需要啊、因為 run 是一樣的！那有更多的角色呢？也都跟 kiki 是一樣的。在這邊我們可以反芻一下第一階段的程式。</p>
 <p>結論就是：當時定義的 <code>run</code> 是一種規則。我定義了規則(run)，然後讓角色(資料)去自由地發揮。說穿了、其實就是一個 $f(x)$ 的概念啦~ 有沒有很熟悉？國中的時候就教過啦~！我認為這是很經典的代入方法。不知道 functional 是什摸、這就是 functional 啊、啊啊啊~！</p>
 <h2 id="持續擴充中"><a href="#持續擴充中" class="headerlink" title="持續擴充中"></a>持續擴充中</h2><p>接下來一定會有人說『蛤~如果我就是要大家的 run 都訂的不一樣、那尼不就要訂很多的 run ， run 噴得到處都是也沒有比較好吧？』『差評！』『負分！』『OO 比較好！』</p>
 <p>好啦、其實這也有幾種解法，其中一種解法我認為跟 functional language 的其中一個特性非常有關係。(其他的應該也有關係啦、但我好像印象不太深刻了、我不敢亂說~ T ^T 印象中應該還有好幾種寫法)</p>
 <p>這特性就是 <code>Higher-order Function</code> ，也就是說、function 可以當參數跟結果。這是 functional language 一個非常重要的指標，一個語言可不可以說他是 functional (先不提純不純)，我認為、一定要有這個。(好像也一定要有這個啦~)</p>
 <p>OO 我們就跳過了，functional 的尼就可以類似這樣定，然後 run 要稍微改寫一下…。(希望沒寫錯啊、寫錯就多多包涵了)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> master = &#123; speed: <span class="number">5</span>, newSpeed(speed) &#123; <span class="keyword">return</span> <span class="number">3</span> * speed; &#125; &#125;; <span class="comment">// 3倍速</span></div><div class="line"><span class="keyword">const</span> bicycle = &#123; speed: <span class="number">15</span>, newSpeed(speed, a, t) &#123; <span class="keyword">return</span> speed + a * t / <span class="number">2</span>; &#125; &#125;; <span class="comment">// 初始不為 0 的等加速度</span></div><div class="line"><span class="keyword">const</span> car = &#123; speed: <span class="number">40</span>, newSpeed(speed, a, t) &#123; <span class="keyword">return</span> a * t / <span class="number">2</span>; &#125; &#125;; <span class="comment">// 初始 0 的等加速度</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">role, time</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> role.newSpeed ? role.newSpeed(role.speed, role.a, t) * t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> master = &#123; <span class="attr">speed</span>: <span class="number">5</span>, newSpeed(speed) &#123; <span class="keyword">return</span> <span class="number">3</span> * speed; &#125; &#125;; <span class="comment">// 3倍速</span></div><div class="line"><span class="keyword">const</span> bicycle = &#123; <span class="attr">speed</span>: <span class="number">15</span>, newSpeed(speed, a, t) &#123; <span class="keyword">return</span> speed + a * t / <span class="number">2</span>; &#125; &#125;; <span class="comment">// 初始不為 0 的等加速度</span></div><div class="line"><span class="keyword">const</span> car = &#123; <span class="attr">speed</span>: <span class="number">40</span>, newSpeed(speed, a, t) &#123; <span class="keyword">return</span> a * t / <span class="number">2</span>; &#125; &#125;; <span class="comment">// 初始 0 的等加速度</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">role, time</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> role.newSpeed ? role.newSpeed(role.speed, role.a, t) * t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>也就是說、我訂好規則，run 就是 <code>speed * time</code> ，那 speed 是那個角色該定義好的的事情，要怎摸定義是他的事，當然、如果型別可以統一最好、要不就是要加個判斷。上面的 speed 和 newSpeed 的呈現方式都可以再設計得更優秀、更彈性點啦~ 現在就簡單的拼湊下而已。</p>
 <p>這種方式的優點在於、尼會知道在尼程式裡面</p>
 <ul>
@@ -250,7 +250,7 @@
 		  
 		
 		  
-			<li><a href="/categories/js/" title="js">js<sup>10</sup></a></li>
+			<li><a href="/categories/js/" title="js">js<sup>11</sup></a></li>
 		  
 		
 		  
@@ -271,7 +271,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/js/" title="js">js<sup>17</sup></a></li>
+				<li><a href="/tags/js/" title="js">js<sup>18</sup></a></li>
 			
 		
 			
@@ -283,11 +283,11 @@
 			
 		
 			
-				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
 			
 		
 			
@@ -299,6 +299,10 @@
 			
 		
 			
+				<li><a href="/tags/測試/" title="測試">測試<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
 			
 		
@@ -307,7 +311,7 @@
 			
 		
 			
-				<li><a href="/tags/測試/" title="測試">測試<sup>1</sup></a></li>
+				<li><a href="/tags/eslint/" title="eslint">eslint<sup>1</sup></a></li>
 			
 		
 		</ul>

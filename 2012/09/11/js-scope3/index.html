@@ -98,7 +98,7 @@
 <a id="more"></a>
 <p>###new class</p>
 <p>這個類型就是，一般最最常使用，非使用不可的情況了。有在用什摸js的class模型的<br>人類，應該還蠻清楚的。</p>
-<figure class="highlight js"><figcaption><span>new class</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _person = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _name = params.name,</div><div class="line">        _age = params.age;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> _name;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">this</span>.getAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> _age;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mary = <span class="keyword">new</span> _person(&#123;</div><div class="line">    name: <span class="string">"Mary"</span>,</div><div class="line">    age: <span class="number">15</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"Mary "</span> + Mary.getAge());</div></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>new class</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _person = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _name = params.name,</div><div class="line">        _age = params.age;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> _name;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">this</span>.getAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> _age;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mary = <span class="keyword">new</span> _person(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"Mary"</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">15</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"Mary "</span> + Mary.getAge());</div></pre></td></tr></table></figure>
 <p>###event</p>
 <p>event的情況，也還蠻常用到的啦~通常是要偷懶的時候，會把一些公用函式提出來，<br>然後，就可以方便拿來用，不用定義了。</p>
 <figure class="highlight js"><figcaption><span>event</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</div><div class="line">$btn1.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(++count);</div><div class="line">&#125;);</div><div class="line">$btn2.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(++count);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -109,7 +109,7 @@
 <p>curry的內容，之前就講過了啦~在<a href="http://ichi1234567.github.com/blog/2012/09/10/scope2/" target="_blank" rel="external">這一篇的第1段code</a><br>它的精神其實就是說，我可以預先塞一些特定的資料進去。而其實…會使用closure<br>的情況，大概也就是那樣，<strong>我需要先設定好某些訊息</strong>。</p>
 <figure class="highlight js"><figcaption><span>curry</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _getFunc = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> a + b;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> _add2 = _getFunc(<span class="number">2</span>),</div><div class="line">    _add10000 = getFunc(<span class="number">10000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(_add2(<span class="number">5</span>));</div><div class="line"><span class="built_in">console</span>.log(_add10000(<span class="number">5</span>));</div></pre></td></tr></table></figure>
 <p>當然，curry也有他的算是…. 一般式啦~大概，有可能…是長下面這樣~(我有點忘了，<br>很久沒刻了..|||) 有興趣的，應該可以瞧瞧<a href="http://prototypejs.org/" target="_blank" rel="external">prototypejs</a><br>這個還蠻悠久的framwork，還蠻有趣的，印象中…有很多有趣的寫法。下面那段code，<br>有些寫法是從裡面學來的。</p>
-<figure class="highlight js"><figcaption><span>curry2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _curry = <span class="function"><span class="keyword">function</span>(<span class="params">fn, _self, params</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _slice = <span class="built_in">Array</span>.prototype.slice,</div><div class="line">        args = _slice.apply(<span class="built_in">arguments</span>, [<span class="number">2</span>]);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> fn.apply(_self, args.concat(_slice.apply(<span class="built_in">arguments</span>)));</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> fn = _curry(<span class="function"><span class="keyword">function</span>(<span class="params">params, x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> params.coef1 * x * x + params.coef2 * x + params.coef3;</div><div class="line">&#125;, self, &#123;</div><div class="line">    coef1: <span class="number">5</span>,</div><div class="line">    coef2: <span class="number">3</span>,</div><div class="line">    coef3: <span class="number">-7</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fn(<span class="number">10</span>));</div></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>curry2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _curry = <span class="function"><span class="keyword">function</span>(<span class="params">fn, _self, params</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _slice = <span class="built_in">Array</span>.prototype.slice,</div><div class="line">        args = _slice.apply(<span class="built_in">arguments</span>, [<span class="number">2</span>]);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> fn.apply(_self, args.concat(_slice.apply(<span class="built_in">arguments</span>)));</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> fn = _curry(<span class="function"><span class="keyword">function</span>(<span class="params">params, x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> params.coef1 * x * x + params.coef2 * x + params.coef3;</div><div class="line">&#125;, self, &#123;</div><div class="line">    <span class="attr">coef1</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">coef2</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">coef3</span>: <span class="number">-7</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fn(<span class="number">10</span>));</div></pre></td></tr></table></figure>
 <p>###總結</p>
 <p>在正常的情況下，以我來說，應該就只有上面那幾種情況會用到喇~ @ 3@ (其他沒提到的，大概…<br>都被我規在上面類型的喇~沒有漏掉的話…)</p>
 <p>所以，如果正常的使用，其實，頂多包個1層或2層，如果，尼沒事包超過3層，ㄜ…久了就哉系阿，<br>就像一般寫structure language，全域變數是不建議使用的一樣，『用的好，讓尼上天堂;用不好，<br>就下地獄吧尼』</p>
@@ -126,7 +126,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/code/">code</a><a href="/tags/js/">js</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/code/">code</a>
   </div>
 
 </div>
@@ -210,7 +210,7 @@
 		  
 		
 		  
-			<li><a href="/categories/js/" title="js">js<sup>10</sup></a></li>
+			<li><a href="/categories/js/" title="js">js<sup>11</sup></a></li>
 		  
 		
 		  
@@ -231,7 +231,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/js/" title="js">js<sup>17</sup></a></li>
+				<li><a href="/tags/js/" title="js">js<sup>18</sup></a></li>
 			
 		
 			
@@ -243,11 +243,11 @@
 			
 		
 			
-				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
 			
 		
 			
@@ -259,6 +259,10 @@
 			
 		
 			
+				<li><a href="/tags/測試/" title="測試">測試<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
 			
 		
@@ -267,7 +271,7 @@
 			
 		
 			
-				<li><a href="/tags/測試/" title="測試">測試<sup>1</sup></a></li>
+				<li><a href="/tags/eslint/" title="eslint">eslint<sup>1</sup></a></li>
 			
 		
 		</ul>

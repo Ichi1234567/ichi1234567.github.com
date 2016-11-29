@@ -110,9 +110,9 @@
 <p>####new function</p>
 <p>其實，那個小標題我不知道該怎摸下。哈..總之這部份看起來有點像OO，是關於<br>js的new function產生instance的部份。</p>
 <p>######1. this</p>
-<figure class="highlight js"><figcaption><span>public1</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> name = params.name;</div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mary = <span class="keyword">new</span> person(&#123;</div><div class="line">    name: <span class="string">"Mary"</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(Mary.getName());</div></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>public1</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> name = params.name;</div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mary = <span class="keyword">new</span> person(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"Mary"</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(Mary.getName());</div></pre></td></tr></table></figure>
 <p>######2. prototype</p>
-<figure class="highlight js"><figcaption><span>public2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">person.prototype.scream = <span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.getName() + <span class="string">" is screaming '"</span> + content + <span class="string">"'"</span>);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> ghost = <span class="keyword">new</span> person(&#123;</div><div class="line">    name: <span class="string">"ghost"</span></div><div class="line">&#125;);</div><div class="line">ghost.scream(<span class="string">"Oh, no~~~~~~~~~~!!"</span>);</div><div class="line"></div><div class="line">Mary.scream(<span class="string">"Oh, no~~~~~~~~~~!!"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>public2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">person.prototype.scream = <span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.getName() + <span class="string">" is screaming '"</span> + content + <span class="string">"'"</span>);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> ghost = <span class="keyword">new</span> person(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"ghost"</span></div><div class="line">&#125;);</div><div class="line">ghost.scream(<span class="string">"Oh, no~~~~~~~~~~!!"</span>);</div><div class="line"></div><div class="line">Mary.scream(<span class="string">"Oh, no~~~~~~~~~~!!"</span>);</div></pre></td></tr></table></figure>
 <p>###everything could have data</p>
 <p>######1. function type</p>
 <figure class="highlight js"><figcaption><span>function</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">person.space = <span class="string">"room"</span>;</div><div class="line"><span class="built_in">console</span>.log(Mary.space);   <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(ghost.space);  <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(person.space); <span class="comment">// room</span></div></pre></td></tr></table></figure>
@@ -147,7 +147,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/code/">code</a><a href="/tags/js/">js</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/code/">code</a>
   </div>
 
 </div>
@@ -231,7 +231,7 @@
 		  
 		
 		  
-			<li><a href="/categories/js/" title="js">js<sup>10</sup></a></li>
+			<li><a href="/categories/js/" title="js">js<sup>11</sup></a></li>
 		  
 		
 		  
@@ -252,7 +252,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/js/" title="js">js<sup>17</sup></a></li>
+				<li><a href="/tags/js/" title="js">js<sup>18</sup></a></li>
 			
 		
 			
@@ -264,11 +264,11 @@
 			
 		
 			
-				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
 			
 		
 			
@@ -280,6 +280,10 @@
 			
 		
 			
+				<li><a href="/tags/測試/" title="測試">測試<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
 			
 		
@@ -288,7 +292,7 @@
 			
 		
 			
-				<li><a href="/tags/測試/" title="測試">測試<sup>1</sup></a></li>
+				<li><a href="/tags/eslint/" title="eslint">eslint<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -104,7 +104,7 @@
 <h2 id="稱不上解法的解法吧？"><a href="#稱不上解法的解法吧？" class="headerlink" title="稱不上解法的解法吧？"></a>稱不上解法的解法吧？</h2><p>真正的解法、我覺得還是不要有 timeout 啦~ 但顯然不太可能，像是我們希望的 time-ago 就一定要設 timeout 。而這種 timeout 氾濫的情況好發於：各種動態訊息的網頁，像是討論區、留言板…。</p>
 <p>那那那、那該怎摸辦呢？？？？？</p>
 <p>嗯嗯、就是把 timer 集中起來，只有一個 time tick 囉~！這其實也是 event listener 的實作概念。(然後、各種 list 的操作覺得也是換湯不換藥啦~)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> addEvtListener = <span class="function"><span class="keyword">function</span>(<span class="params">elm, evt</span>) </span>&#123;</div><div class="line">  !elm.evt[evt.type] &amp;&amp; elm.evt[evt.type] = [];</div><div class="line">  elm.evt[evt.type].push(evt.action);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> listener = elm.addEventListener || elm.attachEvent;</div><div class="line">  <span class="keyword">const</span> runAction = (e) =&gt; &#123;</div><div class="line">    elm.evt[e.type].forEach((action) =&gt; action.apply(elm, [e]));</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  elm.evt.length === <span class="number">1</span> &amp;&amp; listener.apply(elm, [evt.type, runAction]);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> addEvtListener = <span class="function"><span class="keyword">function</span>(<span class="params">elm, evt</span>) </span>&#123;</div><div class="line">  !elm.evt[evt.type] &amp;&amp; elm.evt[evt.type] = [];</div><div class="line">  elm.evt[evt.type].push(evt.action);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> listener = elm.addEventListener || elm.attachEvent;</div><div class="line">  <span class="keyword">const</span> runAction = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">    elm.evt[e.type].forEach(<span class="function">(<span class="params">action</span>) =&gt;</span> action.apply(elm, [e]));</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  elm.evt.length === <span class="number">1</span> &amp;&amp; listener.apply(elm, [evt.type, runAction]);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>好啦、現在的 listener 大概都已經統一變成 <code>addEvtListener</code> 了，比較少直接使用 <code>onXXX</code> 的方式定義 action 了，不過、以前的 listener 大概就是用類似上面的方式實現的。這樣可以綁定一次 event，但實際上有很多的 action 可以接著執行下去。</p>
 <p>同理、timetick 也是一樣的。就是有個管理 tick 的地方，但有趣的是，這邊的實作並不是一次性的 timeout ，因為可能會有連續的不停的監聽 timer ，那… 這時候也許會想說、不用 timeout 那就是應該要用 interval 囉？也可以啦，不過、我個人比較不喜歡 interval 啦~ 一般我都還是用 setTimeout ，如果是動畫的話、就是用 <code>requestAnimationFrame</code> 。(不過、為什摸不用 interval 呢？其實原因有點忘了~ 太久以前看到的文章了、也許現在那些原因都不重要了也說不定。)</p>
 <p>使用單一 timer 監聽、其實有好有壞啦~。<br>優點：</p>
@@ -156,6 +156,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/11/29/test-and-no-string-refs/" title="測試、react/no-string-refs ( lint )">
+  <strong>上一篇：</strong><br/>
+  <span>
+  測試、react/no-string-refs ( lint )</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/09/01/func-vs-oo/"  title="functional vs OO - 概念版">
@@ -210,7 +218,7 @@
 		  
 		
 		  
-			<li><a href="/categories/js/" title="js">js<sup>10</sup></a></li>
+			<li><a href="/categories/js/" title="js">js<sup>11</sup></a></li>
 		  
 		
 		  
@@ -231,7 +239,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/js/" title="js">js<sup>17</sup></a></li>
+				<li><a href="/tags/js/" title="js">js<sup>18</sup></a></li>
 			
 		
 			
@@ -243,11 +251,11 @@
 			
 		
 			
-				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
 			
 		
 			
@@ -259,6 +267,10 @@
 			
 		
 			
+				<li><a href="/tags/測試/" title="測試">測試<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
 			
 		
@@ -267,7 +279,7 @@
 			
 		
 			
-				<li><a href="/tags/測試/" title="測試">測試<sup>1</sup></a></li>
+				<li><a href="/tags/eslint/" title="eslint">eslint<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -4,19 +4,32 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>小助助的精神實驗室</title>
+    <title>測試、react/no-string-refs ( lint ) | 小助助的精神實驗室</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="小助助">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="小助助的精神實驗室">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="嗯、取名無能。但最近在 lint 地獄，所以、來談談其中一個 airbnb/react 的 lint error：react/no-string-refs
+
+lintlint、其實也應該算是測試的一部份…吧？我是這摸認為的。撇開認為的寫法一致性等等的，也有怎摸寫才安全、怎摸寫才是貼近標準的寫法、有哪些寫法快要消失了這類的，都會有警示。
+從以前 jslint 、 coffeelint 都沒有很在意">
+<meta property="og:type" content="article">
+<meta property="og:title" content="測試、react/no-string-refs ( lint )">
+<meta property="og:url" content="http://yoursite.com/2016/11/29/test-and-no-string-refs/index.html">
 <meta property="og:site_name" content="小助助的精神實驗室">
+<meta property="og:description" content="嗯、取名無能。但最近在 lint 地獄，所以、來談談其中一個 airbnb/react 的 lint error：react/no-string-refs
+
+lintlint、其實也應該算是測試的一部份…吧？我是這摸認為的。撇開認為的寫法一致性等等的，也有怎摸寫才安全、怎摸寫才是貼近標準的寫法、有哪些寫法快要消失了這類的，都會有警示。
+從以前 jslint 、 coffeelint 都沒有很在意">
+<meta property="og:updated_time" content="2016-11-29T08:50:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小助助的精神實驗室">
+<meta name="twitter:title" content="測試、react/no-string-refs ( lint )">
+<meta name="twitter:description" content="嗯、取名無能。但最近在 lint 地獄，所以、來談談其中一個 airbnb/react 的 lint error：react/no-string-refs
+
+lintlint、其實也應該算是測試的一部份…吧？我是這摸認為的。撇開認為的寫法一致性等等的，也有怎摸寫才安全、怎摸寫才是貼近標準的寫法、有哪些寫法快要消失了這類的，都會有警示。
+從以前 jslint 、 coffeelint 都沒有很在意">
 
     
     <link rel="alternative" href="/atom.xml" title="小助助的精神實驗室" type="application/atom+xml">
@@ -64,12 +77,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2016/11/29/test-and-no-string-refs/" title="測試、react/no-string-refs ( lint )" itemprop="url">測試、react/no-string-refs ( lint )</a>
@@ -83,9 +94,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <a id="more"></a>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lint"><span class="toc-number">1.</span> <span class="toc-text">lint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#no-string-refs"><span class="toc-number">2.</span> <span class="toc-text">no-string-refs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jest-render-fail？"><span class="toc-number">3.</span> <span class="toc-text">Jest render fail？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">4.</span> <span class="toc-text">Solution</span></a></li></ol>
+		
+		</div>
+		
+		<a id="more"></a>
 <p>嗯、取名無能。但最近在 lint 地獄，所以、來談談其中一個 airbnb/react 的 lint error：<a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md" target="_blank" rel="external">react/no-string-refs</a></p>
 <!-- more -->
 <h2 id="lint"><a href="#lint" class="headerlink" title="lint"></a>lint</h2><p>lint、其實也應該算是測試的一部份…吧？我是這摸認為的。撇開認為的寫法一致性等等的，也有怎摸寫才安全、怎摸寫才是貼近標準的寫法、有哪些寫法快要消失了這類的，都會有警示。</p>
@@ -126,14 +144,9 @@
 <p>BTW ，一些需要帶入額外參數的 event binding 也可以用類似的作法處理。</p>
 </blockquote>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Sample extends React.Component &#123;</div><div class="line">  <span class="keyword">constructor</span>(...args) &#123;</div><div class="line">    <span class="keyword">super</span>(...args);</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.setTryRef = <span class="function">(<span class="params">ref</span>) =&gt;</span> (<span class="keyword">this</span>.tryRef = ref);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;input ref=&#123;this.setTryRef&#125; /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -151,611 +164,49 @@
 
 
 
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/11/29/test-and-no-string-refs/" data-title="測試、react/no-string-refs ( lint ) | 小助助的精神實驗室" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/11/29/test-and-no-string-refs/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
 
 </footer>
 
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
 
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/10/28/bump-of-timeout/" title="Time Tick 大爆炸" itemprop="url">Time Tick 大爆炸</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-10-28T13:36:57.000Z" itemprop="datePublished"> 發表於 2016-10-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>好久好久好久以前、歷經過一段 timer 大爆炸時期，當時希望各個 time-ago 的顯示可以隨著時間變化改變。很幸運的、在這件事發生之前，就看過類似的案例。（其實是 google-doole 的案例啦~）當時還蠻有空亂 trace 的，突然想到、所以就來回憶一下。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/10/28/bump-of-timeout/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/js/">js</a>
+<div class="next">
+<a href="/2016/10/28/bump-of-timeout/"  title="Time Tick 大爆炸">
+ <strong>下一篇：</strong><br/> 
+ <span>Time Tick 大爆炸
+</span>
+</a>
 </div>
 
+</nav>
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/js/">js</a>
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
 
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/10/28/bump-of-timeout/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/09/01/func-vs-oo/" title="functional vs OO - 概念版" itemprop="url">functional vs OO - 概念版</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-09-01T13:04:46.000Z" itemprop="datePublished"> 發表於 2016-09-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>阿、也許接下來會開 haskell 的坑？但、想為自己對從以前到現在對 functional 的理解下一個簡單的結論，主要是描述該用什摸樣的想法來入 OO 和 functional，他們的想法差異又在哪裡這樣，然後、希望過一段時間後回來，會發現以前的自己果然太天真了~這樣。(絕對很傻很天真、所以此篇慎入)</p>
-<p>我希望我可以盡量的不辭窮(？) 但應該還是有點難。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/09/01/func-vs-oo/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/other/">雜談</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/雜談/">雜談</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/09/01/func-vs-oo/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/18/fe-test-is/" title="前端測試要測...？" itemprop="url">前端測試要測...？</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-18T03:26:08.000Z" itemprop="datePublished"> 發表於 2016-08-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>這是我蠻常被問到的問題。想想也蠻有趣的，有不少是後端或者不太知道前端做些什摸樣的事情，然後、聽到<code>寫測試</code>，覺得很奇妙就問了這樣。相較於很多人分享測試環境該怎摸設定，用哪一套比較好，或者應該要 TDD 還是 BDD ，這篇想說的都不是這些，只是想描述下、前端測試要寫哪些東西、又該注意些什摸這樣。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/18/fe-test-is/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/js/">js</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/js/">js</a><a href="/tags/測試/">測試</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/18/fe-test-is/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/12/observed-karma/" title="從 karma 的演進發現..." itemprop="url">從 karma 的演進發現...</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-12T13:56:35.000Z" itemprop="datePublished"> 發表於 2016-08-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>唔、這算是我某種觀察日記(？)，就是那種、一直都沒有發現，然後，突然間看 doc 有感而發然後就突然發現的那種東西。對… 這次的靈感是從 <a href="https://karma-runner.github.io/1.0/index.html">karma</a> 來著的，關於 api。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/12/observed-karma/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/other/">雜談</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/12/observed-karma/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/05/string-and-array/" title="字串與陣列" itemprop="url">字串與陣列</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-05T14:01:01.000Z" itemprop="datePublished"> 發表於 2016-08-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>字串和陣列，是很重要且基本的兩個型別，但、為什摸會想把他們擺一起呢？是因為、他們之間有非常有趣的關係。然後、另外打算附上個我個人愛用，但可能有點冷門的使用方式啦~！</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/05/string-and-array/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/code/">code</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a><a href="/tags/code/">code</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/05/string-and-array/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/03/not-or-xor/" title="Not or Xor" itemprop="url">Not or Xor</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-03T05:32:06.000Z" itemprop="datePublished"> 發表於 2016-08-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>程式的重要組成之一，一定會提到判斷的對吧！在判斷的時候，常常會用到的就是 <code>boolean</code> 對吧！boolean 有 <code>true</code> 、 <code>false</code>。在我們需要判斷的時候，常常會有 <code>假如他沒有...</code> ， <code>假如他不是...</code> 那種<code>否定</code>的判斷對吧！ 沒錯、這次說的就是那個 <code>not</code> 歐~</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/03/not-or-xor/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/code/">code</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a><a href="/tags/code/">code</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/03/not-or-xor/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/07/24/clicked-and-then/" title="Clicked and Then ..." itemprop="url">Clicked and Then ...</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-24T13:45:51.000Z" itemprop="datePublished"> 發表於 2016-07-24</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>(趁著還有記憶，趕快填坑！)</p>
-<p>絕大多數的行為(姑且不論操作動向)，都是一個 click 、接著一個反應，但是、有各種<code>不同名稱</code> ，有時候、我搞不清楚哪個名字的行為是什摸，因為對我來說，就是 click 然後…。</p>
-<p>也就是說、這是個<code>很好入手</code>、不入手絕對會後悔的 pattern 阿！！！！</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/07/24/clicked-and-then/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/js/">js</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/js/">js</a><a href="/tags/pattern/">pattern</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/07/24/clicked-and-then/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/07/16/hate-js/" title="要開始討厭 js 了嗎？" itemprop="url">要開始討厭 js 了嗎？</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-16T03:18:43.000Z" itemprop="datePublished"> 發表於 2016-07-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>從一開始誤入 js 到現在已經過很久了。變化也很大、越來越活絡了，但… 好像沒一開始的喜歡這個語言了。嗯、撇開膩不膩這件事，js 有非常多有趣的東西，其實不太會膩。但、我最近不太喜歡的是，這個語言本身。(&lt;– 是有多任性.. T UT)</p>
-<p>接下來、讓我回憶和分析下，也許最後會有個結論…吧？</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/07/16/hate-js/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/other/">雜談</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/雜談/">雜談</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/07/16/hate-js/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/07/10/autocomplete-2/" title="autocomplete-2" itemprop="url">autocomplete-2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-10T03:02:35.000Z" itemprop="datePublished"> 發表於 2016-07-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>接續<a href="/2016/07/11/autocomplete-1/">上篇</a>，這次會從需求和功能設計推進。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/07/10/autocomplete-2/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/js/">js</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/07/10/autocomplete-2/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
-  </nav>
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lint"><span class="toc-number">1.</span> <span class="toc-text">lint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#no-string-refs"><span class="toc-number">2.</span> <span class="toc-text">no-string-refs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jest-render-fail？"><span class="toc-number">3.</span> <span class="toc-text">Jest render fail？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">4.</span> <span class="toc-text">Solution</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
@@ -961,15 +412,112 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
+
+<script type="text/javascript">
+
+var disqus_shortname = 'ichi1234567';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
 
 
 
@@ -1053,4 +601,4 @@ ga('send', 'pageview');
 <!-- hexo-inject:end -->
 
   </body>
- </html>
+</html>

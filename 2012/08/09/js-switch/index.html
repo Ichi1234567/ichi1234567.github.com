@@ -157,14 +157,14 @@
 </li>
 </ul>
 <p>為了改善這樣的情況、請改用下面的寫法吧~w<br><br>既然、尼已經知道是什摸樣的條件、就不要吝嗇使用它~把它利用到底吧~ @ @++ 它會感謝尼讓它出場次數那摸多、這樣大家<br>都會記得它。<br><br>我們將條件(以下就把它叫做cond吧~)相關的處理提出來、用一個object來存好它。然後、在我們接收到cond、然後要操作<br>相關運算時、可就方便啦~知道cond、就知道要執行哪個動作了~ w 歐耶~ <strong>perfect</strong></p>
-<figure class="highlight js"><figcaption><span>改寫switch-case1</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fns = &#123;</div><div class="line">    a: fn1,</div><div class="line">    b: fn2,</div><div class="line">    <span class="keyword">default</span>: fn3</div><div class="line">&#125;</div><div class="line">fns[cond]();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>改寫switch-case1</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fns = &#123;</div><div class="line">    <span class="attr">a</span>: fn1,</div><div class="line">    <span class="attr">b</span>: fn2,</div><div class="line">    <span class="attr">default</span>: fn3</div><div class="line">&#125;</div><div class="line">fns[cond]();</div></pre></td></tr></table></figure>
 <p>其實、一般來說，最基礎的這個類型就十分夠用了啦~ w 真的、大概可以解決70%的問題~ 可是、除了懶、還有更懶，沒有<br>龜毛、只有最龜毛。是的、如果在上述中、我的function、不是一個就可以解決的怎摸辦、我就很懶阿~我就想把我已經<br>醞釀好的sub-function、一個個的串起來~(扭扭) 我不想一直寫一樣的code~。</p>
 <p>如果、尼懶惰到這種程度，就請繼續往下看吧~ (我承認~ Q 口Q 如果多年以後我忘了、回來複習本篇、一定會接著往下看)</p>
 <p>##switch-case 基礎類型2</p>
 <p>好的、這一段就是基於上述的需求，我們把它攤開用switch-case下寫來、毫無疑問的，應該會是跟下面那段長的差不多像。<br>那、我們要怎摸改咧~請看下面的再下面那段code….. XDDDD</p>
 <figure class="highlight js"><figcaption><span>switch-case2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(cond) &#123;</div><div class="line">    <span class="keyword">case</span> (<span class="string">"a"</span>):</div><div class="line">        fn1();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="string">"b"</span>):</div><div class="line">        fn2();</div><div class="line">        fn3();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        fn4();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>跳過來了嗎~? 好好、那我們就開始囉~ @ 3@ <br><br>既然、尼想把那些sub-function兜起來，那就把它們兜起來嘛~ XDDDD 想要怎摸串、就怎摸串歐~ 很簡單吧~ w 我也是這摸<br>覺得的吶~！！<br><br>是的、這個跟上面的差別就在於…我在sub-function的外面用一個function把它們都包起來而已、其實換湯不換藥喇~ XDDD<br>我相信、聰明的大家，就算我迷有提出來還是會醞釀出來的呢~ w</p>
-<figure class="highlight js"><figcaption><span>改寫switch-case2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">fns = &#123;</div><div class="line">    a: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn1() &#125;,</div><div class="line">    b: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn2(); fn3(); &#125;,</div><div class="line">    <span class="keyword">default</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn4() &#125;</div><div class="line">&#125;;</div><div class="line">desc = (!!fns[cond]) ? (cond) : (<span class="string">"default"</span>);</div><div class="line">fns[cond]();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>改寫switch-case2</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">fns = &#123;</div><div class="line">    <span class="attr">a</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn1() &#125;,</div><div class="line">    <span class="attr">b</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn2(); fn3(); &#125;,</div><div class="line">    <span class="attr">default</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; fn4() &#125;</div><div class="line">&#125;;</div><div class="line">desc = (!!fns[cond]) ? (cond) : (<span class="string">"default"</span>);</div><div class="line">fns[cond]();</div></pre></td></tr></table></figure>
 <p>那…這樣就結束了~?? 太空虛了吧~如果、尼這摸覺得，那尼也太小看懶惰的威力了~ &gt; 3&lt; 我相信、除了上面那些以外，<br>很常寫規則、動不動就要趴資料的人…一定會遇到，我的case有時候有2個要一樣、有的3個、有的只有1個…我的case<br>是動態的耶~ Q 口Q 那…我要把剛剛類型1、2的…重複寫那摸多次歐~ 一定會寫都不知道在寫什摸的喇~</p>
 <p>如果、尼有降得困擾…那就接著看吧~ w</p>
 <p>##switch-case 可有可無之動態二分類型</p>
@@ -188,7 +188,7 @@
 </li>
 </ul>
 <p>基於以上的目標、我弄了下面那段code，有比較長一點點，就湊合著看唄~w<br></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// step1</span></div><div class="line">   cond = [</div><div class="line">       <span class="regexp">/^(1|2)$/</span>,</div><div class="line">       <span class="regexp">/^(-3|a|abc)$/</span>,</div><div class="line">       <span class="regexp">/^(4)$/</span></div><div class="line">   ];</div><div class="line"><span class="comment">// step2</span></div><div class="line">   method = [</div><div class="line">       fn1, fn2, fn3, default_fn</div><div class="line">   ];</div><div class="line"><span class="comment">// step3</span></div><div class="line">   switchFn = <span class="function"><span class="keyword">function</span>(<span class="params">input_cond</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> i = cond.length,</div><div class="line">           chk_cond = <span class="literal">false</span>;</div><div class="line">       cond.map(<span class="function"><span class="keyword">function</span>(<span class="params">cond_i, idx</span>) </span>&#123;</div><div class="line">           (cond_i.test(input_cond) &amp;&amp; (</div><div class="line">               method[idx](),</div><div class="line">               chk_cond = <span class="literal">true</span></div><div class="line">           ))</div><div class="line">       &#125;)</div><div class="line">	<span class="comment">// 很偷懶的使用這個方法、可以確保最後一項為default function</span></div><div class="line">       (!chk_cond &amp;&amp; method[method.length - <span class="number">1</span>]());</div><div class="line">   &#125;;</div><div class="line"><span class="comment">// step4</span></div><div class="line">   switchFn(input_cond);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// step1</span></div><div class="line">   cond = [</div><div class="line">       <span class="regexp">/^(1|2)$/</span>,</div><div class="line">       /^(<span class="number">-3</span>|a|abc)$/,</div><div class="line">       /^(<span class="number">4</span>)$/</div><div class="line">   ];</div><div class="line"><span class="comment">// step2</span></div><div class="line">   method = [</div><div class="line">       fn1, fn2, fn3, default_fn</div><div class="line">   ];</div><div class="line"><span class="comment">// step3</span></div><div class="line">   switchFn = <span class="function"><span class="keyword">function</span>(<span class="params">input_cond</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> i = cond.length,</div><div class="line">           chk_cond = <span class="literal">false</span>;</div><div class="line">       cond.map(<span class="function"><span class="keyword">function</span>(<span class="params">cond_i, idx</span>) </span>&#123;</div><div class="line">           (cond_i.test(input_cond) &amp;&amp; (</div><div class="line">               method[idx](),</div><div class="line">               chk_cond = <span class="literal">true</span></div><div class="line">           ))</div><div class="line">       &#125;)</div><div class="line">	<span class="comment">// 很偷懶的使用這個方法、可以確保最後一項為default function</span></div><div class="line">       (!chk_cond &amp;&amp; method[method.length - <span class="number">1</span>]());</div><div class="line">   &#125;;</div><div class="line"><span class="comment">// step4</span></div><div class="line">   switchFn(input_cond);</div></pre></td></tr></table></figure>
 <p>然後、這邊我就不在用object來做mapping了，原因如下：</p>
 <ul>
 <li><p>要取名字很麻煩。</p>
@@ -249,7 +249,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/code/">code</a><a href="/tags/js/">js</a><a href="/tags/效能/">效能</a><a href="/tags/架構/">架構</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/code/">code</a><a href="/tags/效能/">效能</a><a href="/tags/架構/">架構</a>
   </div>
 
 </div>
@@ -333,7 +333,7 @@
 		  
 		
 		  
-			<li><a href="/categories/js/" title="js">js<sup>10</sup></a></li>
+			<li><a href="/categories/js/" title="js">js<sup>11</sup></a></li>
 		  
 		
 		  
@@ -354,7 +354,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/js/" title="js">js<sup>17</sup></a></li>
+				<li><a href="/tags/js/" title="js">js<sup>18</sup></a></li>
 			
 		
 			
@@ -366,11 +366,11 @@
 			
 		
 			
-				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
 			
 		
 			
@@ -382,6 +382,10 @@
 			
 		
 			
+				<li><a href="/tags/測試/" title="測試">測試<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/graphics/" title="graphics">graphics<sup>1</sup></a></li>
 			
 		
@@ -390,7 +394,7 @@
 			
 		
 			
-				<li><a href="/tags/測試/" title="測試">測試<sup>1</sup></a></li>
+				<li><a href="/tags/eslint/" title="eslint">eslint<sup>1</sup></a></li>
 			
 		
 		</ul>
