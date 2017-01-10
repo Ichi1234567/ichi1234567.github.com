@@ -72,6 +72,72 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/01/10/try-hexo-uml/" title="UML" itemprop="url">UML</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
+		
+  <p class="article-time">
+    <time datetime="2017-01-10T06:05:54.000Z" itemprop="datePublished"> 發表於 2017-01-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <a id="more"></a>
+<p>阿、算式有 latex ，想畫個圖、怎摸可以沒有 uml ！<br>裝了 <a href="https://github.com/oohcoder/hexo-tag-plantuml" target="_blank" rel="external">hexo-tag-plantuml</a> 馬上來試試囉！</p>
+<!-- more -->
+<h2 id="試用"><a href="#試用" class="headerlink" title="試用"></a>試用</h2><p>dco 聽說在這 -&gt; <a href="http://plantuml.com/PlantUML_Language_Reference_Guide.pdf" target="_blank" rel="external">plantuml-doc</a> ，馬上抄幾個來試一下。</p>
+<h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSYcvMNZvGMP528dOp8OfjT7KXgXDngOQQxP2Qbm9qBm00">
+<h3 id="Activity-Diagram"><a href="#Activity-Diagram" class="headerlink" title="Activity Diagram"></a>Activity Diagram</h3><img src="http://www.plantuml.com/plantuml/svg/ROun3i8m40JxUyNgAa3A5r0Q2fw044MmBuf5V4Q-SoH-Jn9HqgrcfvZUVAZUyao7qn5TTmQ7IS8BIT_DcQuZU9z8XaNgivWmV1AbJRxVn1vWRrLHz2Sa__3-ScsAK78UD3B9RF87NpIcSUDh0FMYSOtv0W00">
+<p>while loop 也行~ 太感人了！</p>
+<img src="http://www.plantuml.com/plantuml/svg/7On13e0W30JlVKMF-WKuo5VMq219GGDLlozocvra9tH3ixieJQ3to2gyH1WO3x9YLzbMSaqG-TUUN98g3IOSCr93wPwandaTcVEYCEPeVW00">
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>雖然以前 UML 一點也沒有學好~ T UT 但想在文章裡面弄個流程圖什摸的，還是可以噠！真是太棒了！<br>(繼數學算式後、再次得到救贖！)</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/blog-新玩具/">blog 新玩具</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2017/01/10/try-hexo-uml/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/11/29/test-and-no-string-refs/" title="測試、react/no-string-refs ( lint )" itemprop="url">測試、react/no-string-refs ( lint )</a>
   </h1>
   <p class="article-author">By
@@ -85,51 +151,12 @@
 </header>
     <div class="article-content">
         
-        <a id="more"></a>
-<p>嗯、取名無能。但最近在 lint 地獄，所以、來談談其中一個 airbnb/react 的 lint error：<a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md" target="_blank" rel="external">react/no-string-refs</a></p>
-<!-- more -->
-<h2 id="lint"><a href="#lint" class="headerlink" title="lint"></a>lint</h2><p>lint、其實也應該算是測試的一部份…吧？我是這摸認為的。撇開認為的寫法一致性等等的，也有怎摸寫才安全、怎摸寫才是貼近標準的寫法、有哪些寫法快要消失了這類的，都會有警示。</p>
-<p>從以前 jslint 、 coffeelint 都沒有很在意啦~！每次一跑都紅字翻不完、更不喜歡，最近倒是體會到、雖然紅字很多，但是改改還是蠻好的，念歸念、煩歸煩，覺得符合 lint 還是一件很棒的事。</p>
-<p>因為它代表了：</p>
-<ul>
-<li>程式持續的優化與進步。(&lt;– 跟得上 standard 某方面也就是跟得上時代的腳步？畢竟最近 js 前進速度還是蠻快的咩~！)</li>
-<li>意外的發現可以讓測試 coverage 變好！</li>
-</ul>
-<p>^^^^ 所以、整體感覺都很不錯的樣子，所以、決定只剩一張嘴的抱怨他了。</p>
-<h2 id="no-string-refs"><a href="#no-string-refs" class="headerlink" title="no-string-refs"></a>no-string-refs</h2><p><a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md" target="_blank" rel="external">react/no-string-refs</a> 是怎摸樣的一個問題呢？就是字面上的、 <a href="https://facebook.github.io/react/" target="_blank" rel="external">React</a> 的 ref 不能用 string，也就是…</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div ref=<span class="string">"tryRef"</span>&gt;<span class="keyword">try</span> it&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
-<p>以上這寫法是不可以的，他必須改成這樣</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div ref=&#123;ref =&gt; (<span class="keyword">this</span>.tryRef = <span class="keyword">this</span>)&#125;&gt;<span class="keyword">try</span> it&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
-<p>改完後、想想也是，會指定 refs 大概有幾種可能性：</p>
-<ul>
-<li>出現的馬上有某些事情發生，那 ref 帶入一個 function、執行某段程式、非常合理。</li>
-<li>某個 event listener 需要非 target (&lt;– 就是非觸發 node) 來達到某些目的。</li>
-<li>也不一定是 event listener ，使用的時候，需要 ref node 達到目的。</li>
-</ul>
-<p>前面兩種問題其實不大、的確都可以在正常的情況下，也就是已經 render 畫面， nodes 都存在了，然後可以正常的使用 <code>this.resf.tryRef</code> (舉例)。不會有 <code>this.refs.tryRef == undefined</code> 這種事情發生。但最後一種、很有可能不小心的在還沒 render 畫面的時候就呼叫了，那… 都還沒有 render 、怎摸會有 refs 呢？顯然不會有、所以、當然就 gg 啦~！</p>
-<p>那、既然可能沒有 refs ，為什摸還要一個 <code>this.refs</code> 這樣的空間擺著呢？當然就不用啦！既然不用了、那… 當然 <code>ref=&quot;tryRef&quot;</code> 這種定義方式完全可以不要了對吧！</p>
-<p>以上是我腦補的過程啦~ 可能也不一定對，但整體前後看看好像蠻合理的樣子。也覺得這摸做蠻好的、就照著改了。</p>
-<h2 id="Jest-render-fail？"><a href="#Jest-render-fail？" class="headerlink" title="Jest render fail？"></a>Jest render fail？</h2><p>改得很開心、結果測試可能就 gg 了~。</p>
-<p>以前寫 spec ，關於 render 測試，大概就是…. options 帶進去、然後可能用一下 <code>innerHTML</code> 或者 <code>querySelector</code> 看看有沒有包含某些重要的文字或 node 就可以結束這回合了。稱不上好不好，但、還行！</p>
-<p>用 Jest 後，對、 Jest 很棒，對於 React 的測試真的很有幫助，對於 component 的 render 測試也很棒。btw ，不久前 <a href="https://facebook.github.io/jest/" target="_blank" rel="external">Jest</a> release 新的版本後，好像差蠻多的，一些寫法不太一樣了，新的請參考 <a href="https://facebook.github.io/jest/docs/tutorial-react.html" target="_blank" rel="external">tutorial-react</a> ，下面寫法都還舊舊的歐~ T UT</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expect(render()).toEqual(&lt;a href="#go-btm"&gt;go buttom&lt;/a&gt;);</div></pre></td></tr></table></figure>
-<p>當然、 <a href="https://facebook.github.io/jest/docs/tutorial-react-native.html#snapshot-test" target="_blank" rel="external">snapshot-test</a> 也很酷，但用意不太一樣啦~！</p>
-<p>好、當 ref 是 string 的時候、我們測試可以這樣寫…</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// demo component</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sample</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> &lt;input ref="tryRef" /&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/////////////</div><div class="line"></div><div class="line">it('should render right', () =&gt; &#123;</div><div class="line">  const instance = TestUtils.renderIntoDocument(&lt;Sample /&gt;);</div><div class="line">  expect(instance.render()).toEqual(&lt;input ref="tryRef" /&gt;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>而我們改寫不用 string-refs 的時候，還記得我們改完後的寫法嗎？來複習下…</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input ref=&#123;ref =&gt; (<span class="keyword">this</span>.tryRef = ref)&#125; /&gt;</div></pre></td></tr></table></figure>
-<p>React 很有趣，像這樣的寫法、每次重新 render ， ref 都會是新的 function ，而我們知道… 因為是新的嘛，所以、新的跟舊的 function 當然是不一樣的，就跟複製Ｏ一樣、對、長得都一樣，但就是不一樣啊！</p>
-<p>當然、這樣也不好啦~ 根據大大們的說法，都表示、這樣效能什摸的都不好，更糟糕的是…. 測試就會壞掉了！</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>那、那該怎摸辦？</p>
-<p>簡單的說呢，就是把這段 <code>ref =&gt; (this.tryRef = ref)</code> 拿到 constructor 上定義，就跟我們 bind event function 一樣，將他們移到 constructor 定義就沒問題了！程式片段大概會像下面這樣：</p>
-<blockquote>
-<p>BTW ，一些需要帶入額外參數的 event binding 也可以用類似的作法處理。</p>
-</blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Sample extends React.Component &#123;</div><div class="line">  <span class="keyword">constructor</span>(...args) &#123;</div><div class="line">    <span class="keyword">super</span>(...args);</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.setTryRef = <span class="function">(<span class="params">ref</span>) =&gt;</span> (<span class="keyword">this</span>.tryRef = ref);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;input ref=&#123;this.setTryRef&#125; /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <p>嗯、取名無能。但最近在 lint 地獄，所以、來談談其中一個 airbnb/react 的 lint error：<a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md">react/no-string-refs</a></p>
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/11/29/test-and-no-string-refs/#more">Read More</a>
           
        </p>
     </div>
@@ -401,7 +428,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a>
   </div>
 
 </div>
@@ -465,7 +492,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a><a href="/tags/code/">code</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a><a href="/tags/code/">code</a>
   </div>
 
 </div>
@@ -529,7 +556,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a><a href="/tags/code/">code</a>
+  <span></span> <a href="/tags/js/">js</a><a href="/tags/雜談/">雜談</a><a href="/tags/code/">code</a>
   </div>
 
 </div>
@@ -685,70 +712,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/07/10/autocomplete-2/" title="autocomplete-2" itemprop="url">autocomplete-2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="小助助" target="_blank" itemprop="author">小助助</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-10T03:02:35.000Z" itemprop="datePublished"> 發表於 2016-07-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>接續<a href="/2016/07/11/autocomplete-1/">上篇</a>，這次會從需求和功能設計推進。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/07/10/autocomplete-2/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/js/">js</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/雜談/">雜談</a><a href="/tags/js/">js</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/07/10/autocomplete-2/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -815,11 +778,11 @@
 			
 		
 			
-				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
+				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/數學/" title="數學">數學<sup>6</sup></a></li>
+				<li><a href="/tags/效能/" title="效能">效能<sup>6</sup></a></li>
 			
 		
 			
@@ -843,7 +806,15 @@
 			
 		
 			
+				<li><a href="/tags/blog-新玩具/" title="blog 新玩具">blog 新玩具<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/eslint/" title="eslint">eslint<sup>1</sup></a></li>
+			
+		
+			
+		
 			
 		
 		</ul>
@@ -909,7 +880,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
 		
 		<a href="/about" target="_blank" title="小助助">小助助</a>
 		
